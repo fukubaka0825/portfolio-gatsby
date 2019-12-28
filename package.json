@@ -1,6 +1,6 @@
 {
   "name": "portfolio-gatsby",
-  "description": "kentarom's portfolio site",
+  "description": "fukubaka's portfolio site",
   "version": "1.0.0",
   "author": "Kentaro Matsushita",
   "dependencies": {
@@ -50,6 +50,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kentaro-m/portfolio-gatsby"
+    "url": "https://github.com/fukubaka0825/portfolio-gatsby"
   }
 }
