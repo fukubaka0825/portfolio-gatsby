@@ -3,35 +3,35 @@ const querystring = require('querystring')
 const path = require('path')
 
 const siteMetadata = {
-  title: "Kentaro Matsushita - @kentaro-m",
-  author: "Kentaro Matsushita",
-  description: "kentarom's portfolio site",
-  siteUrl: 'https://kentarom.com',
+  title: "Takashi Narikawa - @fukubaka0825",
+  author: "Takashi Narikawa",
+  description: "Nari's portfolio site",
+  siteUrl: 'https://fukubaka0825.dev',
   siteLanguage: 'ja',
-  shortName: 'kentarom',
+  shortName: 'nari',
   skills: [
-    { type: 'Node.js', level: 80 },
-    { type: 'React', level: 70 },
-    { type: 'JavaScript', level: 60 },
-    { type: 'TypeScript', level: 40 },
-    { type: 'Java', level: 60 },
-    { type: 'Go', level: 40 },
-    { type: 'AWS', level: 70 },
-    { type: 'MySQL', level: 50 },
+    { type: 'AWS', level: 80 },
+    { type: 'Terraform', level: 70 },
+    { type: 'Go', level: 60 },
+    { type: 'Mysql', level: 40 },
+    { type: 'SRE', level: 60 },
+    { type: 'CI/CD', level: 40 },
+    { type: 'Monitoring', level: 70 },
+    { type: 'Nginx', level: 50 },
     { type: 'Docker', level: 40 }
   ],
   user: {
-    name: 'Kentaro Matsushita',
-    github: 'kentaro-m',
-    qiita: 'kentaro_m',
-    speaker_deck: 'kentarom',
-    twitter: '_kentaro_m',
-    facebook: 'kentaro.m9',
-    linkedin: 'kentarom'
+    name: 'Takashi Narikawa',
+    github: 'fukubaka0825',
+    qiita: 'fukubaka0825',
+    speaker_deck: 'fukubaka0825',
+    twitter: 'fukubaka0825',
+    facebook: 'fukubaka0825',
+    linkedin: 'takashi-narikawa-889a51187'
   },
   blog: {
-    url: 'https://blog.kentarom.com/',
-    feed_url: 'https://blog.kentarom.com/rss.xml',
+    url: 'https://fukubaka0825.hatenablog.com/',
+    feed_url: 'https://fukubaka0825.hatenablog.com/rss',
     article_count: '5'
   },
   github: {
