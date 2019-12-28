@@ -49,7 +49,6 @@ const qs = querystring.stringify({
 })
 
 module.exports = {
-  pathPrefix: `/fukubaka0825/portfolio-gatsby`,
   siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
