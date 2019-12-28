@@ -1,5 +1,6 @@
 # portfolio-gatsby
 
+
 ## :arrow_forward: Usage
 
 ### Create a new site
@@ -49,7 +50,7 @@ Add secrets to repository settings.
   - Use for deploy to GitHub Pages
   - Scope: `repo`
 
-Create the workflow file like `deploy.yml` and add it to `.github/workflows`. 
+Create the workflow file like `deploy.yml` and add it to `.github/workflows`.
 
 ```yml
 name: Deploy
