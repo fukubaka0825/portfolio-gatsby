@@ -1,0 +1,50 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 15 * * *'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: setup node 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: install
+        run: npm install
+
+      - name: build
+        run: npm run build
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
+          QIITA_API_TOKEN: ${{ secrets.QIITA_API_TOKEN }}
+          RSS2JSON_API_TOKEN: ${{ secrets.RSS2JSON_API_TOKEN }}
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v2.3.2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./public
+
+  audit:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Audit live URL
+        uses: jakejarvis/lighthouse-action@master
+        with:
+          url: 'https://kentarom.com'
+      - name: Upload results as an artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: report
+          path: './report'
