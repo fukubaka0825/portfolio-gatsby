@@ -42,9 +42,9 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           <Img fixed={data.avatar.childImageSharp.fixed} />
         </a>
         <h1>
-          <strong>Kentaro Matsushita</strong>{' '}
-          <p>Frontend Developer at DMM GAMES.</p>
-          <p>Happy coding everyday!</p>
+          <strong>Takashi Narikawa</strong>{' '}
+          <p>Backend engineer at Wano Co.,Ltd.</p>
+          <p>I want to be SRE and platformer!</p>
         </h1>
       </div>
       <div id="footer">
