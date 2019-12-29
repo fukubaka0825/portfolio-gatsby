@@ -6,7 +6,7 @@ const siteMetadata = {
   title: "Takashi Narikawa - @fukubaka0825",
   author: "Takashi Narikawa",
   description: "Nari's portfolio site",
-  siteUrl: 'https://fukubaka0825.dev',
+  siteUrl: 'https://www.fukubaka0825.dev',
   siteLanguage: 'ja',
   shortName: 'nari',
   skills: [
@@ -49,7 +49,7 @@ const qs = querystring.stringify({
 })
 
 module.exports = {
-  pathPrefix: `/fukubaka0825/portfolio-gatsby`,
+  pathPrefix: `/portfolio-gatsby`,
   siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
