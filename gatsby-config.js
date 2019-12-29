@@ -56,6 +56,7 @@ const qs = querystring.stringify({
 })
 
 module.exports = {
+  pathPrefix: `/portfolio-gatsby`,
   siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
