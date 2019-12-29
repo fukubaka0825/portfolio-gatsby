@@ -79,7 +79,7 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Head />
       <Header user={user} />
       <div id="main">
-        <SkillBars backgroundColor="#4173B3" skills={skills} />
+        <SkillBars backgroundColor="#0000CD" skills={skills} />
         {repos && repos.length > 0 && (
           <GitHubRepos repos={repos} user={user.github} />
         )}
