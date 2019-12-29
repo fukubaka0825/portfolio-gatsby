@@ -102,12 +102,12 @@ module.exports = {
         name: 'Slides'
       }
     },
-    {
-      resolve: 'gatsby-source-medium',
-      options: {
-        username: siteMetadata.user.medium,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-medium',
+    //   options: {
+    //     username: siteMetadata.user.medium,
+    //   },
+    // },
     {
       resolve: `gatsby-source-github-api`,
       options: {
