@@ -10,15 +10,15 @@ const siteMetadata = {
   siteLanguage: 'ja',
   shortName: 'nari',
   skills: [
-    { type: 'AWS', level: 80 },
-    { type: 'Terraform', level: 70 },
-    { type: 'Go', level: 60 },
+    { type: 'AWS', level: 90 },
+    { type: 'Terraform', level: 80 },
+    { type: 'Go', level: 70 },
     { type: 'Mysql', level: 40 },
     { type: 'SRE', level: 60 },
-    { type: 'CI/CD', level: 40 },
+    { type: 'CI/CD', level: 70 },
     { type: 'Monitoring', level: 70 },
     { type: 'Nginx', level: 50 },
-    { type: 'Docker', level: 40 }
+    { type: 'Docker', level: 70 }
   ],
   user: {
     name: 'Takashi Narikawa',
