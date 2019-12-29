@@ -42,7 +42,7 @@ jobs:
       - name: Audit live URL
         uses: jakejarvis/lighthouse-action@master
         with:
-          url: 'https://fukubaka0825.github.io/portfolio-gatsby'
+          url: 'https://www.fukubaka0825.dev'
       - name: Upload results as an artifact
         uses: actions/upload-artifact@master
         with:
