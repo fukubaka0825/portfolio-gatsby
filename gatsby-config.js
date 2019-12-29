@@ -10,15 +10,16 @@ const siteMetadata = {
   siteLanguage: 'ja',
   shortName: 'nari',
   skills: [
-    { type: 'AWS', level: 90 },
-    { type: 'Terraform', level: 80 },
+    { type: 'AWS', level: 80 },
+    { type: 'Terraform', level: 70 },
     { type: 'Go', level: 70 },
-    { type: 'Mysql', level: 40 },
-    { type: 'SRE', level: 60 },
-    { type: 'CI/CD', level: 70 },
-    { type: 'Monitoring', level: 70 },
-    { type: 'Nginx', level: 50 },
-    { type: 'Docker', level: 70 }
+    { type: 'Docker', level: 70 },
+    { type: 'Redis', level: 60 },
+    { type: 'Nginx', level: 60 },
+    { type: 'Mysql', level: 60 },
+    { type: 'Ruby', level: 30 },
+    { type: 'ROR', level: 30 },
+    { type: 'TypeScript', level: 30 },
   ],
   user: {
     name: 'Takashi Narikawa',
@@ -33,6 +34,11 @@ const siteMetadata = {
   blog: {
     url: 'https://fukubaka0825.hatenablog.com/',
     feed_url: 'https://fukubaka0825.hatenablog.com/rss',
+    article_count: '5'
+  },
+  note: {
+    url: 'https://note.com/fukubaka/',
+    feed_url: 'https://note.com/fukubaka/rss',
     article_count: '5'
   },
   github: {
@@ -59,8 +65,8 @@ module.exports = {
         name: siteMetadata.title,
         short_name: siteMetadata.shortName,
         start_url: '/',
-        background_color: '#4173B3',
-        theme_color: '#4173B3',
+        background_color: '#08033d',
+        theme_color: '#08033d',
         display: 'minimal-ui',
         icon: 'src/assets/images/nari.jpg', // This path is relative to the root of the site.
       },
@@ -89,6 +95,13 @@ module.exports = {
       options: {
         url: siteMetadata.blog.feed_url,
         name: `BlogPosts`,
+      }
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: siteMetadata.note.feed_url,
+        name: `NotePosts`,
       }
     },
     {

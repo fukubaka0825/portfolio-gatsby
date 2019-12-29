@@ -7,6 +7,7 @@ import QiitaItems, { Post as QiitaPost } from '../components/QiitaItems'
 import Header from '../components/Header'
 import Slides, { Item as SlideItem } from '../components/Slides'
 import BlogPosts, { Post as BlogPost } from '../components/BlogPosts'
+import NotePosts, { Post as NotePost } from '../components/NotePosts'
 import GitHubRepos, { Repo } from '../components/GitHubRepos'
 import Head from '../components/Head'
 
@@ -42,6 +43,9 @@ type HomeIndexProps = {
     allFeedBlogPosts: {
       edges: BlogPost[]
     }
+    allFeedNotePosts: {
+      edges: NotePost[]
+    }
     allGithubData: {
       edges: [
         {
@@ -62,6 +66,9 @@ type HomeIndexProps = {
         blog: {
           url: string
         }
+        note: {
+          url: string
+        }
       }
     }
   }
@@ -71,8 +78,9 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
   const qiitaPosts = data.allQiitaPost.edges
   const slides = data.allSlides.edges[0].node.items
   const blogPosts = data.allFeedBlogPosts.edges
+  const notePosts = data.allFeedNotePosts.edges
   const repos = data.allGithubData.edges[0].node.data.allGithubData.edges
-  const { user, skills, blog } = data.site.siteMetadata
+  const { user, skills, blog, note} = data.site.siteMetadata
 
   return (
     <Layout>
@@ -88,6 +96,9 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         )}
         {blogPosts && blogPosts.length > 0 && (
           <BlogPosts posts={blogPosts} blogUrl={blog.url} />
+        )}
+        {notePosts && notePosts.length > 0 && (
+            <NotePosts posts={notePosts} NoteUrl={note.url} />
         )}
         {slides && slides.length > 0 && (
           <Slides items={slides} user={user.speaker_deck} />
@@ -108,6 +119,9 @@ export const query = graphql`
           level
         }
         blog {
+          url
+        }
+        note {
           url
         }
         user {
@@ -145,6 +159,16 @@ export const query = graphql`
       }
     }
     allFeedBlogPosts {
+      edges {
+        node {
+          id
+          title
+          link
+          pubDate
+        }
+      }
+    }
+    allFeedNotePosts {
       edges {
         node {
           id

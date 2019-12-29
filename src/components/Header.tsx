@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </li>
           </ul>
           <ul className="copyright">
-            <li>&copy; 2018 {user.name}</li>
+            <li>&copy; 2020 {user.name}</li>
             <li>
               Design: <a href="http://html5up.net">HTML5 UP</a>
             </li>
