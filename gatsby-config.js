@@ -27,7 +27,8 @@ const siteMetadata = {
     speaker_deck: 'fukubaka0825',
     twitter: 'fukubaka0825',
     facebook: 'fukubaka0825',
-    linkedin: 'takashi-narikawa-889a51187'
+    linkedin: 'takashi-narikawa-889a51187',
+    medium: '@fukubaka0825'
   },
   blog: {
     url: 'https://fukubaka0825.hatenablog.com/',
@@ -100,6 +101,12 @@ module.exports = {
         },
         name: 'Slides'
       }
+    },
+    {
+      resolve: 'gatsby-source-medium',
+      options: {
+        username: siteMetadata.user.medium,
+      },
     },
     {
       resolve: `gatsby-source-github-api`,

@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
         <a href="/" className="image avatar">
           <Img fixed={data.avatar.childImageSharp.fixed} />
         </a>
-        <h1>
+        <h1 color="#0000CD" >
           <strong>Takashi Narikawa</strong>{' '}
           <p>Backend engineer at Wano Co.,Ltd.</p>
           <p>I want to be SRE and platformer!</p>
