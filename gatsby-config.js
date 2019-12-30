@@ -31,11 +31,15 @@ const siteMetadata = {
     twitter: 'fukubaka0825',
     facebook: 'fukubaka0825',
     linkedin: 'takashi-narikawa-889a51187',
-    medium: '@fukubaka0825'
   },
   blog: {
     url: 'https://fukubaka0825.hatenablog.com/',
     feed_url: 'https://fukubaka0825.hatenablog.com/rss',
+    article_count: '5'
+  },
+  medium: {
+    url: 'https://medium.com/@fukubaka0825/',
+    feed_url: 'https://medium.com/feed/@fukubaka0825',
     article_count: '5'
   },
   note: {
@@ -107,6 +111,13 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: siteMetadata.medium.feed_url,
+        name: `MediumPosts`,
+      }
+    },
+    {
       resolve: "gatsby-source-apiserver",
       options: {
         url: `https://api.rss2json.com/v1/api.json?${qs}`,
@@ -117,12 +128,6 @@ module.exports = {
         name: 'Slides'
       }
     },
-    // {
-    //   resolve: 'gatsby-source-medium',
-    //   options: {
-    //     username: siteMetadata.user.medium,
-    //   },
-    // },
     {
       resolve: `gatsby-source-github-api`,
       options: {

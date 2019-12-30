@@ -32,7 +32,7 @@ const NotePosts: React.FC<NotePostsProps> = ({ posts, NoteUrl }) => {
 
   return (
     <section id="Note">
-      <h2>Note</h2>
+      <h2>Note(Japanese)</h2>
       <ul className="alt">{items}</ul>
       <ul className="actions">
         <li>
