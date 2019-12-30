@@ -62,6 +62,7 @@ const qs = querystring.stringify({
 })
 
 module.exports = {
+  pathPrefix: `/`,
   siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
