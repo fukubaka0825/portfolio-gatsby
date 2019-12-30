@@ -48,13 +48,13 @@ const Career: React.FC<CareerProps> = ({ }) => {
                     <h4>
                         ・International payment core system (mainframe)
                     </h4>
-                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・ Project leader of  &nbsp;
+                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・ Project leader of &nbsp;
                         <a href={`https://www.swift.com/`}>
                             Swift &nbsp;
                         </a>
-                         system-compliant projects (Requirement definition,Basic design)
+                         system-compliant projects (Requirement definition, Basic design)
                     </h5>
-                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・ Regular maintenance(PL/I,JCL)
+                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・ Regular maintenance(PL/I, JCL)
                     </h5>
                 </li>
             </ul>
