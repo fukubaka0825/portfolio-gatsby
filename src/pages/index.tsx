@@ -11,6 +11,12 @@ import NotePosts, { Post as NotePost } from '../components/NotePosts'
 import MediumPosts, { Post as MediumPost } from '../components/MediumPosts'
 import GitHubRepos, { Repo } from '../components/GitHubRepos'
 import Head from '../components/Head'
+import Works  from '../components/Works'
+import Language  from '../components/Language'
+import Certification from '../components/Certification'
+import Contribution from '../components/Contribution'
+import Career from '../components/Career'
+import Education from '../components/Education'
 
 type User = {
   name: string
@@ -108,6 +114,10 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Header user={user} />
       <div id="main">
         <SkillBars backgroundColor="#0000CD" skills={skills} />
+        <Works/>
+        <Career/>
+        <Education/>
+        <Contribution/>
         {repos && repos.length > 0 && (
           <GitHubRepos repos={repos} user={user.github} />
         )}
@@ -127,6 +137,8 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         {slides && slides.length > 0 && (
           <Slides items={slides} user={user.speaker_deck} />
         )}
+        <Language/>
+        <Certification/>
       </div>
     </Layout>
   )
