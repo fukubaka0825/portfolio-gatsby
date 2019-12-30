@@ -18,6 +18,7 @@ const siteMetadata = {
     { type: 'Redis', level: 60 },
     { type: 'Nginx', level: 60 },
     { type: 'Mysql', level: 60 },
+    { type: 'Fluentd', level: 50 },
     { type: 'Java', level: 50 },
     { type: 'Elasticsearch', level: 40 },
     { type: 'Ruby', level: 30 },
