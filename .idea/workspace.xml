@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Career.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Career.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Certification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Certification.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Contact.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Contribution.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contribution.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Education.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Education.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Language.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Language.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Works.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Works.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Career.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="27" column="111" lean-forward="true" selection-start-line="27" selection-start-column="111" selection-end-line="27" selection-end-column="111" />
+            <state relative-caret-position="452">
+              <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -308,12 +300,12 @@
       <option name="presentableId" value="Default" />
       <updated>1577550314373</updated>
       <workItem from="1577550316365" duration="14353000" />
-      <workItem from="1577623000011" duration="26194000" />
+      <workItem from="1577623000011" duration="26736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40547000" />
+    <option name="totallyTimeSpent" value="41089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -641,8 +633,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Career.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="27" column="111" lean-forward="true" selection-start-line="27" selection-start-column="111" selection-end-line="27" selection-end-column="111" />
+        <state relative-caret-position="452">
+          <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
         </state>
       </provider>
     </entry>

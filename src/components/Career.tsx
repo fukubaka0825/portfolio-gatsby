@@ -33,7 +33,8 @@ const Career: React.FC<CareerProps> = ({ }) => {
                             Point Mall
                         </a>
                     </h4>
-                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Development of APIs (Go,Clean Architecture)</h5>
+                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Development of APIs (Go,Nginx,Clean Architecture)</h5>
+                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Data source design (Mysql,Redis)</h5>
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Overall infrastructure design and implementation (Terraform)</h5>
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Production operation of application container(AWS ECS)</h5>
                 </li>
