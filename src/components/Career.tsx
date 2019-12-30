@@ -46,7 +46,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                         (Apr, 2018 〜 Jan, 2019)
                     </h3>
                     <h4>
-                        ・International payment core system (mainframe)
+                        ・International payment core system (Mainframe)
                     </h4>
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・ Project leader of &nbsp;
                         <a href={`https://www.swift.com/`}>
