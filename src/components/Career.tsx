@@ -14,7 +14,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                         <a href={`https://wano.co.jp/`}>
                             Wano Co.,Ltd. &nbsp;
                         </a>
-                        (Feb,2019〜)
+                        (Feb, 2019〜)
                     </h3>
                     <h4>
                         ・Music delivery system &nbsp;
@@ -43,7 +43,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                         <a href={`https://www.mizuho-ir.co.jp`}>
                             Mizuho Information & Research Institute, Inc.&nbsp;
                         </a>
-                        (Apr,2018 〜 Jan,2019)
+                        (Apr, 2018 〜 Jan, 2019)
                     </h3>
                     <h4>
                         ・International payment core system (mainframe)
