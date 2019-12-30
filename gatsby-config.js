@@ -19,6 +19,7 @@ const siteMetadata = {
     { type: 'Nginx', level: 60 },
     { type: 'Mysql', level: 60 },
     { type: 'Java', level: 50 },
+    { type: 'Elasticsearch', level: 40 },
     { type: 'Ruby', level: 30 },
     { type: 'ROR', level: 30 },
     { type: 'TypeScript', level: 30 },

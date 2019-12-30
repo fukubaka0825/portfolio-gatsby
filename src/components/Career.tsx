@@ -26,6 +26,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Introduction and Enlightenment of CD with Gitops (CircleCI)</h5>
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Introduction and Enlightenment of IaC (Terraform)</h5>
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Introduction and Enlightenment of ChatOps (Slack)</h5>
+                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Preliminary investigation and design of search infrastructure(Elasticsearch, Kibana)</h5>
                     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;・Facilitation of US project</h5>
                     <h4>
                         ・Shop recommend system of &nbsp;
