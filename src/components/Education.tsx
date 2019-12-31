@@ -8,12 +8,16 @@ const Education: React.FC<EducationProps> = ({ }) => {
     return (
         <section id="Education">
             <h2>Education</h2>
-            <ul className="alt">
+            <ul >
                 <li>
-                    <h3>Bachelor of Economics (Mar, 2018)</h3>
-                    <a href={`https://www.waseda.jp/fpse/pse/`}>
-                    &nbsp;&nbsp;・Waseda University
-                    </a>
+                    Bachelor of Economics (Mar, 2018)
+                    <ul>
+                        <li>
+                            <a href={`https://www.waseda.jp/fpse/pse/`}>
+                                Waseda University
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </section>
