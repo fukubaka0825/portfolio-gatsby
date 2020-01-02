@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/schedule.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,15 +78,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.github/workflows/deploy.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+            <state relative-caret-position="75">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.github/workflows/schedule.yml">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="33" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -148,7 +149,6 @@
       <list>
         <option value="$PROJECT_DIR$/static/CNAME" />
         <option value="$PROJECT_DIR$/src/components/Head.tsx" />
-        <option value="$PROJECT_DIR$/.github/workflows/deploy.yml" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/assets/scss/libs/_customBase.scss" />
         <option value="$PROJECT_DIR$/src/components/MediumItems.tsx" />
@@ -167,6 +167,8 @@
         <option value="$PROJECT_DIR$/src/components/Career.tsx" />
         <option value="$PROJECT_DIR$/src/components/Education.tsx" />
         <option value="$PROJECT_DIR$/src/components/Contribution.tsx" />
+        <option value="$PROJECT_DIR$/.github/workflows/schedule.yml" />
+        <option value="$PROJECT_DIR$/.github/workflows/deploy.yml" />
       </list>
     </option>
   </component>
@@ -264,12 +266,12 @@
       <workItem from="1577550316365" duration="14353000" />
       <workItem from="1577623000011" duration="29339000" />
       <workItem from="1577771541578" duration="1926000" />
-      <workItem from="1577939954307" duration="846000" />
+      <workItem from="1577939954307" duration="1158000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46464000" />
+    <option name="totallyTimeSpent" value="46776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -582,13 +584,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.github/workflows/deploy.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        <state relative-caret-position="75">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.github/workflows/schedule.yml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
