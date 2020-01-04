@@ -54,6 +54,9 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               SRE NEXT
             </a>
           </p>
+          <p>
+            Age: 26 years old
+          </p>
         </h1>
       </div>
       <div id="footer">
