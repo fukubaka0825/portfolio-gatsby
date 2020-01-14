@@ -49,6 +49,15 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </a>
           </p>
           <p>
+            Age: 26 years old
+          </p>
+          <p>
+            Computer Science student at
+            <a href={`https://www.uopeople.edu/programs/cs/degrees/computer-science-bachelor-degree-2/`}>
+              UoPeople
+            </a>
+          </p>
+          <p>
             Member of &nbsp;
             <a href={`https://sre-next.dev/`}>
               SRE NEXT
