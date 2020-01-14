@@ -31,7 +31,7 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./public
-          
+
   audit:
     needs: build-and-deploy
     runs-on: ubuntu-latest
