@@ -61,8 +61,8 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </a>
           </p>
           <p>
-            Resident of
-            <a href={`https://4hacker.github.io/hackerhouse/geekhouse-shinjuku.html`}> &nbsp;
+            Resident of &nbsp;
+            <a href={`https://4hacker.github.io/hackerhouse/geekhouse-shinjuku.html`}>
               Geekhouse Shinjuku
             </a>
           </p>
