@@ -61,12 +61,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </a>
           </p>
           <p>
-            Resident of &nbsp;
-            <a href={`https://4hacker.github.io/hackerhouse/geekhouse-shinjuku.html`}>
-              Geekhouse Shinjuku
-            </a>
-          </p>
-          <p>
             Age: 26 years old
           </p>
         </h1>
