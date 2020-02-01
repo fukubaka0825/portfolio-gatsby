@@ -10,11 +10,18 @@ const Career: React.FC<CareerProps> = ({ }) => {
             <h2>Career</h2>
             <ul >
                 <li>
+                    Site Reliability Engineer at &nbsp;
+                    <a href={`https://eure.jp/`}>
+                        eureka, Inc. &nbsp;
+                    </a>
+                    (March, 2020〜)
+                </li>
+                <li>
                     Backend Engineer at &nbsp;
                         <a href={`https://wano.co.jp/`}>
                             Wano Co.,Ltd. &nbsp;
                         </a>
-                        (Feb, 2019〜)
+                        (Feb, 2019〜Feb, 2020)
                     <ul >
                         <li>
                             Music delivery system &nbsp;
