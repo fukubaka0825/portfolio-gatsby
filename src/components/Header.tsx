@@ -49,15 +49,12 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </a>
           </p>
           <p>
-            Computer Science student at &nbsp;
-            <a href={`https://www.uopeople.edu/programs/cs/degrees/computer-science-bachelor-degree-2/`}>
-              UoPeople
-            </a>
-          </p>
-          <p>
             Member of &nbsp;
             <a href={`https://sre-next.dev/`}>
-              SRE NEXT
+              SRE NEXT &nbsp; / &nbsp;
+            </a>
+            <a href={`https://sre-lounge.connpass.com/`}>
+              SRE Lounge
             </a>
           </p>
           <p>
