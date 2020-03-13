@@ -22,9 +22,9 @@ const Works: React.FC<WorksProps> = ({ }) => {
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://shiganai.org/ep/sp78-fukubaka0825`} className="image fit thumb">
-                        <img src={`https://imgur.com/9Yhjjw9`} alt="" />
+                        <img src={`../assets/images/shiganai_sp78.png`} alt="" />
                     </a>
-                    <a href={`https://fukubaka.booth.pm/items/1569932`} className="slide-title">
+                    <a href={`https://shiganai.org/ep/sp78-fukubaka0825`} className="slide-title">
                         <h3>sp.78【ゲスト: fukubaka0825】SIerに就職したバンドマンがスタートアップに転職して1年で楽しいSREになるまで</h3>
                     </a>
                 </article>
