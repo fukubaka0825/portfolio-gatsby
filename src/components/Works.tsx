@@ -20,6 +20,14 @@ const Works: React.FC<WorksProps> = ({ }) => {
                         <h3>技術書典7にて頒布(技術同人誌)</h3>
                     </a>
                 </article>
+                <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://shiganai.org/ep/sp78-fukubaka0825`} className="image fit thumb">
+                        <img src={`https://imgur.com/9Yhjjw9`} alt="" />
+                    </a>
+                    <a href={`https://fukubaka.booth.pm/items/1569932`} className="slide-title">
+                        <h3>sp.78【ゲスト: fukubaka0825】SIerに就職したバンドマンがスタートアップに転職して1年で楽しいSREになるまで</h3>
+                    </a>
+                </article>
             </div>
         </section>
     )
