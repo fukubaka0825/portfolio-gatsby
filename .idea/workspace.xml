@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/nari.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/nari.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/avator.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/avatar.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +113,7 @@
       <workItem from="1580396339846" duration="2032000" />
       <workItem from="1580557092783" duration="1123000" />
       <workItem from="1584074134405" duration="1877000" />
-      <workItem from="1586792022180" duration="538000" />
+      <workItem from="1586792022180" duration="859000" />
     </task>
     <servers />
   </component>
