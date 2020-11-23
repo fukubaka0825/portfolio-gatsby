@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </a>
           </p>
           <p>
-            Age: 26 years old
+            Age: 27 years old
           </p>
         </h1>
       </div>

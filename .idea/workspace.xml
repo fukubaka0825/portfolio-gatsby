@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assets/images/avator.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/avatar.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,12 +113,19 @@
       <workItem from="1580396339846" duration="2032000" />
       <workItem from="1580557092783" duration="1123000" />
       <workItem from="1584074134405" duration="1877000" />
-      <workItem from="1586792022180" duration="859000" />
+      <workItem from="1586792022180" duration="1454000" />
+      <workItem from="1586820410587" duration="1195000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="399" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1586834419363">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1586834419363" />
   </component>
   <component name="masterDetails">
     <states>
