@@ -22,6 +22,11 @@ const Contribution: React.FC<ContributionProps> = ({ }) => {
                                 mercari/tfnotify
                             </a>
                         </li>
+                        <li>
+                            <a href={`https://github.com/evalphobia/aws-sdk-go-wrapper/pulls?q=is%3Apr+author%3Afukubaka0825+is%3Aclosed`}>
+                                evalphobia/aws-sdk-go-wrapper
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
