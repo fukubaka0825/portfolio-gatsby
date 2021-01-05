@@ -28,7 +28,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 <li>Introduction of Postmortem template and PlayBook(RunBook)</li>
                                 <li>Replace on-call system</li>
                                 <li>Migration of Pairs Engage server from AWS EC2 to FARGATE</li>
-                                <li>Migration of User Message Data</li>
+                                <li>Migration and Encryption of User Message Data from RDS to DynamoDB</li>
                                 <li>Design and Implementation of Data Lifecycle Policy System</li>
                             </ul>
                         </li>
