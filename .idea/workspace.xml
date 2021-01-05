@@ -13,27 +13,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>gatsuby</find>
-      <find>Header</find>
-      <find>inherit</find>
-      <find>Post</find>
-      <find>BlogPost</find>
-      <find>NotePost</find>
-      <find>allFeedNotePosts</find>
-      <find>blog</find>
-      <find>Qiita</find>
-      <find>Language</find>
-      <find>Career</find>
-      <find>ul</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>Language</replace>
-      <replace>Contribution</replace>
-      <replace>Education</replace>
-    </replaceStrings>
-  </component>
   <component name="GOROOT" path="$USER_HOME$/.goenv/versions/1.13.0" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

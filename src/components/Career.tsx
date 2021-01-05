@@ -17,7 +17,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                     (March, 2020〜)
                     <ul >
                         <li>
-                            Online Dating Service (DAU Over 0.6 million, 3 Regions) &nbsp;
+                            Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
                             <a href={`https://www.pairs.lv/`}>
                                 Pairs and Pairs Engage
                             </a>
