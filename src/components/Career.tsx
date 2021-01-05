@@ -15,6 +15,22 @@ const Career: React.FC<CareerProps> = ({ }) => {
                         eureka, Inc. &nbsp;
                     </a>
                     (March, 2020〜)
+                    <ul >
+                        <li>
+                            Online Dating Service (DAU Over 0.6 million, 3 Regions) &nbsp;
+                            <a href={`https://www.pairs.lv/`}>
+                                Pairs and Pairs Engage
+                            </a>
+                            <ul>
+                                <li>Replace Infra Develiry Process</li>
+                                <li>AWS ECR vulnerability scan and workflow</li>
+                                <li>Self-Service(BotOps,CI/CD)</li>
+                                <li>Introduction of Postmortem template and PlayBook(RunBook)</li>
+                                <li>Replace on-call system</li>
+                                <li>Migration of Pairs Engage server from AWS EC2 to FARGATE</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     Backend Engineer at &nbsp;
