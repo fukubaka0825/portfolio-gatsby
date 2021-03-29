@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import SkillBars from '../components/SkillBars'
 import QiitaItems, { Post as QiitaPost } from '../components/QiitaItems'
 import Header from '../components/Header'
 import Slides, { Item as SlideItem } from '../components/Slides'
@@ -113,7 +112,6 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Head />
       <Header user={user} />
       <div id="main">
-        <SkillBars backgroundColor="#0000CD" skills={skills} />
         <Works/>
         <Career/>
         <Education/>
