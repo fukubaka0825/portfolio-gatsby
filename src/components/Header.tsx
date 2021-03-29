@@ -48,18 +48,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               eureka, Inc.
             </a>
           </p>
-          <p>
-            Member of &nbsp;
-            <a href={`https://sre-next.dev/`}>
-              SRE NEXT &nbsp; / &nbsp;
-            </a>
-            <a href={`https://sre-lounge.connpass.com/`}>
-              SRE Lounge
-            </a>
-          </p>
-          <p>
-            Age: 27 years old
-          </p>
         </h1>
       </div>
       <div id="footer">

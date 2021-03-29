@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Career.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Career.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +91,21 @@
       <workItem from="1586820410587" duration="1195000" />
       <workItem from="1606139971623" duration="279000" />
       <workItem from="1607509984824" duration="544000" />
+      <workItem from="1609825859612" duration="158000" />
+      <workItem from="1609904994138" duration="309000" />
+      <workItem from="1609907147895" duration="580000" />
+      <workItem from="1610431767258" duration="379000" />
+      <workItem from="1610448597573" duration="471000" />
+      <workItem from="1610934398242" duration="419000" />
+      <workItem from="1611191402263" duration="455000" />
+      <workItem from="1611769290396" duration="183000" />
+      <workItem from="1612108854214" duration="270000" />
+      <workItem from="1612318642905" duration="436000" />
+      <workItem from="1612331086574" duration="287000" />
+      <workItem from="1613373556102" duration="384000" />
+      <workItem from="1613728243586" duration="494000" />
+      <workItem from="1613826543588" duration="413000" />
+      <workItem from="1613915086109" duration="561000" />
     </task>
     <servers />
   </component>
