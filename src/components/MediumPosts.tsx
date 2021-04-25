@@ -32,7 +32,7 @@ const MediumPosts: React.FC<MediumPostsProps> = ({ posts, MediumUrl }) => {
 
     return (
         <section id="Medium">
-            <h2>:postbox: Medium(English)</h2>
+            <h2>Medium(English)</h2>
             <ul className="alt">{items}</ul>
             <ul className="actions">
                 <li>

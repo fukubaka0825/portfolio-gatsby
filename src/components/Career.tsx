@@ -7,7 +7,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
 
     return (
         <section id="Career">
-            <h2>:office: Career</h2>
+            <h2>Career</h2>
             <ul >
                 <li>
                     Site Reliability Engineer at &nbsp;

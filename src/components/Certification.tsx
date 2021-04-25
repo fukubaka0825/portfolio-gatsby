@@ -7,7 +7,7 @@ const Certification: React.FC<CertificationProps> = ({ }) => {
 
     return (
         <section id="Certification">
-            <h2>:tada: Certification</h2>
+            <h2>Certification</h2>
             <ul className="alt">
                 <li>
                     <h3>2019-03 AWS Certified Solutions Architect Associate</h3>

@@ -7,7 +7,7 @@ const Works: React.FC<WorksProps> = ({ }) => {
 
     return (
         <section id="Works">
-            <h2>:penguin: Works</h2>
+            <h2>Works</h2>
             <div className="row">
                 <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://fukubaka.booth.pm/items/1569932`} className="image fit thumb">

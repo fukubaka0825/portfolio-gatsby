@@ -32,7 +32,7 @@ const QiitaItems: React.FC<QiitaItemsProps> = ({ posts, user }) => {
 
   return (
     <section id="qiita">
-      <h2>:postbox: Qiita(Japanese)</h2>
+      <h2>Qiita(Japanese)</h2>
       <ul className="alt">{items}</ul>
       <ul className="actions">
         <li>
