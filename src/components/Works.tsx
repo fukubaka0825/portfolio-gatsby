@@ -28,6 +28,14 @@ const Works: React.FC<WorksProps> = ({ }) => {
                         <h3>sp.78【ゲスト: fukubaka0825】SIerに就職したバンドマンがスタートアップに転職して1年で楽しいSREになるまで</h3>
                     </a>
                 </article>
+                <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20210425/20210425215110.png`} alt="" />
+                    </a>
+                    <a href={`https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ`} className="slide-title">
+                        <h3>YouTube Channel(VTuber) wapper/nari</h3>
+                    </a>
+                </article>
             </div>
         </section>
     )

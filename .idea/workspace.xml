@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Works.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Works.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +44,12 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/images" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -106,7 +107,13 @@
       <workItem from="1613728243586" duration="494000" />
       <workItem from="1613826543588" duration="413000" />
       <workItem from="1613915086109" duration="561000" />
-      <workItem from="1617033537748" duration="255000" />
+      <workItem from="1617033537748" duration="595000" />
+      <workItem from="1617118498583" duration="385000" />
+      <workItem from="1617758859433" duration="351000" />
+      <workItem from="1618114953029" duration="277000" />
+      <workItem from="1618501505956" duration="387000" />
+      <workItem from="1618662390438" duration="597000" />
+      <workItem from="1618883690322" duration="806000" />
     </task>
     <servers />
   </component>
@@ -114,10 +121,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="399" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1586834419363">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="573" y="389" key="com.intellij.ide.util.TipDialog" timestamp="1618817629698">
+      <screen x="0" y="23" width="1792" height="1047" />
     </state>
-    <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1586834419363" />
+    <state x="573" y="392" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1617599357302" />
+    <state x="573" y="389" key="com.intellij.ide.util.TipDialog/0.23.1792.1047@0.23.1792.1047" timestamp="1618817629698" />
   </component>
   <component name="masterDetails">
     <states>
