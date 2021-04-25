@@ -31,7 +31,7 @@ const GitHubRepos: React.FC<GitHubReposProps> = ({ repos, user }) => {
 
   return (
     <section id="github">
-      <h2>GitHub</h2>
+      <h2>:horse: GitHub</h2>
       <ul className="alt">{items}</ul>
       <ul className="actions">
         <li>

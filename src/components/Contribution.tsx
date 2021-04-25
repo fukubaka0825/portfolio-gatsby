@@ -7,7 +7,7 @@ const Contribution: React.FC<ContributionProps> = ({ }) => {
 
     return (
         <section id="Contribution">
-            <h2>Contribution</h2>
+            <h2>:white_check_mark: Contribution</h2>
             <ul >
                 <li>
                     OpenSource Contributions

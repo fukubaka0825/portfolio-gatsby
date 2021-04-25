@@ -7,7 +7,7 @@ const Works: React.FC<WorksProps> = ({ }) => {
 
     return (
         <section id="Works">
-            <h2>Works</h2>
+            <h2>:penguin: Works</h2>
             <div className="row">
                 <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://fukubaka.booth.pm/items/1569932`} className="image fit thumb">
@@ -33,7 +33,7 @@ const Works: React.FC<WorksProps> = ({ }) => {
                         <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20210425/20210425215110.png`} alt="" />
                     </a>
                     <a href={`https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ`} className="slide-title">
-                        <h3>YouTube Channel(VTuber) wapper/nari</h3>
+                        <h3>YouTube Channel(VTuber) wapper/nari :hamburger: :hamburger:</h3>
                     </a>
                 </article>
             </div>

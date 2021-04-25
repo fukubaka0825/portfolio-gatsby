@@ -34,7 +34,7 @@ const Slides: React.FC<SlidesProps> = ({ items, user }) => {
 
   return (
     <section id="slides">
-      <h2>Slides</h2>
+      <h2>:page_with_curl: Slides</h2>
       <div className="row">{slides}</div>
       <ul className="actions">
         <li>

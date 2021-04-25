@@ -32,7 +32,7 @@ const BlogPosts: React.FC<BlogPostsProps> = ({ posts, blogUrl }) => {
 
   return (
     <section id="blog">
-      <h2>Hatena Blog(Japanese)</h2>
+      <h2>:postbox: Hatena Blog(Japanese)</h2>
       <ul className="alt">{items}</ul>
       <ul className="actions">
         <li>

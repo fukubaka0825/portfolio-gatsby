@@ -7,7 +7,7 @@ const Language: React.FC<LanguageProps> = ({ }) => {
 
     return (
         <section id="Language">
-            <h2>Language</h2>
+            <h2>:speaker: Language</h2>
             <ul className="alt">
                 <li>
                     <h3>Japanese: Native level</h3>

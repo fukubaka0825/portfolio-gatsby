@@ -7,7 +7,7 @@ const Education: React.FC<EducationProps> = ({ }) => {
 
     return (
         <section id="Education">
-            <h2>Education</h2>
+            <h2>:baby: Education</h2>
             <ul >
                 <li>
                   Bachelor of Economics (Mar, 2018)
