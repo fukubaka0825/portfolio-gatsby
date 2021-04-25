@@ -68,6 +68,7 @@ export const query = graphql`
           name
           github
           twitter
+          twitter_vr
           qiita
           facebook
           linkedin

@@ -169,6 +169,7 @@ export const query = graphql`
           qiita
           speaker_deck
           twitter
+          twitter_vr
           facebook
           linkedin
         }
