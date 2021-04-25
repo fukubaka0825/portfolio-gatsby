@@ -16,6 +16,7 @@ import Certification from '../components/Certification'
 import Contribution from '../components/Contribution'
 import Career from '../components/Career'
 import Education from '../components/Education'
+import Interest from '../components/Interest'
 
 type User = {
   name: string
@@ -112,10 +113,12 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Head />
       <Header user={user} />
       <div id="main">
-        <Works/>
         <Career/>
-        <Education/>
+        <Interest/>
         <Contribution/>
+        <Works/>
+        <Language/>
+        <Education/>
         {repos && repos.length > 0 && (
           <GitHubRepos repos={repos} user={user.github} />
         )}
@@ -135,7 +138,6 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         {slides && slides.length > 0 && (
           <Slides items={slides} user={user.speaker_deck} />
         )}
-        <Language/>
         <Certification/>
       </div>
     </Layout>
