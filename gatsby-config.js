@@ -3,11 +3,11 @@ const querystring = require('querystring')
 const path = require('path')
 
 const siteMetadata = {
-  title: "Takashi Narikawa - @fukubaka0825",
-  author: "Takashi Narikawa",
-  description: "Nari's portfolio site",
+  title: "Takashi Narikawa - @fukubaka0825 / @wapper0825",
+  author: "Takashi Narikawa/wapper",
+  description: "Nari/wapper's portfolio site",
   siteUrl: 'https://www.fukubaka0825.dev',
-  siteLanguage: 'ja',
+  siteLanguage: 'en',
   shortName: 'nari',
   skills: [
     { type: 'AWS', level: 80 },
