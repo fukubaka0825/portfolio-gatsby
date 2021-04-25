@@ -11,8 +11,8 @@ const Career: React.FC<CareerProps> = ({ }) => {
             <ul >
                 <li>
                     Site Reliability Engineer at &nbsp;
-                    <a href={`https://eure.jp/`}>
-                        eureka, Inc. &nbsp;
+                    <a href={`https://mtch.com/`}>
+                        Match Group (eureka, Inc.) &nbsp;
                     </a>
                     (March, 2020〜)
                     <ul >
