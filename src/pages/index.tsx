@@ -116,12 +116,12 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         <Career/>
         <Interest/>
         <Contribution/>
-        <Works/>
-        <Language/>
-        <Education/>
         {repos && repos.length > 0 && (
           <GitHubRepos repos={repos} user={user.github} />
         )}
+        <Works/>
+        <Language/>
+        <Education/>
         {qiitaPosts && qiitaPosts.length > 0 && (
           <QiitaItems posts={qiitaPosts} user={user.qiita} />
         )}
