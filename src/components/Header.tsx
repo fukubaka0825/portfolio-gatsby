@@ -17,6 +17,7 @@ type HeaderProps = {
     name: string | ''
     github: string | ''
     twitter: string | ''
+    twitter_vr: string | ''
     facebook: string | ''
     linkedin: string | ''
   }
@@ -25,7 +26,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ user }) => {
   const data = useStaticQuery(graphql`
     {
-      avatar: file(relativePath: { eq: "avatar.jpeg" }) {
+      avatar: file(relativePath: { eq: "nari-wapper.png" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
@@ -47,6 +48,13 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           <p>
             <a href={`https://mtch.com/`}>
               Match Group (eureka, Inc.)
+            </a>
+          </p>
+          <strong>wapper 🍔</strong>{' '}
+          <p>VR Artist/Engineer at &nbsp;</p>
+          <p>
+            <a href={`https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ`}>
+              YouTube (VTuber)
             </a>
           </p>
         </h1>
@@ -81,6 +89,11 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           <ul className="icons">
             <li>
               <a href={`https://twitter.com/${user.twitter}`}>
+                <FontAwesomeIcon icon={['fab', 'twitter']} />
+              </a>
+            </li>
+            <li>
+              <a href={`https://twitter.com/${user.twitter_vr}`}>
                 <FontAwesomeIcon icon={['fab', 'twitter']} />
               </a>
             </li>

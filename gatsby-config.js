@@ -31,6 +31,7 @@ const siteMetadata = {
     qiita: 'fukubaka0825',
     speaker_deck: 'fukubaka0825',
     twitter: 'fukubaka0825',
+    twitter_vr: 'wapper0825',
     facebook: 'fukubaka0825',
     linkedin: 'takashi-narikawa-889a51187',
   },
