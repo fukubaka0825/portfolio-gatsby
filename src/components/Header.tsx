@@ -43,8 +43,8 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
         </a>
         <h1 color="#0000CD" >
           <strong>Takashi Narikawa</strong>{' '}
-          <p>Site Reliability Engineer </p>
-          <p> at &nbsp;
+          <p>Site Reliability Engineer at &nbsp;</p>
+          <p>
             <a href={`https://mtch.com/`}>
               Match Group (eureka, Inc.)
             </a>
