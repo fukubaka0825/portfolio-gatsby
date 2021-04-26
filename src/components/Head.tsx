@@ -17,7 +17,7 @@ const Head: React.FC<HelmetProps> = () => {
           }
         }
       }
-      avatar: file(relativePath: { eq: "nari.jpg" }) {
+      avatar: file(relativePath: { eq: "nari-wapper.png" }) {
         publicURL
       }
     }
