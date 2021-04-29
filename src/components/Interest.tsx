@@ -11,10 +11,10 @@ const Interest: React.FC<InterestProps> = ({ }) => {
             <ul >
                 <li>SRE/Devops</li>
                 <li>Go</li>
-                <li>Container (Docker/Kubernetes)</li>
-                <li>AWS/GCP/Terraform</li>
+                <li>Container(Docker/Kubernetes)</li>
+                <li>Cloud Infrastructure Design(AWS/GCP/Terraform)</li>
                 <li>Application Design(OOP,DDD)</li>
-                <li>Unity(3D Modeling)</li>
+                <li>XR Tech(Unity/Blender/3D Modeling)</li>
             </ul>
         </section>
     )
