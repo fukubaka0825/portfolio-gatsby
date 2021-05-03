@@ -12,7 +12,7 @@ tags: ['Go']
 
 Hi, everyone.
 
-My name is [Takashi Narikawa](https://twitter.com/fukubaka0825)
+My name is [Takashi Narikawa](https://twitter.com/fukubaka0825).
 I work as a software engineer at eureka, inc.
 
 This post is my first post on my blog.
