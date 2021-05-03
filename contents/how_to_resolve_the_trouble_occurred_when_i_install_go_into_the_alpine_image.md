@@ -32,6 +32,7 @@ Because I wrote lambda script in Go language, it is necessary to install Go and 
 
 hashicorp / terraform image is based on Alpine. I tried to install Go with buildspec.yml of AWS Codebuild as follows.
 
+
 ```shell script
 export GO_VERSION=1.12.4
 wget https://storage.googleapis.com/golang/go{GO_VERSION}.linux-amd64.tar.gz
@@ -40,11 +41,13 @@ export PATH=$PATH:/usr/local/go/bin
 go version
 ```
 
+
 Then, when go version command was executed, the following error appeared.
 
 ```shell script
 sh: go: not found
 ```
+
 
 ## How to resolve the trouble
 
@@ -54,6 +57,7 @@ docker-How to install Go in alpine Linux-Stack Overflow had a similar case, So i
 
 Apparently, the behavior of libmusl (Linux standard C library) included instead of Glibc seems to be different.
 
+
 ```shell script
 # ldd /usr/local/go/bin/go
         /lib64/ld-linux-x86-64.so.2 (0x7f63ceed1000)
@@ -61,11 +65,13 @@ Apparently, the behavior of libmusl (Linux standard C library) included instead 
         libc.so.6 => /lib64/ld-linux-x86-64.so.2 (0x7f63ceed1000)
 ```
 
+
 I see, / usr / local / go / bin / go has a dynamic link to / lib64 / ld-linux-x86–64.so.2 and returned not found error.
 
 This guy’s suggestion is to run Go binaries (do not download go itself) or Glibc (if you use CentOS or Debian), but I didn’t use either solution.
 
 I solved it by downloading go with apk as follows.
+
 
 ```shell script
 apk add --update --no-cache vim git make musl-dev go curl
@@ -77,6 +83,7 @@ mkdir -p ${GOPATH}/src ${GOPATH}/bin
 export GO111MODULE=on
 go version
 ```
+
 
 ## References
 [docker — How to install Go in alpine Linux — Stack Overflow](https://stackoverflow.com/questions/52056387/how-to-install-go-in-alpine-linux)
