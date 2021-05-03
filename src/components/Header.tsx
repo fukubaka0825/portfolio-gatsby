@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </a>
           </p>
           <strong>wapper 🍔</strong>{' '}
-          <p>VR Artist/Engineer at &nbsp;</p>
+          <p>VR Performer/Engineer at &nbsp;</p>
           <p>
             <a href={`https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ`}>
               YouTube (VTuber)
