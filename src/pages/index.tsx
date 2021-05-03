@@ -113,8 +113,8 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Head />
       <Header user={user} />
       <div id="main">
-        <Career/>
         <Interest/>
+        <Career/>
         <Contribution/>
         {repos && repos.length > 0 && (
           <GitHubRepos repos={repos} user={user.github} />
