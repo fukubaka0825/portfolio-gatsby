@@ -7,7 +7,7 @@ const Interest: React.FC<InterestProps> = ({ }) => {
 
     return (
         <section id="Interest">
-            <h2>Interest</h2>
+            <h2>Skill/Interest</h2>
             <ul >
                 <li>SRE/Devops</li>
                 <li>Go</li>
