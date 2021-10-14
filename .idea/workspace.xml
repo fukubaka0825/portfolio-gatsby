@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contents/manage_eks_aws_auth_config_map_with_terraform.md" beforeDir="false" afterPath="$PROJECT_DIR$/contents/manage_eks_aws_auth_config_map_with_terraform.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +118,7 @@
       <workItem from="1618883690322" duration="10638000" />
       <workItem from="1619419715811" duration="66000" />
       <workItem from="1619679572716" duration="2408000" />
-      <workItem from="1634035797053" duration="3603000" />
+      <workItem from="1634035797053" duration="3871000" />
     </task>
     <servers />
   </component>
