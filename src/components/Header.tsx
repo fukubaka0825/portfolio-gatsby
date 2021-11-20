@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               Match Group (eureka, Inc.)
             </a>
           </p>
-          <p>Organizer of &nbsp;</p>
+          <p>Organizer of</p>
           <p>
             <a href={`https://sre-lounge.connpass.com/`}>
               SRE LOUNGE/NEXT
