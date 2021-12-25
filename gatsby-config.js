@@ -45,6 +45,11 @@ const siteMetadata = {
     feed_url: 'https://medium.com/feed/@fukubaka0825',
     article_count: '5'
   },
+  devto: {
+    url: 'https://dev.to/fukubaka0825/',
+    feed_url: 'https://dev.to/feed/fukubaka0825/',
+    article_count: '5'
+  },
   note: {
     url: 'https://note.com/fukubaka/',
     feed_url: 'https://note.com/fukubaka/rss',
@@ -156,6 +161,13 @@ module.exports = {
       options: {
         url: siteMetadata.medium.feed_url,
         name: `MediumPosts`,
+      }
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: siteMetadata.devto.feed_url,
+        name: `DevToPosts`,
       }
     },
     {
