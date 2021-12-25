@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f043a511-17e2-4c83-be0d-a8dabefd68f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contents/how_to_resolve_the_trouble_occurred_when_i_install_go_into_the_alpine_image.md" beforeDir="false" afterPath="$PROJECT_DIR$/contents/how_to_resolve_the_trouble_occurred_when_i_install_go_into_the_alpine_image.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contents/manage_eks_aws_auth_config_map_with_terraform.md" beforeDir="false" afterPath="$PROJECT_DIR$/contents/manage_eks_aws_auth_config_map_with_terraform.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Career.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Career.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Interest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Interest.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +135,7 @@
       <workItem from="1634486789675" duration="122000" />
       <workItem from="1637405193621" duration="986000" />
       <workItem from="1638010190833" duration="222000" />
-      <workItem from="1640443679513" duration="1491000" />
+      <workItem from="1640443679513" duration="2288000" />
     </task>
     <servers />
   </component>
