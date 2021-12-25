@@ -10,6 +10,7 @@ const Interest: React.FC<InterestProps> = ({ }) => {
             <h2>Skill/Interest</h2>
             <ul >
                 <li>SRE/Devops</li>
+                <li>MLOps/Data Engineering</li>
                 <li>Go</li>
                 <li>Container(Docker/Kubernetes)</li>
                 <li>Cloud Infrastructure Design(AWS/GCP/Terraform)</li>
