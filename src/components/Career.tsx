@@ -32,7 +32,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 <li>Design and Implementation of Data Lifecycle Policy System</li>
                                 <li>Migration of Pairs Batch server from AWS EC2 to FARGATE</li>
                                 <li>Replace log routing process(Introduction of firelens & fluent bit)</li>
-                                <li>Suport Data Platform Migration Project(AWS Kinesis Firehose/Fivetran Connector setup/Bastion Creation)</li>
+                                <li>Support Data Platform Migration Project(AWS Kinesis Firehose/Fivetran Connector setup/Bastion Creation)</li>
                                 <li>Introduction of Image moderation/fraud image detection with GPU Inference(EKS/Kubernetes/Nvidia/Cuda/Pytorch)</li>
                                 <li>Introduction of GitOps (argocd/github actions/OIDC with AWS provider)</li>
                                 <li>Introduction of Policy as Code to automate terraform code-review process(Conftest/OPA/Rego)</li>
