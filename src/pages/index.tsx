@@ -8,6 +8,7 @@ import Slides, { Item as SlideItem } from '../components/Slides'
 import BlogPosts, { Post as BlogPost } from '../components/BlogPosts'
 import NotePosts, { Post as NotePost } from '../components/NotePosts'
 import MediumPosts, { Post as MediumPost } from '../components/MediumPosts'
+import DevToPosts, { Post as DevToPost } from '../components/DevToPosts'
 import GitHubRepos, { Repo } from '../components/GitHubRepos'
 import Head from '../components/Head'
 import Works  from '../components/Works'
@@ -56,6 +57,9 @@ type HomeIndexProps = {
     allFeedMediumPosts: {
       edges: MediumPost[]
     }
+    allFeedDevToPosts: {
+      edges: DevToPost[]
+    }
     allGithubData: {
       edges: [
         {
@@ -82,6 +86,9 @@ type HomeIndexProps = {
         medium: {
           url: string
         }
+        devto: {
+          url: string
+        }
       }
     }
   }
@@ -103,10 +110,13 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
   const mediumPosts = data.allFeedMediumPosts.edges.filter(function (item, index) {
     return (index <= 4);
   });
+  const devToPosts = data.allFeedDevToPosts.edges.filter(function (item, index) {
+    return (index <= 4);
+  });
 
   const repos = data.allGithubData.edges[0].node.data.allGithubData.edges
 
-  const {user, skills, blog, note , medium} = data.site.siteMetadata
+  const {user, skills, blog, note , medium, devto} = data.site.siteMetadata
 
   return (
     <Layout>
@@ -135,6 +145,9 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         {mediumPosts && mediumPosts.length > 0 && (
             <MediumPosts posts={mediumPosts} MediumUrl={medium.url} />
         )}
+        {devToPosts && devToPosts.length > 0 && (
+            <DevToPosts posts={devToPosts} DevToUrl={devto.url} />
+        )}
         {slides && slides.length > 0 && (
           <Slides items={slides} user={user.speaker_deck} />
         )}
@@ -161,6 +174,9 @@ export const query = graphql`
           url
         }
         medium {
+          url
+        }
+        devto {
           url
         }
         user {
@@ -219,6 +235,16 @@ export const query = graphql`
       }
     }
     allFeedMediumPosts {
+      edges {
+        node {
+          id
+          title
+          link
+          pubDate
+        }
+      }
+    }
+    allFeedDevToPosts {
       edges {
         node {
           id
