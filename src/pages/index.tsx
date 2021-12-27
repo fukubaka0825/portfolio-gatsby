@@ -18,6 +18,7 @@ import Contribution from '../components/Contribution'
 import Career from '../components/Career'
 import Education from '../components/Education'
 import Interest from '../components/Interest'
+import Strengths from '../components/Strengths'
 
 type User = {
   name: string
@@ -125,6 +126,7 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <div id="main">
         <Interest/>
         <Career/>
+        <Strengths/>
         <Contribution/>
         {repos && repos.length > 0 && (
           <GitHubRepos repos={repos} user={user.github} />
