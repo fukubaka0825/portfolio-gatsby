@@ -134,21 +134,20 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         <Works/>
         <Language/>
         <Education/>
-        {qiitaPosts && qiitaPosts.length > 0 && (
-          <QiitaItems posts={qiitaPosts} user={user.qiita} />
-        )}
-        {blogPosts && blogPosts.length > 0 && (
-          <BlogPosts posts={blogPosts} blogUrl={blog.url} />
-        )}
-
-        {notePosts && notePosts.length > 0 && (
-          <NotePosts posts={notePosts} NoteUrl={note.url} />
+        {devToPosts && devToPosts.length > 0 && (
+            <DevToPosts posts={devToPosts} DevToUrl={devto.url} />
         )}
         {mediumPosts && mediumPosts.length > 0 && (
             <MediumPosts posts={mediumPosts} MediumUrl={medium.url} />
         )}
-        {devToPosts && devToPosts.length > 0 && (
-            <DevToPosts posts={devToPosts} DevToUrl={devto.url} />
+        {blogPosts && blogPosts.length > 0 && (
+            <BlogPosts posts={blogPosts} blogUrl={blog.url} />
+        )}
+        {qiitaPosts && qiitaPosts.length > 0 && (
+            <QiitaItems posts={qiitaPosts} user={user.qiita} />
+        )}
+        {notePosts && notePosts.length > 0 && (
+            <NotePosts posts={notePosts} NoteUrl={note.url} />
         )}
         {slides && slides.length > 0 && (
           <Slides items={slides} user={user.speaker_deck} />
