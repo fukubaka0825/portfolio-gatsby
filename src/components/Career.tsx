@@ -22,7 +22,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 Pairs and Pairs Engage
                             </a>
                             <ul>
-                                <li>Replace Infra Develiry Process(Terraform+Terraform Cloud+Github Actions)</li>
+                                <li>Replace Infra Develiry Process(Terraform,Terraform Cloud,Github Actions)</li>
                                 <li>AWS ECR vulnerability scan and workflow(AWS ECR,Confluence)</li>
                                 <li>Self-Service(BotOps,CIOps)</li>
                                 <li>Introduction of Postmortem template and PlayBook(RunBook)</li>
