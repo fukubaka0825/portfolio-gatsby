@@ -22,9 +22,9 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 Pairs and Pairs Engage
                             </a>
                             <ul>
-                                <li>Replace Infra Develiry Process(Terraform, Terraform Cloud, Github Actions)</li>
+                                <li>Replace Infra Delivery Process(Terraform, Terraform Cloud, Github Actions)</li>
                                 <li>AWS ECR vulnerability scan and workflow(AWS ECR, Confluence)</li>
-                                <li>Self-Service with BotOps,CIOps(AWS Lambda, Serverless Framework, Slack, Github Actions)</li>
+                                <li>Self-Service with BotOps and CIOps(AWS Lambda, Serverless Framework, Slack, Github Actions)</li>
                                 <li>Introduction of Postmortem template and PlayBook(RunBook)(Confluence)</li>
                                 <li>Replace incident response system with Slack ChatBot</li>
                                 <li>Migration of Pairs Engage server from AWS EC2 to FARGATE(Go, AWS, Datadog)</li>
