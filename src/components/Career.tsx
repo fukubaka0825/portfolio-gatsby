@@ -26,14 +26,14 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 <li>AWS ECR vulnerability scan and workflow(AWS ECR,Confluence)</li>
                                 <li>Self-Service(BotOps,CIOps)</li>
                                 <li>Introduction of Postmortem template and PlayBook(RunBook)</li>
-                                <li>Replace incident response system(ChatBot)</li>
-                                <li>Migration of Pairs Engage server from AWS EC2 to FARGATE</li>
-                                <li>Migration and Encryption of User Message Data from RDS to DynamoDB</li>
-                                <li>Design and Implementation of Data Lifecycle Policy System</li>
-                                <li>Migration of Pairs Batch server from AWS EC2 to FARGATE</li>
+                                <li>Replace incident response system(Slack ChatBot)</li>
+                                <li>Migration of Pairs Engage server from AWS EC2 to FARGATE(Go,AWS,Datadog)</li>
+                                <li>Migration and Encryption of User Message Data from RDS to DynamoDB(Go,AWS,Datadog)</li>
+                                <li>Design and Implementation of Data Lifecycle Policy System(Go,AWS,GCP,BigQuery)</li>
+                                <li>Migration of Pairs Batch server from AWS EC2 to FARGATE(Go,AWS Lambda+Fargate,Serverless Framework)</li>
                                 <li>Replace log routing process(Introduction of firelens & fluent bit)</li>
-                                <li>Support Data Platform Migration Project(AWS Kinesis Firehose/Fivetran Connector setup/Bastion Creation)</li>
-                                <li>Introduction of Image moderation/fraud image detection with GPU Inference(EKS/Kubernetes/Nvidia/Cuda/Pytorch)</li>
+                                <li>Support Data Platform Migration Project(AWS Kinesis Firehose/Fivetran Connector setup/Amazon EC2 Bastion Creation)</li>
+                                <li>Introduction of Image moderation/fraud image detection with GPU Inference(Amazon EKS/Kubernetes/Nvidia/Cuda/Pytorch)</li>
                                 <li>Introduction of GitOps (argocd/github actions/OIDC with AWS provider)</li>
                                 <li>Introduction of Policy as Code to automate terraform code-review process(Conftest/OPA/Rego)</li>
                             </ul>
