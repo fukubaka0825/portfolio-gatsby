@@ -49,7 +49,7 @@ const Works: React.FC<WorksProps> = ({ }) => {
                         <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20220410/20220410225617.png`} alt="" />
                     </a>
                     <a href={`https://youtu.be/_hfRB_uVqOM?t=401`} className="slide-title">
-                        <h3>[Video(Session)] SRE Lounge #13「SREの探求」のすゝめ Session(15 minutes,ja)</h3>
+                        <h3>[Video] SRE Lounge #13「SREの探求」のすゝめ Session(15 minutes,ja)</h3>
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
