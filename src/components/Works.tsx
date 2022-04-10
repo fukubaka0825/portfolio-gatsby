@@ -42,6 +42,14 @@ const Works: React.FC<WorksProps> = ({ }) => {
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://youtu.be/_hfRB_uVqOM?t=401`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20220410/20220410225617.png`} alt="" />
+                    </a>
+                    <a href={`https://youtu.be/_hfRB_uVqOM?t=401`} className="slide-title">
+                        <h3>SRE Lounge #13「SREの探求」のすゝめ Session(15 minutes,ja)</h3>
+                    </a>
+                </article>
+                <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://fukubaka.booth.pm/items/1569932`} className="image fit thumb">
                         <img src={`https://booth.pximg.net/c/620x620/ccb90178-4e2b-495c-903b-72a0febaf8cc/i/1569932/db4070f9-ff8f-48cf-8d97-0c14f9275bc2_base_resized.jpg`} alt="" />
                     </a>

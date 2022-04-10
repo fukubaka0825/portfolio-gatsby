@@ -63,6 +63,13 @@
       <recent name="$PROJECT_DIR$/src/assets/images" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="OPA_TEST_RUN_CONFIGURATION" factoryName="Opa configuration factory">
+      <option name="additionalargs" value="" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -138,7 +145,8 @@
       <workItem from="1640451506166" duration="1000" />
       <workItem from="1640622544246" duration="1339000" />
       <workItem from="1640851873997" duration="1193000" />
-      <workItem from="1649575570922" duration="1018000" />
+      <workItem from="1649575570922" duration="1177000" />
+      <workItem from="1649598811046" duration="342000" />
     </task>
     <servers />
   </component>
