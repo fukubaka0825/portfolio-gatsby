@@ -26,11 +26,27 @@ const Works: React.FC<WorksProps> = ({ }) => {
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://sre-next.dev/2022/`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20220206/20220206163754.jpg`} alt="" />
+                    </a>
+                    <a href={`https://sre-next.dev/2022/`} className="slide-title">
+                        <h3>SRE NEXT 2022 Conference Chair</h3>
+                    </a>
+                </article>
+                <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://e34.fm/16/`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20220410/20220410175756.png`} alt="" />
+                    </a>
+                    <a href={`https://e34.fm/16/`} className="slide-title">
+                        <h3>16: SRE NEXT 2022 with fukubaka0825(ja)</h3>
+                    </a>
+                </article>
+                <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://fukubaka.booth.pm/items/1569932`} className="image fit thumb">
                         <img src={`https://booth.pximg.net/c/620x620/ccb90178-4e2b-495c-903b-72a0febaf8cc/i/1569932/db4070f9-ff8f-48cf-8d97-0c14f9275bc2_base_resized.jpg`} alt="" />
                     </a>
                     <a href={`https://fukubaka.booth.pm/items/1569932`} className="slide-title">
-                        <h3>Introduction to SlackBot with Go and AWS CDK(ja)</h3>
+                        <h3>Introduction of SlackBot with Go and AWS CDK(ja)</h3>
                     </a>
                     <a href={`https://techbookfest.org/event/tbf07`} className="slide-title">
                         <h3>Distributed at Gijutsu Shoten 7(ja)</h3>
