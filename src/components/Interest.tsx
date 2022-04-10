@@ -11,8 +11,8 @@ const Interest: React.FC<InterestProps> = ({ }) => {
             <ul >
                 <li>SRE/Devops</li>
                 <li>MLOps/Data Engineering</li>
-                <li>Go</li>
-                <li>Container(Docker/Kubernetes)</li>
+                <li>Go/Python/Shell Script</li>
+                <li>Container(Docker/Kubernetes/AWS ECS)</li>
                 <li>Cloud Infrastructure Design(AWS/GCP/Terraform)</li>
                 <li>Application Design(OOP,DDD)</li>
                 <li>Policy as Code(OPA/Rego/Conftest)</li>
