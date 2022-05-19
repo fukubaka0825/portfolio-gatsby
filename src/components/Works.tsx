@@ -14,7 +14,7 @@ const Works: React.FC<WorksProps> = ({ }) => {
                         <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20220206/20220206163754.jpg`} alt="" />
                     </a>
                     <a href={`https://sre-next.dev/2022/`} className="slide-title">
-                        <h3>[Chair of Conference] SRE NEXT 2022</h3>
+                        <h3>[Conference Chair] SRE NEXT 2022</h3>
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
