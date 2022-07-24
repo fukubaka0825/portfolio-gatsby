@@ -33,7 +33,7 @@ self.__precacheManifest = [
     "url": "styles.eb8e3026dc2695b7a6ec.css"
   },
   {
-    "url": "styles-a993fa930df4865a0a43.js"
+    "url": "styles-8318e3cac80f7d0985da.js"
   },
   {
     "url": "commons-c85dc5e21fd4026bb94a.js"
@@ -46,7 +46,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "e1089d117091f27e4f21921fa2e34c62"
+    "revision": "c20beda4d634a71246da15aee73d74cd"
   },
   {
     "url": "manifest.webmanifest",
