@@ -59,15 +59,11 @@ const siteMetadata = {
     topic: 'my-portfolio'
   },
   speaker_deck: {
-    slides_count: '6'
+    url: 'https://speakerdeck.com/fukubaka0825/',
+    feed_url: 'https://rss.app/feeds/ngFZOz7sbnszYz01.xml',
+    article_count: '5'
   }
 }
-
-// const qs = querystring.stringify({
-//   rss_url: `https://speakerdeck.com/${siteMetadata.user.speaker_deck}.atom`,
-//   count: siteMetadata.speaker_deck.slides_count,
-//   api_key: process.env.RSS2JSON_API_TOKEN
-// })
 
 module.exports = {
   pathPrefix: `/`,
@@ -170,17 +166,13 @@ module.exports = {
         name: `DevToPosts`,
       }
     },
-    // {
-    //   resolve: "gatsby-source-apiserver",
-    //   options: {
-    //     url: `https://api.rss2json.com/v1/api.json?${qs}`,
-    //     method: 'get',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     name: 'Slides'
-    //   }
-    // },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: siteMetadata.speaker_deck.feed_url,
+        name: `DevToPosts`,
+      }
+    },
     {
       resolve: `gatsby-source-github-api`,
       options: {

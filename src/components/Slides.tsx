@@ -1,50 +1,49 @@
 import React from 'react'
 import { createDateFormat } from '../lib/utils'
 
-export type Item = {
-  pubDate: string
-  guid: string
-  link: string
-  thumbnail: string
-  title: string
+export type Post = {
+    node: {
+        id: string
+        pubDate: string
+        link: string
+        title: string
+    }
 }
 
 type SlidesProps = {
-  items: Item[]
-  user: string
+    posts: Post[]
+    NoteUrl: string
 }
 
-const Slides: React.FC<SlidesProps> = ({ items, user }) => {
-  const slides = items.map(item => {
-    const { pubDate, guid, link, thumbnail, title } = item
-    const createdAt = createDateFormat(pubDate, 'YYYY-MM-DD')
+const Slides: React.FC<SlidesProps> = ({ posts, NoteUrl }) => {
+    const items = posts.map(post => {
+        const { id, pubDate, link, title } = post.node
+        const createdAt = createDateFormat(pubDate, 'YYYY-MM-DD')
+
+        return (
+            <li key={id}>
+                {createdAt}
+                <a className="item-title" href={link}>
+                    {title}
+                </a>
+            </li>
+        )
+    })
 
     return (
-      <article className="4u 12u$(xsmall) work-item" key={guid}>
-        <a href={link} className="image fit thumb">
-          <img src={thumbnail} alt="" />
-        </a>
-        <a href={link} className="slide-title">
-          <h3>{title}</h3>
-        </a>
-        <p>{createdAt}</p>
-      </article>
+        <section id="Note">
+            <h2>note(Japanese)</h2>
+            <ul className="alt">{items}</ul>
+            <ul className="actions">
+                <li>
+                    <a href={NoteUrl} className="button">
+                        Show More Items
+                    </a>
+                </li>
+            </ul>
+        </section>
     )
-  })
-
-  return (
-    <section id="slides">
-      <h2>Slides</h2>
-      <div className="row">{slides}</div>
-      <ul className="actions">
-        <li>
-          <a href={`https://speakerdeck.com/${user}`} className="button">
-            Show More Slides
-          </a>
-        </li>
-      </ul>
-    </section>
-  )
 }
+
 
 export default Slides
