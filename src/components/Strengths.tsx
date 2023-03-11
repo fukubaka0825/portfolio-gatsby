@@ -15,6 +15,9 @@ const Strengths: React.FC<StrengthsProps> = ({ }) => {
                 <li>Ability to raise the knowledge baseline of the team and the company through workshops and proactive knowledge sharing</li>
                 <li>Ability to conduct systematic learning in areas in which they have no experience and to plan and execute significant projects.</li>
                 <li>Ability to involve stakeholders as necessary, clarify the project background, outcomes, and acceptance conditions, and develop a schedule for execution.</li>
+                <li>Ability to raise issues from data analysis</li>
+                <li>Ability to define and implement monitoring metrics and releases (A/B Test etc.) for ML systems</li>
+                <li>Ability to perform exploratory data analysis,create datasets, preprocess data, create simple ML models, create pipelines, conduct offline evaluations, serve, and conduct online evaluations for NLP-related issues.</li>
             </ul>
         </section>
     )
