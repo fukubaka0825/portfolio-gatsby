@@ -63,11 +63,11 @@ const siteMetadata = {
   }
 }
 
-const qs = querystring.stringify({
-  rss_url: `https://speakerdeck.com/${siteMetadata.user.speaker_deck}.atom`,
-  count: siteMetadata.speaker_deck.slides_count,
-  api_key: process.env.RSS2JSON_API_TOKEN
-})
+// const qs = querystring.stringify({
+//   rss_url: `https://speakerdeck.com/${siteMetadata.user.speaker_deck}.atom`,
+//   count: siteMetadata.speaker_deck.slides_count,
+//   api_key: process.env.RSS2JSON_API_TOKEN
+// })
 
 module.exports = {
   pathPrefix: `/`,
@@ -170,17 +170,17 @@ module.exports = {
         name: `DevToPosts`,
       }
     },
-    {
-      resolve: "gatsby-source-apiserver",
-      options: {
-        url: `https://api.rss2json.com/v1/api.json?${qs}`,
-        method: 'get',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        name: 'Slides'
-      }
-    },
+    // {
+    //   resolve: "gatsby-source-apiserver",
+    //   options: {
+    //     url: `https://api.rss2json.com/v1/api.json?${qs}`,
+    //     method: 'get',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     name: 'Slides'
+    //   }
+    // },
     {
       resolve: `gatsby-source-github-api`,
       options: {

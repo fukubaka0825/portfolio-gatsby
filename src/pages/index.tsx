@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import QiitaItems, { Post as QiitaPost } from '../components/QiitaItems'
 import Header from '../components/Header'
-import Slides, { Item as SlideItem } from '../components/Slides'
+// import Slides, { Item as SlideItem } from '../components/Slides'
 import BlogPosts, { Post as BlogPost } from '../components/BlogPosts'
 import NotePosts, { Post as NotePost } from '../components/NotePosts'
 import MediumPosts, { Post as MediumPost } from '../components/MediumPosts'
@@ -40,15 +40,15 @@ type HomeIndexProps = {
     allQiitaPost: {
       edges: QiitaPost[]
     }
-    allSlides: {
-      edges: [
-        {
-          node: {
-            items: SlideItem[]
-          }
-        }
-      ]
-    }
+    // allSlides: {
+    //   edges: [
+    //     {
+    //       node: {
+    //         items: SlideItem[]
+    //       }
+    //     }
+    //   ]
+    // }
     allFeedBlogPosts: {
       edges: BlogPost[]
     }
@@ -99,9 +99,9 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
   const qiitaPosts = data.allQiitaPost.edges.filter(function (item, index) {
     return (index <= 9);
   });
-  const slides = data.allSlides.edges[0].node.items.filter(function (item, index) {
-    return (index <= 4);
-  });
+  // const slides = data.allSlides.edges[0].node.items.filter(function (item, index) {
+  //   return (index <= 4);
+  // });
   const blogPosts = data.allFeedBlogPosts.edges.filter(function (item, index) {
     return (index <= 4);
   });
@@ -149,9 +149,9 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         {notePosts && notePosts.length > 0 && (
             <NotePosts posts={notePosts} NoteUrl={note.url} />
         )}
-        {slides && slides.length > 0 && (
-          <Slides items={slides} user={user.speaker_deck} />
-        )}
+        {/*{slides && slides.length > 0 && (*/}
+        {/*  <Slides items={slides} user={user.speaker_deck} />*/}
+        {/*)}*/}
         <Certification/>
       </div>
     </Layout>
@@ -199,19 +199,6 @@ export const query = graphql`
           title
           url
           created_at
-        }
-      }
-    }
-    allSlides(filter: { items: { elemMatch: { title: { ne: null } } } }) {
-      edges {
-        node {
-          items {
-            guid
-            title
-            link
-            thumbnail
-            pubDate
-          }
         }
       }
     }

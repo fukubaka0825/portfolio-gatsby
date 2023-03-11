@@ -1,8 +1,8 @@
 {
   "name": "portfolio_site",
-  "description": "ogady's portfolio site",
+  "description": "nari's portfolio site",
   "version": "1.0.0",
-  "author": "Takumi Ogawa",
+  "author": "Takashi Narikawa",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.24",
     "@fortawesome/free-brands-svg-icons": "^5.11.1",
@@ -61,6 +61,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ogady/portfolio_site"
+    "url": "https://www.fukubaka0825.dev/"
   }
 }
