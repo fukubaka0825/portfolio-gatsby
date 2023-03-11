@@ -10,11 +10,69 @@ const Career: React.FC<CareerProps> = ({ }) => {
             <h2>Career</h2>
             <ul >
                 <li>
+                    Senior Software Engineer(Machine Learning/MLOps) at &nbsp;
+                    <a href={`https://mtch.com/`}>
+                        Match Group (eureka, Inc.) &nbsp;
+                    </a>
+                    (July, 2022〜 Present)
+                    <ul >
+                        <li>
+                            Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
+                            <a href={`https://www.pairs.lv/`}>
+                                Pairs -Moderation System-
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href={`https://medium.com/eureka-engineering/ml-system-monitoring-tips-f3f9671708b0`}>
+                                        Enhance ML System Monitoring of the Moderation system (redefine and implement monitoring indicators) (Datadog/GCP Cloud logging/shapash/evidently)
+                                    </a>
+                                </li>
+                                <li>Text Moderation Precision/Recall improvements (whitelist, rule-based, model improvements)</li>
+                                <li>Rebuild Text Moderation ML Model and Pipeline</li>
+                                <li>Standardization of data preprocessing (tokenization/parameterization) for learning and inference of Text Moderation Models (migration from Go to Python, Mecab Ipadic)</li>
+                                <li>Moderation System performance improvement (endpoint latency p99 reduced to less than half)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Senior Software Engineer(Site Reliability Engineering) at &nbsp;
+                    <a href={`https://mtch.com/`}>
+                        Match Group (eureka, Inc.) &nbsp;
+                    </a>
+                    (March, 2022〜 June, 2022)
+                    <ul >
+                        <li>
+                            Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
+                            <a href={`https://www.pairs.lv/`}>
+                                Pairs
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href={`https://medium.com/eureka-engineering/%E3%82%A8%E3%82%A6%E3%83%AC%E3%82%AB%E9%96%8B%E7%99%BA%E7%B5%84%E7%B9%94%E5%85%A8%E4%BD%93%E3%81%A7%E3%83%AA%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E3%81%9F%E3%82%81%E3%81%AB-sre-team%E3%81%AEvision-mission-values%E3%82%92rebuild%E3%81%97%E3%81%9F%E8%A9%B1-bb47daae8290`}>
+                                        Redefining MVV for the SRE Team
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={`https://medium.com/eureka-engineering/pairs-eureka-%E3%81%AEeks-production%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E8%A8%88%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E3%81%8A%E8%A9%B1-74608ff640df`}>
+                                        Migration of Pairs Online Server from AWS FARGATE to Amazon EKS
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href={`https://speakerdeck.com/takumiogawa/jaws-days-2022-satellites-pairsniokeruekssekiyuriteinoqu-rizu-mi`}>
+                                        Overall design of kubernetes security and implementation of gatekeeper/conftest
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     Site Reliability Engineer at &nbsp;
                     <a href={`https://mtch.com/`}>
                         Match Group (eureka, Inc.) &nbsp;
                     </a>
-                    (March, 2020〜)
+                    (March, 2020〜 March, 2022)
                     <ul >
                         <li>
                             Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
@@ -71,7 +129,6 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 <li>Data source design (Mysql, Redis)</li>
                                 <li>Overall infrastructure design and implementation (AWS, Terraform, Fluentd)</li>
                                 <li>Production operation of application container(AWS ECS, Docker)</li>
-
                             </ul>
                         </li>
                     </ul>

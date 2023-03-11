@@ -44,10 +44,10 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
         </a>
         <h1 color="#0000CD" >
           <strong>Takashi Narikawa</strong>{' '}
-          <p>Site Reliability Engineer at &nbsp;</p>
+          <p>Software Engineer(MLOps/SRE) at &nbsp;</p>
           <p>
             <a href={`https://mtch.com/`}>
-              Match Group (eureka, Inc.)
+              Match Group (eureka, Inc. AI Team)
             </a>
           </p>
           <p>Organizer of <a href={`https://sre-lounge.connpass.com/`}>SRE LOUNGE/NEXT</a></p>

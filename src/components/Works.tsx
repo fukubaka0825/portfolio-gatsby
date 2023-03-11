@@ -45,11 +45,27 @@ const Works: React.FC<WorksProps> = ({ }) => {
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://sre-next.dev/2022/schedule#jp51`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20230311/20230311221216.png`} alt="" />
+                    </a>
+                    <a href={`https://sre-next.dev/2022/schedule#jp51`} className="slide-title">
+                        <h3>[Video] SRE NEXT 2022 Steps toward self-service operations in eureka Session(20 minutes,ja)</h3>
+                    </a>
+                </article>
+                <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://youtu.be/_hfRB_uVqOM?t=401`} className="image fit thumb">
                         <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20220410/20220410225617.png`} alt="" />
                     </a>
                     <a href={`https://youtu.be/_hfRB_uVqOM?t=401`} className="slide-title">
                         <h3>[Video] SRE Lounge #13「SREの探求」のすゝめ Session(15 minutes,ja)</h3>
+                    </a>
+                </article>
+                <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://speakerdeck.com/fukubaka0825/sre-next-2022nixue-bukorekarafalsesrekiyaria`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20230311/20230311221629.png`} alt="" />
+                    </a>
+                    <a href={`https://speakerdeck.com/fukubaka0825/sre-next-2022nixue-bukorekarafalsesrekiyaria`} className="slide-title">
+                        <h3>[Slide] Infra Career Lounge #3 SRE NEXT 2022に学ぶこれからのSREキャリア Session(15 minutes,ja)</h3>
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
