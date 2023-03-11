@@ -57,11 +57,6 @@ const siteMetadata = {
   },
   github: {
     topic: 'my-portfolio'
-  },
-  speaker_deck: {
-    url: 'https://speakerdeck.com/fukubaka0825/',
-    feed_url: 'https://rss.app/feeds/ngFZOz7sbnszYz01.xml',
-    article_count: '5'
   }
 }
 
@@ -163,13 +158,6 @@ module.exports = {
       resolve: `gatsby-source-rss-feed`,
       options: {
         url: siteMetadata.devto.feed_url,
-        name: `DevToPosts`,
-      }
-    },
-    {
-      resolve: `gatsby-source-rss-feed`,
-      options: {
-        url: siteMetadata.speaker_deck.feed_url,
         name: `DevToPosts`,
       }
     },
