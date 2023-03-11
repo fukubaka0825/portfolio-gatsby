@@ -17,9 +17,9 @@ const Career: React.FC<CareerProps> = ({ }) => {
                     (July, 2022〜 Present)
                     <ul >
                         <li>
-                            Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
+                            Online Dating Service ( Number of Users Over 15 million, 3 Regions) &nbsp;
                             <a href={`https://www.pairs.lv/`}>
-                                Pairs -Moderation System-
+                                Pairs(Moderation System)
                             </a>
                             <ul>
                                 <li>
@@ -43,7 +43,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                     (March, 2022〜 June, 2022)
                     <ul >
                         <li>
-                            Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
+                            Online Dating Service ( Number of Users Over 15 million, 3 Regions) &nbsp;
                             <a href={`https://www.pairs.lv/`}>
                                 Pairs
                             </a>
