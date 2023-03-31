@@ -55,7 +55,7 @@ const Career: React.FC<CareerProps> = ({ }) => {
                                 </li>
                                 <li>
                                     <a href={`https://medium.com/eureka-engineering/pairs-eureka-%E3%81%AEeks-production%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E8%A8%88%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E3%81%8A%E8%A9%B1-74608ff640df`}>
-                                        Migration of Pairs Online Server from AWS FARGATE to Amazon EKS
+                                        Migration of Pairs Online Server from Amazon ECS on FARGATE to Amazon EKS on EC2
                                     </a>
                                 </li>
                                 <li>
