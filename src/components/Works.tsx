@@ -10,11 +10,35 @@ const Works: React.FC<WorksProps> = ({ }) => {
             <h2>Works</h2>
             <div className="row">
                 <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://speakerdeck.com/fukubaka0825/peazudeno-langfusewozhong-xin-tositaping-jia-doribunnaririsusaikurunogoshao-jie`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20250212/20250212125705.png`} alt="" />
+                    </a>
+                    <a href={`https://speakerdeck.com/fukubaka0825/peazudeno-langfusewozhong-xin-tositaping-jia-doribunnaririsusaikurunogoshao-jie`} className="slide-title">
+                        <h3>[Sline] ペアーズでの、Langfuseを中心とした評価ドリブンなリリースサイクルのご紹介 @ Langfuse Night #1</h3>
+                    </a>
+                </article>                
+                <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://speakerdeck.com/fukubaka0825/peazuniokeruamazon-bedrockwo-itazhang-hai-dui-ying-yuan-cheng-aiturunodao-shi-li-at-20241115pei-xin-awsuebinadeng-tan`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20250212/20250212125526.png`} alt="" />
+                    </a>
+                    <a href={`https://speakerdeck.com/fukubaka0825/peazuniokeruamazon-bedrockwo-itazhang-hai-dui-ying-yuan-cheng-aiturunodao-shi-li-at-20241115pei-xin-awsuebinadeng-tan`} className="slide-title">
+                        <h3>[Slide] ペアーズにおけるAmazon Bedrockを⽤いた障害対応⽀援 ⽣成AIツールの導⼊事例 @ 20241115配信AWSウェビナー登壇</h3>
+                    </a>
+                </article>       
+                <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://aws.amazon.com/jp/builders-flash/202410/automated-Incident-reports-and-post-mortem/`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20250212/20250212130001.png`} alt="" />
+                    </a>
+                    <a href={`https://aws.amazon.com/jp/builders-flash/202410/automated-Incident-reports-and-post-mortem/`} className="slide-title">
+                        <h3>[Article] Amazon Bedrock を用いた障害対応報告書とポストモーテム文書自動作成 ~ ペアーズ における生成 AI 実装解説 @ AWS Builders Flash</h3>
+                    </a>
+                </article>            
+                <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://sre-next.dev/2022/schedule#jp51`} className="image fit thumb">
                         <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20230311/20230311221216.png`} alt="" />
                     </a>
                     <a href={`https://sre-next.dev/2022/schedule#jp51`} className="slide-title">
-                        <h3>[Video] SRE NEXT 2022 Steps toward self-service operations in eureka Session(20 minutes,ja)</h3>
+                        <h3>[Slide] SRE NEXT 2022 Steps toward self-service operations in eureka Session(20 minutes,ja)</h3>
                     </a>
                 </article>
                 <article className="4u 12u$(xsmall) work-item" >
