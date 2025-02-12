@@ -29,7 +29,7 @@ const Interest: React.FC<InterestProps> = () => {
                         <h4>1. SRE/MLOps/LLMOpsプラクティスの導入、改善支援</h4>
                         <div className="service-details">
                             <ul>
-                                <li>信頼性とアジリティのギャップ分析、改善提案と実装支援</li>
+                                <li>信頼性とアジリティのギャップ分析、改善提案から実装まで</li>
                                 <li>モニタリング・アラート整備、可観測性向上</li>
                                 <li>インシデントレスポンス最適化</li>
                                 <li>リリースエンジニアリング最適化</li>
