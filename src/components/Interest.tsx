@@ -36,6 +36,8 @@ const Interest: React.FC<InterestProps> = () => {
                                 <li>SLI/SLOの設計と導入</li>
                                 <li>オンライン/バッチアプリケーション実行基盤の最適化</li>
                                 <li>キャパシティプランニング最適化</li>
+                                <li>ML基盤（学習、推論）の最適化</li>
+                                <li>LLMアプリケーションの評価ドリブンなリリースサイクルの実現</li>
                             </ul>
                             <p>LLM/AIを活用した運用業務の効率化・自動化支援（AIOps）も提供可能</p>
                         </div>
