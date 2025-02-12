@@ -13,7 +13,7 @@ const Interest: React.FC<InterestProps> = () => {
                     <li>ML/NLP</li>
                     <li>Go/Python/Shell Script</li>
                     <li>Container(Docker/Kubernetes/AWS ECS)</li>
-                    <li>Cloud Infrastructure Design(AWS/GCP/Terraform)</li>
+                    <li>Cloud Infrastructure Design(AWS/Google Cloud/Terraform)</li>
                     <li>Application Design(OOP,DDD)</li>
                     <li>Policy as Code(OPA/Rego/Conftest)</li>
                 </ul>
@@ -43,7 +43,7 @@ const Interest: React.FC<InterestProps> = () => {
 
                     <div className="service-category">
                         <h4>2. クラウドインフラ開発</h4>
-                        <p>コスト・セキュリティ・可用性を考慮したクラウドインフラの最適化を提案から実装まで(AWS/GCP with Terraform)</p>
+                        <p>コスト・セキュリティ・可用性を考慮したクラウドインフラの最適化を提案から実装まで(AWS/Google Cloud with Terraform)</p>
                     </div>
 
                     <div className="service-category">
@@ -52,7 +52,8 @@ const Interest: React.FC<InterestProps> = () => {
                             <li>パフォーマンス改善</li>
                             <li>ロギング、エラー修正・エラーハンドリングの改善</li>
                             <li>脆弱性対応</li>
-                            <li>リファクタリング・モジュールバージョン更新</li>
+                            <li>リファクタリング</li>
+                            <li>EOL対応</li>
                         </ul>
                         <p className="note">※新規大型機能開発は平日ミーティング制約により対応困難</p>
                     </div>
