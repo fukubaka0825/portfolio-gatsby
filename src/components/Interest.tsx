@@ -4,19 +4,19 @@ type InterestProps = {}
 
 const Interest: React.FC<InterestProps> = () => {
     return (
-        <section className="content-area">
-            <h2 className="section-header">Skill/Interest</h2>
-            <div className="skill-interest-section">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="skill-box">SRE/Devops/AIOps</div>
-                    <div className="skill-box">MLOps/LLMOps/Data Engineering</div>
-                    <div className="skill-box">ML/NLP</div>
-                    <div className="skill-box">Go/Python/Shell Script</div>
-                    <div className="skill-box">Container(Docker/Kubernetes/AWS ECS)</div>
-                    <div className="skill-box">Cloud Infrastructure Design(AWS/GCP/Terraform)</div>
-                    <div className="skill-box">Application Design(OOP,DDD)</div>
-                    <div className="skill-box">Policy as Code(OPA/Rego/Conftest)</div>
-                </div>
+        <section id="Interest" className="interest-section">
+            <div className="skills-section">
+                <h2>Skill/Interest</h2>
+                <ul className="skill-list">
+                    <li>SRE/Devops/AIOps</li>
+                    <li>MLOps/LLMOps/Data Engineering</li>
+                    <li>ML/NLP</li>
+                    <li>Go/Python/Shell Script</li>
+                    <li>Container(Docker/Kubernetes/AWS ECS)</li>
+                    <li>Cloud Infrastructure Design(AWS/GCP/Terraform)</li>
+                    <li>Application Design(OOP,DDD)</li>
+                    <li>Policy as Code(OPA/Rego/Conftest)</li>
+                </ul>
             </div>
 
             <div className="freelance-section">
