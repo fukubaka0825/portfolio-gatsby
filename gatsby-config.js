@@ -3,9 +3,9 @@ const querystring = require('querystring')
 const path = require('path')
 
 const siteMetadata = {
-  title: "Takashi Narikawa - @fukubaka0825 / @wapper0825",
-  author: "Takashi Narikawa/wapper",
-  description: "Nari/wapper's portfolio site",
+  title: "Takashi Narikawa - @fukubaka0825",
+  author: "Takashi Narikawa",
+  description: "Nari's portfolio site",
   siteUrl: 'https://www.fukubaka0825.dev',
   siteLanguage: 'en',
   shortName: 'nari',
@@ -31,7 +31,6 @@ const siteMetadata = {
     qiita: 'fukubaka0825',
     speaker_deck: 'fukubaka0825',
     twitter: 'fukubaka0825',
-    twitter_vr: 'wapper0825',
     facebook: 'fukubaka0825',
     linkedin: 'takashi-narikawa-889a51187',
   },
@@ -74,7 +73,7 @@ module.exports = {
         background_color: '#08033d',
         theme_color: '#08033d',
         display: 'minimal-ui',
-        icon: 'src/assets/images/nari-wapper.png', // This path is relative to the root of the site.
+        icon: 'src/assets/images/nari.png', // This path is relative to the root of the site.
       },
     },
     {

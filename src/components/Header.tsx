@@ -26,7 +26,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ user }) => {
   const data = useStaticQuery(graphql`
     {
-      avatar: file(relativePath: { eq: "nari-wapper.png" }) {
+      avatar: file(relativePath: { eq: "nari.png" }) {
         childImageSharp {
           fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
@@ -48,13 +48,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           <p>
             <a href={`https://mtch.com/`}>
               Match Group (eureka, Inc. AI Team)
-            </a>
-          </p>
-          <strong>wapper 🍔</strong>{' '}
-          <p>VR Performer/Engineer at &nbsp;</p>
-          <p>
-            <a href={`https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ`}>
-              YouTube (VTuber)
             </a>
           </p>
         </h1>
