@@ -26,9 +26,8 @@ const Interest: React.FC<InterestProps> = () => {
                     <h3>得意分野・対応可能業務</h3>
                     
                     <div className="service-category">
-                        <h4>1. 開発運用改善支援、非機能要件の整備・改善</h4>
+                        <h4>1. SRE/MLOps/LLMOpsプラクティスの導入、改善支援</h4>
                         <div className="service-details">
-                            <h5>SRE/MLOps/LLMOpsプラクティスの導入支援</h5>
                             <ul>
                                 <li>信頼性とアジリティのギャップ分析、改善提案と実装支援</li>
                                 <li>モニタリング・アラート整備、可観測性向上</li>
