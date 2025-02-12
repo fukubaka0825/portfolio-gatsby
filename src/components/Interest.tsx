@@ -9,8 +9,8 @@ const Interest: React.FC<InterestProps> = ({ }) => {
         <section id="Interest">
             <h2>Skill/Interest</h2>
             <ul >
-                <li>SRE/Devops</li>
-                <li>MLOps/Data Engineering</li>
+                <li>SRE/Devops/AIOps</li>
+                <li>MLOps/LLMOps/Data Engineering</li>
                 <li>ML/NLP</li>
                 <li>Go/Python/Shell Script</li>
                 <li>Container(Docker/Kubernetes/AWS ECS)</li>
