@@ -17,7 +17,6 @@ type HeaderProps = {
     name: string | ''
     github: string | ''
     twitter: string | ''
-    twitter_vr: string | ''
     facebook: string | ''
     linkedin: string | ''
   }
@@ -82,11 +81,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           <ul className="icons">
             <li>
               <a href={`https://twitter.com/${user.twitter}`}>
-                <FontAwesomeIcon icon={['fab', 'twitter']} />
-              </a>
-            </li>
-            <li>
-              <a href={`https://twitter.com/${user.twitter_vr}`}>
                 <FontAwesomeIcon icon={['fab', 'twitter']} />
               </a>
             </li>

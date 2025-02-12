@@ -30,7 +30,6 @@ export const query = graphql`
           github
           qiita
           twitter
-          twitter_vr
           facebook
           linkedin
         }
