@@ -20,7 +20,7 @@ const Interest: React.FC<InterestProps> = () => {
             </div>
 
             <div className="freelance-section">
-                <h2>副業募集</h2>
+                <h2>業務委託募集</h2>
                 
                 <div className="expertise-section">
                     <h3>得意分野・対応可能業務</h3>
