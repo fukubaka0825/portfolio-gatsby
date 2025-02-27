@@ -17,6 +17,7 @@ import Contribution from '../components/Contribution'
 import Career from '../components/Career'
 import Education from '../components/Education'
 import Interest from '../components/Interest'
+import FreelanceInfo from '../components/FreelanceInfo'
 
 type User = {
   name: string
@@ -134,6 +135,7 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         {notePosts && notePosts.length > 0 && (
             <NotePosts posts={notePosts} NoteUrl={note.url} />
         )}
+        <FreelanceInfo/>
         <Certification/>
       </div>
     </Layout>
