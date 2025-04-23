@@ -5,7 +5,7 @@ type FreelanceInfoProps = {}
 const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
     return (
         <section id="FreelanceInfo" className="freelance-section">
-            <h2>業務委託募集(新規受付停止中)</h2>
+            <h2>業務委託募集</h2>
             
             <div className="expertise-section">
                 <h3>得意分野・対応可能業務</h3>
@@ -65,7 +65,7 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                 <div className="work-terms">
                     <h4>稼働時間・報酬</h4>
                     <ul>
-                        <li>稼働時間: 基本的に、一社あたり月60時間程度まで（例外あり）</li>
+                        <li>稼働時間: 基本的に、一社あたり月50~60時間程度まで（例外あり）</li>
                         <li>報酬: 時間単価5,000円以上（業務内容により応相談）</li>
                     </ul>
                 </div>

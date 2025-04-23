@@ -112,6 +112,7 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Header user={user} />
       <div id="main">
         <Interest/>
+        <FreelanceInfo/>
         <Career/>
         <Works/>
         <Contribution/>
@@ -135,7 +136,6 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         {notePosts && notePosts.length > 0 && (
             <NotePosts posts={notePosts} NoteUrl={note.url} />
         )}
-        <FreelanceInfo/>
         <Certification/>
       </div>
     </Layout>
