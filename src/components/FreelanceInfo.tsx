@@ -41,6 +41,7 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                         <li>脆弱性対応</li>
                         <li>リファクタリング</li>
                         <li>EOL対応</li>
+                        <li>Rate limit実装</li>
                     </ul>
                     <p className="note">※新規大型機能開発は平日ミーティング制約により対応困難</p>
                 </div>
