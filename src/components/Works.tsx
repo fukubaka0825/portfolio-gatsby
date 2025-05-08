@@ -10,6 +10,14 @@ const Works: React.FC<WorksProps> = ({ }) => {
             <h2>Works</h2>
             <div className="row">
                 <article className="4u 12u$(xsmall) work-item" >
+                    <a href={`https://speakerdeck.com/fukubaka0825/heasuniokeruping-jia-torihunna-ai-agent-kai-fa-nokoshao-jie`} className="image fit thumb">
+                        <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20250508/20250508163215.png`} alt="" />
+                    </a>
+                    <a href={`https://speakerdeck.com/fukubaka0825/heasuniokeruping-jia-torihunna-ai-agent-kai-fa-nokoshao-jie`} className="slide-title">
+                        <h3>[Sline] ペアーズにおける評価ドリブンな AI Agent 開発のご紹介 @ 20250508配信AWSウェビナー登壇</h3>
+                    </a>
+                </article> 
+                <article className="4u 12u$(xsmall) work-item" >
                     <a href={`https://speakerdeck.com/fukubaka0825/peazudeno-langfusewozhong-xin-tositaping-jia-doribunnaririsusaikurunogoshao-jie`} className="image fit thumb">
                         <img src={`https://cdn-ak.f.st-hatena.com/images/fotolife/s/st5818129/20250212/20250212125705.png`} alt="" />
                     </a>
