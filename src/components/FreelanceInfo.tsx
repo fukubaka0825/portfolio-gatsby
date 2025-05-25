@@ -15,7 +15,7 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                     <div className="service-details">
                         <ul>
                             <li>信頼性とアジリティのギャップ分析、改善提案から実装まで</li>
-                            <li>モニタリング・アラート整備、可観測性向上</li>
+                            <li>モニタリング・アラート整備、可観測性(o11y)向上</li>
                             <li>インシデントレスポンス最適化</li>
                             <li>リリースエンジニアリング最適化</li>
                             <li>SLI/SLOの設計と導入</li>
@@ -44,8 +44,10 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                         <li>キャッシュ戦略見直し</li>                        
                         <li>EOL対応</li>
                         <li>Rate limit設計・実装</li>
+                        <li>管理画面/API開発</li>
+                        <li>機能開発(注釈ご参照)</li>
                     </ul>
-                    <p className="note">※新規大型機能開発は平日ミーティング制約により対応困難</p>
+                    <p className="note">※新規大型機能開発は平日ミーティング制約により対応困難ですが、平日19時~24時、休日に仕様を擦り合わせられる場合は対応可能です。</p>
                 </div>
             </div>
 
@@ -57,7 +59,7 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                         <li>基本: 非同期コミュニケーション</li>
                         <li>同期ミーティング可能時間:
                             <ul>
-                                <li>月曜/木曜/金曜 17:00以降</li>
+                                <li>平日 19:00以降</li>
                                 <li>土日祝日</li>
                                 <li>その他の連絡は非同期対応</li>
                             </ul>
@@ -69,7 +71,7 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                     <h4>稼働時間・報酬</h4>
                     <ul>
                         <li>稼働時間: 基本的に、一社あたり月50~60時間程度まで（例外あり）</li>
-                        <li>報酬: 時間単価5,000円以上（業務内容により応相談）</li>
+                        <li>報酬: 時間単価5,500円以上（業務内容により応相談）</li>
                     </ul>
                 </div>
 
