@@ -1,11 +1,7 @@
 {
   "ci": {
     "collect": {
-      "numberOfRuns": 3,
-      "url": [
-        "https://www.fukubaka0825.dev",
-        "https://www.fukubaka0825.dev/blog"
-      ]
+      "numberOfRuns": 3
     },
     "assert": {
       "assertions": {

@@ -74,7 +74,9 @@ jobs:
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
         with:
-          configPath: ./.lighthouserc.json
+          urls: |
+            https://www.fukubaka0825.dev
+            https://www.fukubaka0825.dev/blog
           uploadArtifacts: true
           temporaryPublicStorage: true
 
