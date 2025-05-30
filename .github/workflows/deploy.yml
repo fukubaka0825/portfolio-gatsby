@@ -76,7 +76,7 @@ jobs:
         with:
           urls: |
             https://www.fukubaka0825.dev
-          configPath: ./.lighthouserc.json
+            https://www.fukubaka0825.dev/blog
           uploadArtifacts: true
           temporaryPublicStorage: true
 
