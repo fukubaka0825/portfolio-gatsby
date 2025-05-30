@@ -4,7 +4,7 @@ type FreelanceInfoProps = {}
 
 const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
     return (
-        <section className="section scroll-mt-header" id="freelance">
+        <section className="section scroll-mt-header" id="FreelanceInfo">
             <div className="container mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
