@@ -24,7 +24,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ user }) => {
   const sections = [
-    { id: 'FreelanceInfo', name: 'フリーランス', icon: '💼' },
+    { id: 'FreelanceInfo', name: '業務委託募集要項', icon: '💼' },
     { id: 'Interest', name: 'スキル', icon: '🛠️' },
     { id: 'Career', name: 'キャリア', icon: '📈' },
     { id: 'Works', name: '実績', icon: '🚀' },
@@ -37,7 +37,9 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const yOffset = -20; // Small offset from top
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
 
@@ -85,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
                   className="group relative bg-white hover:bg-gray-50 border border-gray-100 hover:border-gray-200 rounded-lg p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="text-2xl mb-2">{section.icon}</div>
-                  <div className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                  <div className="text-xs font-medium text-gray-700 group-hover:text-gray-900 leading-tight">
                     {section.name}
                   </div>
                 </button>
@@ -114,29 +116,6 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </div>
           </div>
 
-          {/* Minimal Navigation */}
-          <div className="mb-8">
-            <nav>
-              <ul className="flex justify-center gap-6 text-sm">
-                <li>
-                  <Link
-                    to="/"
-                    className="text-gray-600 hover:text-gray-800 transition-colors duration-300"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/blog"
-                    className="text-gray-600 hover:text-gray-800 transition-colors duration-300"
-                  >
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
 
           {/* Subtle Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
