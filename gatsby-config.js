@@ -132,40 +132,21 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-source-rss-feed`,
-      options: {
-        url: `https://qiita.com/${siteMetadata.user.qiita}/feed`,
-        name: `QiitaPosts`,
-      }
-    },
-    {
-      resolve: `gatsby-source-rss-feed`,
-      options: {
-        url: siteMetadata.blog.feed_url,
-        name: `BlogPosts`,
-      }
-    },
-    {
-      resolve: `gatsby-source-rss-feed`,
-      options: {
-        url: siteMetadata.note.feed_url,
-        name: `NotePosts`,
-      }
-    },
-    {
-      resolve: `gatsby-source-rss-feed`,
-      options: {
-        url: siteMetadata.medium.feed_url,
-        name: `MediumPosts`,
-      }
-    },
-    {
-      resolve: `gatsby-source-rss-feed`,
-      options: {
-        url: siteMetadata.devto.feed_url,
-        name: `DevToPosts`,
-      }
-    },
+    // RSS feeds temporarily disabled due to rate limiting
+    // Can be re-enabled once the rate limits are resolved
+    // {
+    //   resolve: `gatsby-source-rss-feed`,
+    //   options: {
+    //     url: `https://qiita.com/${siteMetadata.user.qiita}/feed`,
+    //     name: `QiitaPosts`,
+    //     parserOption: {
+    //       timeout: 10000,
+    //       maxRedirects: 5,
+    //       headers: {
+    //         'User-Agent': 'Gatsby RSS Feed Reader 1.0'
+    //       }
+    //     }
+    //   }
+    // },
   ],
 }

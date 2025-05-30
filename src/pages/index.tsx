@@ -35,19 +35,19 @@ type Skill = {
 
 type HomeIndexProps = {
   data: {
-    allFeedQiitaPosts: {
+    allFeedQiitaPosts?: {
       edges: QiitaPost[]
     }
-    allFeedBlogPosts: {
+    allFeedBlogPosts?: {
       edges: BlogPost[]
     }
-    allFeedNotePosts: {
+    allFeedNotePosts?: {
       edges: NotePost[]
     }
-    allFeedMediumPosts: {
+    allFeedMediumPosts?: {
       edges: MediumPost[]
     }
-    allFeedDevToPosts: {
+    allFeedDevToPosts?: {
       edges: DevToPost[]
     }
     site: {
@@ -72,21 +72,21 @@ type HomeIndexProps = {
 }
 
 const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
-  const qiitaPosts = data.allFeedQiitaPosts.edges.filter(function (item, index) {
+  const qiitaPosts = data.allFeedQiitaPosts?.edges?.filter(function (item, index) {
     return (index <= 9);
-  });
-  const blogPosts = data.allFeedBlogPosts.edges.filter(function (item, index) {
+  }) || [];
+  const blogPosts = data.allFeedBlogPosts?.edges?.filter(function (item, index) {
     return (index <= 4);
-  });
-  const notePosts = data.allFeedNotePosts.edges.filter(function (item, index) {
+  }) || [];
+  const notePosts = data.allFeedNotePosts?.edges?.filter(function (item, index) {
     return (index <= 4);
-  });
-  const mediumPosts = data.allFeedMediumPosts.edges.filter(function (item, index) {
+  }) || [];
+  const mediumPosts = data.allFeedMediumPosts?.edges?.filter(function (item, index) {
     return (index <= 4);
-  });
-  const devToPosts = data.allFeedDevToPosts.edges.filter(function (item, index) {
+  }) || [];
+  const devToPosts = data.allFeedDevToPosts?.edges?.filter(function (item, index) {
     return (index <= 4);
-  });
+  }) || [];
 
   const {user, skills, blog, note , medium, devto} = data.site.siteMetadata
 
@@ -153,56 +153,6 @@ export const query = graphql`
           twitter
           facebook
           linkedin
-        }
-      }
-    }
-    allFeedQiitaPosts {
-      edges {
-        node {
-          id
-          title
-          link
-          pubDate
-        }
-      }
-    }
-    allFeedBlogPosts {
-      edges {
-        node {
-          id
-          title
-          link
-          pubDate
-        }
-      }
-    }
-    allFeedNotePosts {
-      edges {
-        node {
-          id
-          title
-          link
-          pubDate
-        }
-      }
-    }
-    allFeedMediumPosts {
-      edges {
-        node {
-          id
-          title
-          link
-          pubDate
-        }
-      }
-    }
-    allFeedDevToPosts {
-      edges {
-        node {
-          id
-          title
-          link
-          pubDate
         }
       }
     }
