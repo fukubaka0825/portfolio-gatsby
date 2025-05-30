@@ -1,8 +1,11 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./public",
-      "numberOfRuns": 3
+      "numberOfRuns": 3,
+      "url": [
+        "https://www.fukubaka0825.dev",
+        "https://www.fukubaka0825.dev/blog"
+      ]
     },
     "assert": {
       "assertions": {
