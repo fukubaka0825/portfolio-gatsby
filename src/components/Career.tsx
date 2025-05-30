@@ -1,172 +1,279 @@
 import React from 'react'
 
-type CareerProps = {
-}
+type CareerProps = {}
 
-const Career: React.FC<CareerProps> = ({ }) => {
+const Career: React.FC<CareerProps> = () => {
+    const careers = [
+        {
+            position: "Senior Software Engineer",
+            department: "Machine Learning/MLOps/AIOps",
+            company: "Match Group (eureka, Inc.)",
+            companyUrl: "https://mtch.com/",
+            period: "July 2022 〜 Present",
+            duration: "2.5+ years",
+            location: "Tokyo, Japan",
+            type: "Full-time",
+            highlights: [
+                "オンラインデートサービス（1500万人超、3地域）Pairs（モデレーションシステム）の運営",
+                "MLシステムモニタリングの向上（モニタリング指標の再定義・実装）",
+                "テキストモデレーション精度・再現率の改善",
+                "テキストモデレーションMLモデル・パイプラインの再構築",
+                "Langfuseを活用した評価ドリブンリリースサイクルのLLMOps基盤設計・実装",
+                "Amazon Bedrockを用いた障害対応報告書・ポストモーテム文書自動作成（AIOps）"
+            ],
+            technologies: ["Python", "Go", "GCP", "Datadog", "Langfuse", "Amazon Bedrock", "MLOps", "LLMOps"],
+            achievements: [
+                "エンドポイントレイテンシp99を半分以下に削減",
+                "モデレーションシステムの精度向上",
+                "LLMOps基盤の設計・実装"
+            ],
+            icon: "🤖",
+            color: "from-purple-500 to-indigo-500"
+        },
+        {
+            position: "Senior Software Engineer",
+            department: "Site Reliability Engineering",
+            company: "Match Group (eureka, Inc.)",
+            companyUrl: "https://mtch.com/",
+            period: "March 2022 〜 June 2022",
+            duration: "4 months",
+            location: "Tokyo, Japan",
+            type: "Full-time",
+            highlights: [
+                "SREチームのVision・Mission・Valuesの再構築",
+                "Pairs本体サーバーのAmazon ECS on FARGATEからAmazon EKS on EC2への移行",
+                "kubernetesセキュリティ全体設計・gatekeeper/conftestの実装"
+            ],
+            technologies: ["Kubernetes", "AWS EKS", "ECS", "Terraform", "Gatekeeper", "Conftest"],
+            achievements: [
+                "SREチームの組織改革",
+                "クラウドネイティブへの移行",
+                "セキュリティ強化"
+            ],
+            icon: "🛡️",
+            color: "from-green-500 to-emerald-500"
+        },
+        {
+            position: "Site Reliability Engineer",
+            department: "Infrastructure & Operations",
+            company: "Match Group (eureka, Inc.)",
+            companyUrl: "https://mtch.com/",
+            period: "March 2020 〜 March 2022",
+            duration: "2 years",
+            location: "Tokyo, Japan",
+            type: "Full-time",
+            highlights: [
+                "Infra Delivery Processの置き換え（Terraform、Terraform Cloud、Github Actions）",
+                "BotOps・CIOpsによるセルフサービス化",
+                "ポストモーテムテンプレート・PlayBook（RunBook）の導入",
+                "Pairs Engageサーバーの AWS EC2 から FARGATE への移行",
+                "ユーザーメッセージデータのRDSからDynamoDBへの移行・暗号化",
+                "Data Lifecycle Policy Systemの設計・実装",
+                "GPUを用いた画像モデレーション・不正画像検知の導入",
+                "GitOpsの導入（Argocd、Github Actions、AWS providerでのOIDC）",
+                "Policy as Codeの導入によるterraformコードレビュープロセスの自動化"
+            ],
+            technologies: ["Go", "AWS", "Terraform", "Kubernetes", "Docker", "ArgoCD", "GitOps", "GPU"],
+            achievements: [
+                "インフラ運用の自動化・効率化",
+                "セキュリティの向上",
+                "スケーラビリティの改善"
+            ],
+            icon: "⚙️",
+            color: "from-blue-500 to-cyan-500"
+        },
+        {
+            position: "Backend Engineer",
+            department: "Software Development",
+            company: "Wano Co.,Ltd.",
+            companyUrl: "https://wano.co.jp/",
+            period: "February 2019 〜 February 2020",
+            duration: "1 year",
+            location: "Tokyo, Japan",
+            type: "Full-time",
+            highlights: [
+                "音楽配信システム VideoKicks の開発・運用",
+                "APIの開発・運用（Go、Clean Architecture）",
+                "GitopsによるCDの導入・啓蒙活動",
+                "IaC（AWS、Terraform）の導入・啓蒙活動",
+                "ChatOps（Slack）の導入・啓蒙活動",
+                "検索基盤の事前調査・設計（Elasticsearch、Kibana）",
+                "Shop推薦システムの開発"
+            ],
+            technologies: ["Go", "Clean Architecture", "AWS", "Terraform", "Elasticsearch", "MySQL", "Redis"],
+            achievements: [
+                "音楽配信プラットフォームの構築",
+                "DevOps文化の推進",
+                "アーキテクチャの設計・実装"
+            ],
+            icon: "🎵",
+            color: "from-orange-500 to-red-500"
+        },
+        {
+            position: "System Engineer",
+            department: "Financial Systems",
+            company: "Mizuho Information & Research Institute, Inc.",
+            companyUrl: "https://www.mizuho-ir.co.jp",
+            period: "April 2018 〜 January 2019",
+            duration: "10 months",
+            location: "Tokyo, Japan",
+            type: "Full-time",
+            highlights: [
+                "国際決済基幹システム（メインフレーム）の開発",
+                "Swiftシステム準拠プロジェクトのプロジェクトリーダー",
+                "要件定義・基本設計",
+                "定期保守（PL/I、JCL）"
+            ],
+            technologies: ["PL/I", "JCL", "Mainframe", "Swift", "Financial Systems"],
+            achievements: [
+                "大規模金融システムの設計",
+                "プロジェクトリーダーシップ",
+                "レガシーシステムの保守"
+            ],
+            icon: "🏦",
+            color: "from-gray-500 to-slate-500"
+        }
+    ]
 
     return (
-        <section id="Career">
-            <h2>Career</h2>
-            <ul >
-                <li>
-                    Senior Software Engineer(Machine Learning/MLOps/AIOps) at &nbsp;
-                    <a href={`https://mtch.com/`}>
-                        Match Group (eureka, Inc.) &nbsp;
-                    </a>
-                    (July, 2022〜 Present)
-                    <ul >
-                        <li>
-                            Online Dating Service ( Number of Users Over 15 million, 3 Regions) &nbsp;
-                            <a href={`https://www.pairs.lv/`}>
-                                Pairs(Moderation System)
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href={`https://medium.com/eureka-engineering/ml-system-monitoring-tips-f3f9671708b0`}>
-                                        Enhance ML System Monitoring of the Moderation system (redefine and implement monitoring indicators) (Datadog/GCP Cloud logging/shapash/evidently)
-                                    </a>
-                                </li>
-                                <li>Text Moderation Precision/Recall improvements (whitelist, rule-based, model improvements)</li>
-                                <li>Rebuild Text Moderation ML Model and Pipeline</li>
-                                <li>Standardization of data preprocessing (tokenization/parameterization) for learning and inference of Text Moderation Models (migration from Go to Python, Mecab Ipadic)</li>
-                                <li>Moderation System performance improvement (endpoint latency p99 reduced to less than half)</li>
-                                <li>
-                                    <a href={`https://medium.com/eureka-engineering/%E3%83%9A%E3%82%A2%E3%83%BC%E3%82%BA%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E8%A9%95%E4%BE%A1%E3%83%89%E3%83%AA%E3%83%96%E3%83%B3%E3%81%AA%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB-langfuse%E3%82%92%E3%83%95%E3%83%AB%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%9Fllmops%E5%9F%BA%E7%9B%A4-957986e3dcb2`}>
-                                        Design and Implementation of LLMOps Platform with Langfuse for Evaluation-Driven Release Cycle
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={`https://aws.amazon.com/jp/builders-flash/202410/automated-Incident-reports-and-post-mortem/`}>
-                                        Automated Incident Reports and Post-mortem Generation with Amazon Bedrock(AIOps)
-                                    </a>
-                                </li>                                
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Senior Software Engineer(Site Reliability Engineering) at &nbsp;
-                    <a href={`https://mtch.com/`}>
-                        Match Group (eureka, Inc.) &nbsp;
-                    </a>
-                    (March, 2022〜 June, 2022)
-                    <ul >
-                        <li>
-                            Online Dating Service ( Number of Users Over 15 million, 3 Regions) &nbsp;
-                            <a href={`https://www.pairs.lv/`}>
-                                Pairs
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href={`https://medium.com/eureka-engineering/%E3%82%A8%E3%82%A6%E3%83%AC%E3%82%AB%E9%96%8B%E7%99%BA%E7%B5%84%E7%B9%94%E5%85%A8%E4%BD%93%E3%81%A7%E3%83%AA%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E3%81%9F%E3%82%81%E3%81%AB-sre-team%E3%81%AEvision-mission-values%E3%82%92rebuild%E3%81%97%E3%81%9F%E8%A9%B1-bb47daae8290`}>
-                                        Redefining MVV for the SRE Team
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={`https://medium.com/eureka-engineering/pairs-eureka-%E3%81%AEeks-production%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E8%A8%88%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E3%81%8A%E8%A9%B1-74608ff640df`}>
-                                        Migration of Pairs Online Server from Amazon ECS on FARGATE to Amazon EKS on EC2
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={`https://speakerdeck.com/takumiogawa/jaws-days-2022-satellites-pairsniokeruekssekiyuriteinoqu-rizu-mi`}>
-                                        Overall design of kubernetes security and implementation of gatekeeper/conftest
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Site Reliability Engineer at &nbsp;
-                    <a href={`https://mtch.com/`}>
-                        Match Group (eureka, Inc.) &nbsp;
-                    </a>
-                    (March, 2020〜 March, 2022)
-                    <ul >
-                        <li>
-                            Online Dating Service ( Number of Users Over 10 million, 3 Regions) &nbsp;
-                            <a href={`https://www.pairs.lv/`}>
-                                Pairs and Pairs Engage
-                            </a>
-                            <ul>
-                                <li>Replace Infra Delivery Process(Terraform, Terraform Cloud, Github Actions)</li>
-                                <li>AWS ECR vulnerability scan and workflow(AWS ECR, Confluence)</li>
-                                <li>Self-Service with BotOps and CIOps(AWS Lambda, Serverless Framework, Slack, Github Actions)</li>
-                                <li>Introduction of Postmortem template and PlayBook(RunBook)(Confluence)</li>
-                                <li>Replace incident response system with Slack ChatBot</li>
-                                <li>Migration of Pairs Engage server from AWS EC2 to FARGATE(Go, AWS, Datadog)</li>
-                                <li>Migration and Encryption of User Message Data from RDS to DynamoDB(Go, AWS, Datadog)</li>
-                                <li>Design and Implementation of Data Lifecycle Policy System(Go, AWS, GCP, BigQuery)</li>
-                                <li>Migration of Pairs Batch server from AWS EC2 to FARGATE(Go, AWS Lambda, AWS Fargate, Serverless Framework, Terraform)</li>
-                                <li>Migration app/user log infrastructure from Fluentd(td-agent) to AWS Firelens & Fluent bit</li>
-                                <li>Support Data Platform Migration Project(AWS Kinesis Firehose, Fivetran Connector, Amazon EC2 Bastion)</li>
-                                <li>Introduction of Image moderation/fraud image detection with GPU Inference(Amazon EKS, Kubernetes, Nvidia, Cuda, Pytorch)</li>
-                                <li>Introduction of GitOps (Argocd, Github Actions, OIDC with AWS provider)</li>
-                                <li>Introduction of Policy as Code to automate terraform code-review process(Conftest, OPA, Rego)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    Backend Engineer at &nbsp;
-                        <a href={`https://wano.co.jp/`}>
-                            Wano Co.,Ltd. &nbsp;
-                        </a>
-                        (Feb, 2019〜Feb, 2020)
-                    <ul >
-                        <li>
-                            Music delivery system &nbsp;
-                        <a href={`https://www.tunecore.co.jp/video_kicks?via=115&gclid=EAIaIQobChMI1PC0va6p4QIVU66WCh1VpQFlEAAYASAAEgJig_D_BwE`}>
-                            VideoKicks
-                        </a>
-                            <ul>
-                                <li>Development/Operation of APIs (Go, Clean Architecture)</li>
-                                <li>Introduction and Enlightenment of CD with Gitops (CircleCI)</li>
-                                <li>Introduction and Enlightenment of IaC (AWS, Terraform)</li>
-                                <li>Introduction and Enlightenment of ChatOps (Slack)</li>
-                                <li>Preliminary investigation and design of search infrastructure(Elasticsearch, Kibana)</li>
-                                <li>Facilitation of US project</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Shop recommend system of &nbsp;
-                            <a href={`https://www.edocode.co.jp/`}>
-                                Point Mall
-                            </a>
-                            <ul>
-                                <li>Development of APIs (Go, Nginx, Clean Architecture)</li>
-                                <li>Data source design (Mysql, Redis)</li>
-                                <li>Overall infrastructure design and implementation (AWS, Terraform, Fluentd)</li>
-                                <li>Production operation of application container(AWS ECS, Docker)</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    System Engineer at &nbsp;
-                    <a href={`https://www.mizuho-ir.co.jp`}>
-                        Mizuho Information & Research Institute, Inc.&nbsp;
-                    </a>
-                    (Apr, 2018 〜 Jan, 2019)
-                    <ul >
-                        <li>
-                            International payment core system (Mainframe)
-                            <ul>
-                                <li>
-                                    Project leader of &nbsp;
-                                    <a href={`https://www.swift.com/`}>
-                                        Swift &nbsp;
-                                    </a>
-                                    system-compliant projects (Requirement definition, Basic design)
-                                </li>
-                                <li>Regular maintenance(PL/I, JCL)</li>
+        <section id="Career" className="section py-20">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-16">
+                    <h2 className="section-title text-5xl font-bold text-gray-900 mb-6">
+                        Career <span className="text-gradient bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Journey</span>
+                    </h2>
+                    <p className="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto">
+                        金融システムからスタートアップ、グローバル企業まで。多様な環境での成長とテクノロジーへの貢献
+                    </p>
+                </div>
 
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                <div className="relative max-w-5xl mx-auto">
+                    {/* Timeline line */}
+                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600 transform md:-translate-x-0.5"></div>
+
+                    {careers.map((career, index) => (
+                        <div
+                            key={index}
+                            className={`relative flex items-center mb-16 ${
+                                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                            }`}
+                        >
+                            {/* Timeline dot */}
+                            <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 z-10">
+                                <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${career.color} shadow-lg flex items-center justify-center text-2xl border-4 border-white`}>
+                                    {career.icon}
+                                </div>
+                            </div>
+
+                            {/* Content card */}
+                            <div className={`w-full md:w-5/12 ml-24 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'}`}>
+                                <div className="group bg-white rounded-2xl shadow-soft hover:shadow-strong transition-all duration-300 hover:-translate-y-2 border border-gray-100 overflow-hidden">
+                                    <div className="p-8">
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-2 mb-2">
+                                                    <span className={`px-3 py-1 rounded-full text-white text-xs font-medium bg-gradient-to-r ${career.color}`}>
+                                                        {career.type}
+                                                    </span>
+                                                    <span className="px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">
+                                                        {career.duration}
+                                                    </span>
+                                                </div>
+                                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-200 mb-1">
+                                                    {career.position}
+                                                </h3>
+                                                <p className="text-primary-600 font-semibold mb-2">
+                                                    {career.department}
+                                                </p>
+                                                <a 
+                                                    href={career.companyUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-lg font-semibold text-gray-800 hover:text-primary-600 transition-colors duration-200"
+                                                >
+                                                    {career.company}
+                                                </a>
+                                                <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
+                                                    <span>📍 {career.location}</span>
+                                                    <span>📅 {career.period}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="mb-6">
+                                            <h4 className="text-sm font-semibold text-gray-700 mb-3">Key Responsibilities</h4>
+                                            <ul className="space-y-2">
+                                                {career.highlights.slice(0, 4).map((highlight, highlightIndex) => (
+                                                    <li key={highlightIndex} className="flex items-start gap-2 text-sm text-gray-600">
+                                                        <span className="text-primary-500 mt-1">•</span>
+                                                        <span>{highlight}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="mb-6">
+                                            <h4 className="text-sm font-semibold text-gray-700 mb-3">Technologies</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {career.technologies.map((tech, techIndex) => (
+                                                    <span
+                                                        key={techIndex}
+                                                        className="px-2 py-1 bg-primary-50 text-primary-700 text-xs rounded-md font-medium"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h4 className="text-sm font-semibold text-gray-700 mb-3">Key Achievements</h4>
+                                            <div className="space-y-2">
+                                                {career.achievements.map((achievement, achievementIndex) => (
+                                                    <div key={achievementIndex} className="flex items-center gap-2">
+                                                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                                        <span className="text-sm text-gray-600">{achievement}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Hover effect overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-primary-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Career Summary */}
+                <div className="mt-20">
+                    <div className="bg-gradient-to-r from-primary-50 to-purple-50 rounded-2xl p-8 border border-primary-100">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                            Career Highlights
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                            <div>
+                                <div className="text-3xl font-bold text-primary-600">6+</div>
+                                <div className="text-sm text-gray-600">Years Experience</div>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-bold text-primary-600">5</div>
+                                <div className="text-sm text-gray-600">Companies</div>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-bold text-primary-600">15M+</div>
+                                <div className="text-sm text-gray-600">Users Served</div>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-bold text-primary-600">3</div>
+                                <div className="text-sm text-gray-600">Countries</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }
