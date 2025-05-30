@@ -25,7 +25,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ user }) => {
 
   return (
-    <header className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-80 bg-gradient-to-br from-primary-950 to-primary-900 text-white flex flex-col">
+    <header className="lg:w-80 bg-gradient-to-br from-primary-950 to-primary-900 text-white flex flex-col">
       {/* Header Content */}
       <div className="flex-1 flex flex-col justify-between p-8 lg:p-12">
         <div className="space-y-6">
