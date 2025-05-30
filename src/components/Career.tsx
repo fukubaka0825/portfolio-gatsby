@@ -10,7 +10,6 @@ const Career: React.FC<CareerProps> = () => {
             company: "Match Group (eureka, Inc.)",
             companyUrl: "https://mtch.com/",
             period: "July 2022 〜 Present",
-            duration: "2.5+ years",
             location: "Tokyo, Japan",
             type: "Full-time",
             highlights: [
@@ -22,11 +21,6 @@ const Career: React.FC<CareerProps> = () => {
                 "Amazon Bedrockを用いた障害対応報告書・ポストモーテム文書自動作成（AIOps）"
             ],
             technologies: ["Python", "Go", "GCP", "Datadog", "Langfuse", "Amazon Bedrock", "MLOps", "LLMOps"],
-            achievements: [
-                "エンドポイントレイテンシp99を半分以下に削減",
-                "モデレーションシステムの精度向上",
-                "LLMOps基盤の設計・実装"
-            ],
             icon: "🤖",
             color: "from-purple-500 to-indigo-500"
         },
@@ -36,7 +30,6 @@ const Career: React.FC<CareerProps> = () => {
             company: "Match Group (eureka, Inc.)",
             companyUrl: "https://mtch.com/",
             period: "March 2022 〜 June 2022",
-            duration: "4 months",
             location: "Tokyo, Japan",
             type: "Full-time",
             highlights: [
@@ -45,11 +38,6 @@ const Career: React.FC<CareerProps> = () => {
                 "kubernetesセキュリティ全体設計・gatekeeper/conftestの実装"
             ],
             technologies: ["Kubernetes", "AWS EKS", "ECS", "Terraform", "Gatekeeper", "Conftest"],
-            achievements: [
-                "SREチームの組織改革",
-                "クラウドネイティブへの移行",
-                "セキュリティ強化"
-            ],
             icon: "🛡️",
             color: "from-green-500 to-emerald-500"
         },
@@ -59,7 +47,6 @@ const Career: React.FC<CareerProps> = () => {
             company: "Match Group (eureka, Inc.)",
             companyUrl: "https://mtch.com/",
             period: "March 2020 〜 March 2022",
-            duration: "2 years",
             location: "Tokyo, Japan",
             type: "Full-time",
             highlights: [
@@ -74,11 +61,6 @@ const Career: React.FC<CareerProps> = () => {
                 "Policy as Codeの導入によるterraformコードレビュープロセスの自動化"
             ],
             technologies: ["Go", "AWS", "Terraform", "Kubernetes", "Docker", "ArgoCD", "GitOps", "GPU"],
-            achievements: [
-                "インフラ運用の自動化・効率化",
-                "セキュリティの向上",
-                "スケーラビリティの改善"
-            ],
             icon: "⚙️",
             color: "from-blue-500 to-cyan-500"
         },
@@ -88,7 +70,6 @@ const Career: React.FC<CareerProps> = () => {
             company: "Wano Co.,Ltd.",
             companyUrl: "https://wano.co.jp/",
             period: "February 2019 〜 February 2020",
-            duration: "1 year",
             location: "Tokyo, Japan",
             type: "Full-time",
             highlights: [
@@ -101,11 +82,6 @@ const Career: React.FC<CareerProps> = () => {
                 "Shop推薦システムの開発"
             ],
             technologies: ["Go", "Clean Architecture", "AWS", "Terraform", "Elasticsearch", "MySQL", "Redis"],
-            achievements: [
-                "音楽配信プラットフォームの構築",
-                "DevOps文化の推進",
-                "アーキテクチャの設計・実装"
-            ],
             icon: "🎵",
             color: "from-orange-500 to-red-500"
         },
@@ -115,7 +91,6 @@ const Career: React.FC<CareerProps> = () => {
             company: "Mizuho Information & Research Institute, Inc.",
             companyUrl: "https://www.mizuho-ir.co.jp",
             period: "April 2018 〜 January 2019",
-            duration: "10 months",
             location: "Tokyo, Japan",
             type: "Full-time",
             highlights: [
@@ -125,11 +100,6 @@ const Career: React.FC<CareerProps> = () => {
                 "定期保守（PL/I、JCL）"
             ],
             technologies: ["PL/I", "JCL", "Mainframe", "Swift", "Financial Systems"],
-            achievements: [
-                "大規模金融システムの設計",
-                "プロジェクトリーダーシップ",
-                "レガシーシステムの保守"
-            ],
             icon: "🏦",
             color: "from-gray-500 to-slate-500"
         }
@@ -138,18 +108,15 @@ const Career: React.FC<CareerProps> = () => {
     return (
         <section id="Career" className="section py-20">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h2 className="section-title text-5xl font-bold text-gray-900 mb-6">
-                        Career <span className="text-gradient bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Journey</span>
+                <div className="text-center mb-12">
+                    <h2 className="section-title text-3xl font-light text-gray-800 mb-6">
+                        Career Journey
                     </h2>
-                    <p className="section-subtitle text-xl text-gray-600 max-w-3xl mx-auto">
-                        金融システムからスタートアップ、グローバル企業まで。多様な環境での成長とテクノロジーへの貢献
-                    </p>
                 </div>
 
                 <div className="relative max-w-5xl mx-auto">
                     {/* Timeline line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600 transform md:-translate-x-0.5"></div>
+                    <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 transform md:-translate-x-0.5"></div>
 
                     {careers.map((career, index) => (
                         <div
@@ -159,66 +126,62 @@ const Career: React.FC<CareerProps> = () => {
                             }`}
                         >
                             {/* Timeline dot */}
-                            <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 z-10">
-                                <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${career.color} shadow-lg flex items-center justify-center text-2xl border-4 border-white`}>
+                            <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-10">
+                                <div className="w-8 h-8 rounded-full bg-white border-2 border-gray-300 shadow-sm flex items-center justify-center text-sm">
                                     {career.icon}
                                 </div>
                             </div>
 
                             {/* Content card */}
-                            <div className={`w-full md:w-5/12 ml-24 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'}`}>
-                                <div className="group bg-white rounded-2xl shadow-soft hover:shadow-strong transition-all duration-300 hover:-translate-y-2 border border-gray-100 overflow-hidden">
-                                    <div className="p-8">
-                                        <div className="flex items-start justify-between mb-4">
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-2 mb-2">
-                                                    <span className={`px-3 py-1 rounded-full text-white text-xs font-medium bg-gradient-to-r ${career.color}`}>
-                                                        {career.type}
-                                                    </span>
-                                                    <span className="px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">
-                                                        {career.duration}
-                                                    </span>
-                                                </div>
-                                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-200 mb-1">
-                                                    {career.position}
-                                                </h3>
-                                                <p className="text-primary-600 font-semibold mb-2">
-                                                    {career.department}
-                                                </p>
-                                                <a 
-                                                    href={career.companyUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-lg font-semibold text-gray-800 hover:text-primary-600 transition-colors duration-200"
-                                                >
-                                                    {career.company}
-                                                </a>
-                                                <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
-                                                    <span>📍 {career.location}</span>
-                                                    <span>📅 {career.period}</span>
-                                                </div>
+                            <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-auto md:pr-16' : 'md:ml-auto md:pl-16'}`}>
+                                <div className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-500 hover:-translate-y-1 border border-gray-100 overflow-hidden">
+                                    <div className="p-6">
+                                        <div className="mb-4">
+                                            <div className="mb-3">
+                                                <span className="px-2 py-1 rounded-md bg-gray-100 text-gray-600 text-xs font-normal">
+                                                    {career.type}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-lg font-medium text-gray-900 group-hover:text-gray-700 transition-colors duration-300 mb-1">
+                                                {career.position}
+                                            </h3>
+                                            <p className="text-gray-600 font-normal mb-2 text-sm">
+                                                {career.department}
+                                            </p>
+                                            <a 
+                                                href={career.companyUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-base font-medium text-gray-800 hover:text-gray-900 transition-colors duration-300"
+                                            >
+                                                {career.company}
+                                            </a>
+                                            <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                                                <span>{career.location}</span>
+                                                <span>•</span>
+                                                <span>{career.period}</span>
                                             </div>
                                         </div>
 
-                                        <div className="mb-6">
-                                            <h4 className="text-sm font-semibold text-gray-700 mb-3">Key Responsibilities</h4>
-                                            <ul className="space-y-2">
-                                                {career.highlights.slice(0, 4).map((highlight, highlightIndex) => (
-                                                    <li key={highlightIndex} className="flex items-start gap-2 text-sm text-gray-600">
-                                                        <span className="text-primary-500 mt-1">•</span>
+                                        <div className="mb-4">
+                                            <h4 className="text-xs font-medium text-gray-600 mb-3 uppercase tracking-wider">Key Responsibilities</h4>
+                                            <ul className="space-y-1">
+                                                {career.highlights.slice(0, 3).map((highlight, highlightIndex) => (
+                                                    <li key={highlightIndex} className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
+                                                        <span className="text-gray-400 mt-1">•</span>
                                                         <span>{highlight}</span>
                                                     </li>
                                                 ))}
                                             </ul>
                                         </div>
 
-                                        <div className="mb-6">
-                                            <h4 className="text-sm font-semibold text-gray-700 mb-3">Technologies</h4>
-                                            <div className="flex flex-wrap gap-2">
-                                                {career.technologies.map((tech, techIndex) => (
+                                        <div className="mb-4">
+                                            <h4 className="text-xs font-medium text-gray-600 mb-2 uppercase tracking-wider">Technologies</h4>
+                                            <div className="flex flex-wrap gap-1">
+                                                {career.technologies.slice(0, 6).map((tech, techIndex) => (
                                                     <span
                                                         key={techIndex}
-                                                        className="px-2 py-1 bg-primary-50 text-primary-700 text-xs rounded-md font-medium"
+                                                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded font-normal"
                                                     >
                                                         {tech}
                                                     </span>
@@ -226,53 +189,16 @@ const Career: React.FC<CareerProps> = () => {
                                             </div>
                                         </div>
 
-                                        <div>
-                                            <h4 className="text-sm font-semibold text-gray-700 mb-3">Key Achievements</h4>
-                                            <div className="space-y-2">
-                                                {career.achievements.map((achievement, achievementIndex) => (
-                                                    <div key={achievementIndex} className="flex items-center gap-2">
-                                                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                                                        <span className="text-sm text-gray-600">{achievement}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
 
                                     {/* Hover effect overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-primary-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                                    <div className="absolute inset-0 bg-gray-50 opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Career Summary */}
-                <div className="mt-20">
-                    <div className="bg-gradient-to-r from-primary-50 to-purple-50 rounded-2xl p-8 border border-primary-100">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                            Career Highlights
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                            <div>
-                                <div className="text-3xl font-bold text-primary-600">6+</div>
-                                <div className="text-sm text-gray-600">Years Experience</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-primary-600">5</div>
-                                <div className="text-sm text-gray-600">Companies</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-primary-600">15M+</div>
-                                <div className="text-sm text-gray-600">Users Served</div>
-                            </div>
-                            <div>
-                                <div className="text-3xl font-bold text-primary-600">3</div>
-                                <div className="text-sm text-gray-600">Countries</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     )
