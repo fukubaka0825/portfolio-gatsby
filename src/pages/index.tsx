@@ -95,8 +95,8 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Head />
       <Header user={user} />
       <div id="main">
-        <Interest/>
         <FreelanceInfo/>
+        <Interest/>
         <Career/>
         <Works/>
         <Contribution/>
