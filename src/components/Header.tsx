@@ -23,131 +23,176 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = ({ user }) => {
+  const achievements = [
+    { number: "15M+", label: "Users Served" },
+    { number: "6+", label: "Years Experience" },
+    { number: "3", label: "Countries" },
+    { number: "100+", label: "Projects Delivered" }
+  ]
 
   return (
-    <header className="lg:w-80 bg-gradient-to-br from-primary-950 to-primary-900 text-white flex flex-col">
-      {/* Header Content */}
-      <div className="flex-1 flex flex-col justify-between p-8 lg:p-12">
-        <div className="space-y-6">
-          {/* Avatar */}
-          <div className="flex justify-center lg:justify-start">
-            <Link to="/" className="block">
-              <div className="relative group">
-                <StaticImage
-                  src="../assets/images/nari.png"
-                  alt="Takashi Narikawa"
-                  width={120}
-                  height={120}
-                  className="rounded-full shadow-lg ring-4 ring-white/20 group-hover:ring-white/40 transition-all duration-300"
-                />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-            </Link>
-          </div>
+    <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background with gradient and pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      
+      {/* Animated background elements */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-primary-500/10 rounded-full blur-xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl animate-pulse animation-delay-4000"></div>
 
-          {/* Name and Title */}
-          <div className="text-center lg:text-left space-y-2">
-            <h1 className="text-2xl lg:text-3xl font-bold text-white">
-              Takashi Narikawa
-            </h1>
-            <div className="space-y-1">
-              <p className="text-primary-200 text-sm lg:text-base">
-                Senior Software Engineer
-              </p>
-              <p className="text-primary-200 text-sm lg:text-base">
-                (MLOps/SRE)
-              </p>
-              <p className="text-primary-100 text-sm lg:text-base">
-                <a 
-                  href="https://mtch.com/" 
-                  className="hover:text-white transition-colors duration-200 underline decoration-primary-400 underline-offset-2"
-                >
-                  Match Group (eureka, Inc. AI Team)
-                </a>
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+        <div className="max-w-5xl mx-auto">
+          
+          {/* Main Hero Section */}
+          <div className="mb-16">
+            {/* Avatar with enhanced styling */}
+            <div className="mb-8 flex justify-center">
+              <Link to="/" className="block group">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary-400 via-purple-500 to-cyan-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-pulse"></div>
+                  <div className="relative">
+                    <StaticImage
+                      src="../assets/images/nari.png"
+                      alt="Takashi Narikawa"
+                      width={200}
+                      height={200}
+                      className="rounded-full shadow-2xl ring-8 ring-white/20 group-hover:ring-white/40 transition-all duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
+            {/* Name and Title */}
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4 bg-gradient-to-r from-white via-primary-100 to-primary-200 bg-clip-text text-transparent">
+                  Takashi Narikawa
+                </h1>
+                <div className="text-xl md:text-2xl lg:text-3xl text-primary-200 font-light mb-2">
+                  fukubaka0825
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                  Senior Software Engineer
+                </h2>
+                <div className="text-xl md:text-2xl text-primary-300 font-medium">
+                  Machine Learning • MLOps • AIOps • SRE
+                </div>
+                <div className="text-lg md:text-xl text-primary-100">
+                  <a 
+                    href="https://mtch.com/" 
+                    className="hover:text-white transition-colors duration-300 underline decoration-primary-400 underline-offset-4 hover:decoration-white"
+                  >
+                    Match Group (eureka, Inc. AI Team)
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Professional Tagline */}
+            <div className="mt-8 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-primary-100 leading-relaxed font-light">
+                プロダクション環境での<span className="text-white font-semibold">MLOps・SRE経験</span>を活かし、
+                <br className="hidden md:block" />
+                <span className="text-white font-semibold">スケーラブルなAIシステム</span>の設計・運用を専門とするエンジニア
               </p>
             </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="pt-4">
-            <ul className="flex lg:flex-col gap-4 lg:gap-2 justify-center lg:justify-start">
-              <li>
-                <Link
-                  to="/"
-                  className="text-primary-200 hover:text-white transition-colors duration-200 text-lg font-medium flex items-center gap-2 py-2 px-4 lg:px-0 rounded-lg lg:rounded-none hover:bg-white/10 lg:hover:bg-transparent"
+          {/* Achievement Stats */}
+          <div className="mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {achievements.map((achievement, index) => (
+                <div 
+                  key={index}
+                  className="group text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
                 >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/blog"
-                  className="text-primary-200 hover:text-white transition-colors duration-200 text-lg font-medium flex items-center gap-2 py-2 px-4 lg:px-0 rounded-lg lg:rounded-none hover:bg-white/10 lg:hover:bg-transparent"
-                >
-                  Blog
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        {/* Social Links and Footer */}
-        <div className="space-y-6">
-          {/* Social Icons */}
-          <div className="flex justify-center lg:justify-start gap-4">
-            <a 
-              href={`https://twitter.com/${user.twitter}`}
-              className="social-icon group"
-              aria-label="Twitter"
-            >
-              <FontAwesomeIcon 
-                icon={['fab', 'twitter']} 
-                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
-              />
-            </a>
-            <a 
-              href={`https://github.com/${user.github}`}
-              className="social-icon group"
-              aria-label="GitHub"
-            >
-              <FontAwesomeIcon 
-                icon={['fab', 'github']} 
-                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
-              />
-            </a>
-            <a 
-              href={`https://www.facebook.com/${user.facebook}`}
-              className="social-icon group"
-              aria-label="Facebook"
-            >
-              <FontAwesomeIcon 
-                icon={['fab', 'facebook']} 
-                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
-              />
-            </a>
-            <a 
-              href={`https://www.linkedin.com/in/${user.linkedin}`}
-              className="social-icon group"
-              aria-label="LinkedIn"
-            >
-              <FontAwesomeIcon 
-                icon={['fab', 'linkedin']} 
-                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
-              />
-            </a>
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-primary-200 transition-colors duration-300">
+                    {achievement.number}
+                  </div>
+                  <div className="text-primary-200 text-sm md:text-base font-medium">
+                    {achievement.label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-center lg:text-left">
-            <p className="text-xs text-primary-300">
-              &copy; 2025 {user.name}
-            </p>
-            <p className="text-xs text-primary-400 mt-1">
-              Powered by Gatsby & Tailwind CSS
-            </p>
+          {/* Social Links */}
+          <div className="mb-16">
+            <div className="flex justify-center gap-6">
+              {[
+                { platform: 'github', url: `https://github.com/${user.github}`, icon: faGithub },
+                { platform: 'twitter', url: `https://twitter.com/${user.twitter}`, icon: faTwitter },
+                { platform: 'linkedin', url: `https://linkedin.com/in/${user.linkedin}`, icon: faLinkedin },
+                { platform: 'facebook', url: `https://facebook.com/${user.facebook}`, icon: faFacebook },
+              ].map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.url}
+                  className="group w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 flex items-center justify-center text-white hover:text-primary-200 transition-all duration-300 hover:scale-110 hover:rotate-3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={social.icon} className="text-2xl" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="mb-16">
+            <nav>
+              <ul className="flex justify-center gap-8">
+                <li>
+                  <Link
+                    to="/"
+                    className="group px-8 py-4 text-lg font-semibold text-white hover:text-primary-200 transition-all duration-300 relative"
+                  >
+                    <span className="relative z-10">About</span>
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-75 group-hover:scale-100"></div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog"
+                    className="group px-8 py-4 text-lg font-semibold text-white hover:text-primary-200 transition-all duration-300 relative"
+                  >
+                    <span className="relative z-10">Blog</span>
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-75 group-hover:scale-100"></div>
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div className="flex flex-col items-center space-y-2 animate-bounce">
+              <div className="text-primary-200 text-sm font-medium">Scroll Down</div>
+              <svg className="w-6 h-6 text-primary-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Custom CSS for animation delays */}
+      <style jsx>{`
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </header>
   )
 }
