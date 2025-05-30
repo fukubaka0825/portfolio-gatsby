@@ -73,7 +73,7 @@ module.exports = {
         background_color: '#08033d',
         theme_color: '#08033d',
         display: 'minimal-ui',
-        icon: 'src/assets/images/nari.png', // This path is relative to the root of the site.
+        icon: 'src/assets/images/nari.png',
       },
     },
     {
@@ -90,10 +90,16 @@ module.exports = {
         path: path.join(__dirname, `contents`),
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    'gatsby-plugin-sass',
-    'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require("tailwindcss"), require("autoprefixer")],
+      },
+    },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -101,7 +107,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 500,
+              maxWidth: 800,
+              quality: 80,
+              loading: 'lazy',
             },
           },
           {
@@ -120,16 +128,15 @@ module.exports = {
               noInlineHighlight: false,
             },
           },
-          // `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-copy-linked-files`,
         ],
       },
     },
     {
-      resolve: `gatsby-source-qiita`,
+      resolve: `gatsby-source-rss-feed`,
       options: {
-        accessToken: process.env.QIITA_API_TOKEN,
-        userName: siteMetadata.user.qiita,
-        fetchPrivate: false,
+        url: `https://qiita.com/${siteMetadata.user.qiita}/feed`,
+        name: `QiitaPosts`,
       }
     },
     {
@@ -160,32 +167,5 @@ module.exports = {
         name: `DevToPosts`,
       }
     },
-    {
-      resolve: `gatsby-source-github-api`,
-      options: {
-        token: process.env.GITHUB_API_TOKEN,
-        graphQLQuery: `
-        query ($q: String="", $nFirst: Int=0) {
-          allGithubData: search(query: $q, type: REPOSITORY, first: $nFirst) {
-            edges {
-              node {
-                ... on Repository {
-                  id
-                  name
-                  description
-                  url
-                }
-              }
-            }
-          }
-        }
-        `,
-        variables: {
-          q: `topic:${siteMetadata.github.topic} user:${siteMetadata.user.github}`,
-          nFirst: 10
-        }
-      }
-    },
-    `gatsby-plugin-typescript`
   ],
 }

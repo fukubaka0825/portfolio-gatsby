@@ -1,47 +1,77 @@
-name: Scheduler
+name: Scheduled Update
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    # Run every 6 hours to check for new content from RSS feeds
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+# Allow only one concurrent execution
+concurrency:
+  group: "scheduled-update"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  check-and-deploy:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: setup node 10.x
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '10.x'
+          node-version: '20'
+          cache: 'npm'
 
-      - name: install
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: build
+      - name: Build site with fresh content
         run: npm run build
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
           QIITA_API_TOKEN: ${{ secrets.QIITA_API_TOKEN }}
-          RSS2JSON_API_TOKEN: ${{ secrets.RSS2JSON_API_TOKEN }}
 
-      - name: deploy
-        uses: peaceiris/actions-gh-pages@v2.3.2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+      - name: Check for changes
+        id: check-changes
+        run: |
+          # Check if there are any changes in the built site
+          if git diff --quiet HEAD -- public; then
+            echo "No changes detected"
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected"
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
 
-  audit:
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Audit live URL
-        uses: jakejarvis/lighthouse-action@master
+      - name: Upload build artifacts
+        if: steps.check-changes.outputs.changes == 'true'
+        uses: actions/upload-pages-artifact@v3
         with:
-          url: 'https://www.fukubaka0825.dev'
-      - name: Upload results as an artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: report
-          path: './report'
+          path: public
+
+      - name: Deploy to GitHub Pages
+        if: steps.check-changes.outputs.changes == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Notification
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          echo "Site updated and deployed successfully"
+        
+      - name: No update notification  
+        if: steps.check-changes.outputs.changes == 'false'
+        run: |
+          echo "No content updates found, skipping deployment"
