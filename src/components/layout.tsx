@@ -1,12 +1,18 @@
 import React from 'react'
-import '../assets/scss/main.scss'
+import '../styles/globals.css'
 
 type TemplateProps = {
-  children: JSX.Element[]
+  children: React.ReactNode
 }
 
 const Template: React.FC<TemplateProps> = ({ children }) => (
-  <div>{children}</div>
+  <div className="min-h-screen bg-gray-50">
+    <div className="lg:ml-80">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+        {children}
+      </main>
+    </div>
+  </div>
 )
 
 export default Template

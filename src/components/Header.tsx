@@ -1,6 +1,6 @@
 import React from 'react'
-import Img from 'gatsby-image'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faTwitter,
@@ -23,89 +23,129 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = ({ user }) => {
-  const data = useStaticQuery(graphql`
-    {
-      avatar: file(relativePath: { eq: "nari.png" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
 
   return (
-    <header id="header">
-      <div className="inner">
-        <a href="/" className="image avatar">
-          <Img fixed={data.avatar.childImageSharp.fixed} />
-        </a>
-        <h1 color="#0000CD" >
-          <strong>Takashi Narikawa</strong>{' '}
-          <p>Senior Software Engineer(MLOps/SRE) at &nbsp;</p>
-          <p>
-            <a href={`https://mtch.com/`}>
-              Match Group (eureka, Inc. AI Team)
+    <header className="lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-80 bg-gradient-to-br from-primary-950 to-primary-900 text-white flex flex-col">
+      {/* Header Content */}
+      <div className="flex-1 flex flex-col justify-between p-8 lg:p-12">
+        <div className="space-y-6">
+          {/* Avatar */}
+          <div className="flex justify-center lg:justify-start">
+            <Link to="/" className="block">
+              <div className="relative group">
+                <StaticImage
+                  src="../assets/images/nari.png"
+                  alt="Takashi Narikawa"
+                  width={120}
+                  height={120}
+                  className="rounded-full shadow-lg ring-4 ring-white/20 group-hover:ring-white/40 transition-all duration-300"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Name and Title */}
+          <div className="text-center lg:text-left space-y-2">
+            <h1 className="text-2xl lg:text-3xl font-bold text-white">
+              Takashi Narikawa
+            </h1>
+            <div className="space-y-1">
+              <p className="text-primary-200 text-sm lg:text-base">
+                Senior Software Engineer
+              </p>
+              <p className="text-primary-200 text-sm lg:text-base">
+                (MLOps/SRE)
+              </p>
+              <p className="text-primary-100 text-sm lg:text-base">
+                <a 
+                  href="https://mtch.com/" 
+                  className="hover:text-white transition-colors duration-200 underline decoration-primary-400 underline-offset-2"
+                >
+                  Match Group (eureka, Inc. AI Team)
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="pt-4">
+            <ul className="flex lg:flex-col gap-4 lg:gap-2 justify-center lg:justify-start">
+              <li>
+                <Link
+                  to="/"
+                  className="text-primary-200 hover:text-white transition-colors duration-200 text-lg font-medium flex items-center gap-2 py-2 px-4 lg:px-0 rounded-lg lg:rounded-none hover:bg-white/10 lg:hover:bg-transparent"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blog"
+                  className="text-primary-200 hover:text-white transition-colors duration-200 text-lg font-medium flex items-center gap-2 py-2 px-4 lg:px-0 rounded-lg lg:rounded-none hover:bg-white/10 lg:hover:bg-transparent"
+                >
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {/* Social Links and Footer */}
+        <div className="space-y-6">
+          {/* Social Icons */}
+          <div className="flex justify-center lg:justify-start gap-4">
+            <a 
+              href={`https://twitter.com/${user.twitter}`}
+              className="social-icon group"
+              aria-label="Twitter"
+            >
+              <FontAwesomeIcon 
+                icon={['fab', 'twitter']} 
+                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
+              />
             </a>
-          </p>
-        </h1>
-        <hr></hr>
-        <h4>
-          <Link
-              to="/"
-              style={{
-                color: `white`,
-                textDecoration: `none`,
-                fontSize: 20,
-              }}
-          >
-            About
-          </Link>
-        </h4>
-        <h4>
-          <Link
-              to="/blog"
-              style={{
-                color: `white`,
-                textDecoration: `none`,
-                fontSize: 20,
-              }}
-          >
-            Blog
-          </Link>
-        </h4>
-      </div>
-      <div id="footer">
-        <div className="inner">
-          <ul className="icons">
-            <li>
-              <a href={`https://twitter.com/${user.twitter}`}>
-                <FontAwesomeIcon icon={['fab', 'twitter']} />
-              </a>
-            </li>
-            <li>
-              <a href={`https://github.com/${user.github}`}>
-                <FontAwesomeIcon icon={['fab', 'github']} />
-              </a>
-            </li>
-            <li>
-              <a href={`https://www.facebook.com/${user.facebook}`}>
-                <FontAwesomeIcon icon={['fab', 'facebook']} />
-              </a>
-            </li>
-            <li>
-              <a href={`https://www.linkedin.com/in/${user.linkedin}`}>
-                <FontAwesomeIcon icon={['fab', 'linkedin']} />
-              </a>
-            </li>
-          </ul>
-          <ul className="copyright">
-            <li>&copy; 2020 {user.name}</li>
-            <li>
-              Design: <a href="http://html5up.net">HTML5 UP</a>
-            </li>
-          </ul>
+            <a 
+              href={`https://github.com/${user.github}`}
+              className="social-icon group"
+              aria-label="GitHub"
+            >
+              <FontAwesomeIcon 
+                icon={['fab', 'github']} 
+                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
+              />
+            </a>
+            <a 
+              href={`https://www.facebook.com/${user.facebook}`}
+              className="social-icon group"
+              aria-label="Facebook"
+            >
+              <FontAwesomeIcon 
+                icon={['fab', 'facebook']} 
+                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
+              />
+            </a>
+            <a 
+              href={`https://www.linkedin.com/in/${user.linkedin}`}
+              className="social-icon group"
+              aria-label="LinkedIn"
+            >
+              <FontAwesomeIcon 
+                icon={['fab', 'linkedin']} 
+                className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" 
+              />
+            </a>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center lg:text-left">
+            <p className="text-xs text-primary-300">
+              &copy; 2025 {user.name}
+            </p>
+            <p className="text-xs text-primary-400 mt-1">
+              Powered by Gatsby & Tailwind CSS
+            </p>
+          </div>
         </div>
       </div>
     </header>

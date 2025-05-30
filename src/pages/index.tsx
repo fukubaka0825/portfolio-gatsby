@@ -8,7 +8,6 @@ import BlogPosts, { Post as BlogPost } from '../components/BlogPosts'
 import NotePosts, { Post as NotePost } from '../components/NotePosts'
 import MediumPosts, { Post as MediumPost } from '../components/MediumPosts'
 import DevToPosts, { Post as DevToPost } from '../components/DevToPosts'
-import GitHubRepos, { Repo } from '../components/GitHubRepos'
 import Head from '../components/Head'
 import Works  from '../components/Works'
 import Language  from '../components/Language'
@@ -36,7 +35,7 @@ type Skill = {
 
 type HomeIndexProps = {
   data: {
-    allQiitaPost: {
+    allFeedQiitaPosts: {
       edges: QiitaPost[]
     }
     allFeedBlogPosts: {
@@ -50,19 +49,6 @@ type HomeIndexProps = {
     }
     allFeedDevToPosts: {
       edges: DevToPost[]
-    }
-    allGithubData: {
-      edges: [
-        {
-          node: {
-            data: {
-              allGithubData: {
-                edges: Repo[]
-              }
-            }
-          }
-        }
-      ]
     }
     site: {
       siteMetadata: {
@@ -86,7 +72,7 @@ type HomeIndexProps = {
 }
 
 const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
-  const qiitaPosts = data.allQiitaPost.edges.filter(function (item, index) {
+  const qiitaPosts = data.allFeedQiitaPosts.edges.filter(function (item, index) {
     return (index <= 9);
   });
   const blogPosts = data.allFeedBlogPosts.edges.filter(function (item, index) {
@@ -102,8 +88,6 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
     return (index <= 4);
   });
 
-  const repos = data.allGithubData.edges[0].node.data.allGithubData.edges
-
   const {user, skills, blog, note , medium, devto} = data.site.siteMetadata
 
   return (
@@ -116,9 +100,6 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
         <Career/>
         <Works/>
         <Contribution/>
-        {repos && repos.length > 0 && (
-          <GitHubRepos repos={repos} user={user.github} />
-        )}
         <Language/>
         <Education/>
         {devToPosts && devToPosts.length > 0 && (
@@ -175,13 +156,13 @@ export const query = graphql`
         }
       }
     }
-    allQiitaPost{
+    allFeedQiitaPosts {
       edges {
-        node{
+        node {
           id
           title
-          url
-          created_at
+          link
+          pubDate
         }
       }
     }
@@ -222,24 +203,6 @@ export const query = graphql`
           title
           link
           pubDate
-        }
-      }
-    }
-    allGithubData {
-      edges {
-        node {
-          data {
-            allGithubData {
-              edges {
-                node {
-                  id
-                  name
-                  description
-                  url
-                }
-              }
-            }
-          }
         }
       }
     }
