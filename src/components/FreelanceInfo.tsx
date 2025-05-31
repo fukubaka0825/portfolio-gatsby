@@ -10,7 +10,7 @@ const FreelanceInfo: React.FC<FreelanceInfoProps> = () => {
                 <div className="text-center mb-12">
                     <h2 className="section-title">業務委託募集</h2>
                     <p className="section-subtitle">
-                        SRE/MLOps/クラウドインフラ/アプリケーション領域での業務委託をお受けしています
+                        SRE/MLOps/クラウドインフラ/アプリ開発領域での業務委託をお受けしています
                     </p>
                 </div>
 
