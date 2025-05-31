@@ -13,8 +13,8 @@ const Interest: React.FC<InterestProps> = () => {
             description: "Site Reliability Engineering and DevOps practices",
             skills: [
                 { name: "Site Reliability Engineering" },
-                { name: "DevOps/CI/CD" },
-                { name: "AIOps/Observability" },
+                { name: "DevOps, AIOps, CI/CD" },
+                { name: "Observability" },
                 { name: "Incident Management" }
             ]
         },
@@ -38,7 +38,7 @@ const Interest: React.FC<InterestProps> = () => {
             skills: [
                 { name: "Natural Language Processing" },
                 { name: "Text Moderation" },
-                { name: "Machine Learning" },
+                { name: "LLM" },
                 { name: "Deep Learning" }
             ]
         },
@@ -75,7 +75,7 @@ const Interest: React.FC<InterestProps> = () => {
                 { name: "AWS" },
                 { name: "Google Cloud" },
                 { name: "Terraform" },
-                { name: "Infrastructure Design" }
+                { name: "Datadog, Sentry" }
             ]
         },
         {
