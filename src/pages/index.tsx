@@ -16,7 +16,6 @@ import Contribution from '../components/Contribution'
 import Career from '../components/Career'
 import Education from '../components/Education'
 import Interest from '../components/Interest'
-import FreelanceInfo from '../components/FreelanceInfo'
 
 type User = {
   name: string
@@ -95,7 +94,6 @@ const HomeIndex: React.FC<HomeIndexProps> = ({ data }) => {
       <Head />
       <Header user={user} />
       <div id="main">
-        <FreelanceInfo/>
         <Interest/>
         <Career/>
         <Works/>
