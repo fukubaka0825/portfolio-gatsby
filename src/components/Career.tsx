@@ -6,7 +6,7 @@ const Career: React.FC<CareerProps> = () => {
     const careers = [
         {
             position: "Senior Software Engineer, LLM Platform & Enablement",
-            department: "GenAI Platform / Developer Enablement",
+            department: "GenAI Platform / Company-wide AI Enablement",
             company: "Match Group (eureka, Inc.)",
             companyUrl: "https://mtch.com/",
             period: "March 2026 〜 Present",
@@ -14,8 +14,8 @@ const Career: React.FC<CareerProps> = () => {
             type: "Full-time",
             highlights: [
                 "全社向けGenAIプラットフォームと開発者向けツールの設計・運用",
-                "各チームがAIを実務に取り入れやすくするためのベストプラクティス整備、ワークフロー設計、導入支援",
-                "チーム横断でのハンズオン支援を通じた、AI活用の定着と開発生産性向上の推進"
+                "従業員全体がAIを業務に取り入れやすくするためのベストプラクティス整備、ワークフロー設計、導入支援",
+                "組織横断のハンズオン支援を通じた、全社でのAI活用の定着と業務生産性向上の推進"
             ],
             technologies: ["AWS", "Google Cloud", "Langfuse", "Python", "TypeScript"],
             icon: "🧠",

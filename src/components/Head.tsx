@@ -49,7 +49,7 @@ const Head: React.FC<HeadComponentProps> = ({ pageTitle, pageDescription, pageUr
     <Helmet title={seoTitle}>
       <html lang={siteLanguage} />
       <meta name="description" content={seoDescription} />
-      <meta name="keywords" content="LLM Platform, GenAI, Developer Enablement, Langfuse, AWS, Google Cloud, Python, TypeScript, Portfolio, Freelance, fukubaka0825" />
+      <meta name="keywords" content="LLM Platform, GenAI, AI Enablement, Langfuse, AWS, Google Cloud, Python, TypeScript, Portfolio, Freelance, fukubaka0825" />
       <meta name="author" content={user.name} />
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,7 +102,7 @@ const Head: React.FC<HeadComponentProps> = ({ pageTitle, pageDescription, pageUr
           "knowsAbout": [
             "LLM Platform",
             "GenAI",
-            "Developer Enablement",
+            "AI Enablement",
             "Langfuse",
             "MLOps",
             "SRE",

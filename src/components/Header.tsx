@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
                 Senior Software Engineer, LLM Platform &amp; Enablement
               </div>
               <div className="text-xs text-gray-500">
-                GenAI Platform • Developer Enablement • AWS • Google Cloud
+                GenAI Platform • Company-wide AI Enablement • AWS • Google Cloud
               </div>
             </div>
           </div>
