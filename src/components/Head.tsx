@@ -49,7 +49,7 @@ const Head: React.FC<HeadComponentProps> = ({ pageTitle, pageDescription, pageUr
     <Helmet title={seoTitle}>
       <html lang={siteLanguage} />
       <meta name="description" content={seoDescription} />
-      <meta name="keywords" content="MLOps, SRE, Cloud Infrastructure, AWS, Terraform, Go, React, Gatsby, Portfolio, Freelance, fukubaka0825" />
+      <meta name="keywords" content="LLM Platform, GenAI, Developer Enablement, Langfuse, AWS, Google Cloud, Python, TypeScript, Portfolio, Freelance, fukubaka0825" />
       <meta name="author" content={user.name} />
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -86,10 +86,10 @@ const Head: React.FC<HeadComponentProps> = ({ pageTitle, pageDescription, pageUr
           "@context": "https://schema.org",
           "@type": "Person",
           "name": user.name,
-          "jobTitle": "Senior Software Engineer (MLOps/SRE)",
+          "jobTitle": "Senior Software Engineer, LLM Platform & Enablement",
           "worksFor": {
             "@type": "Organization",
-            "name": "Match Group (eureka, Inc. AI Team)"
+            "name": "Match Group (eureka, Inc.)"
           },
           "url": siteUrl,
           "image": imageUrl,
@@ -100,14 +100,17 @@ const Head: React.FC<HeadComponentProps> = ({ pageTitle, pageDescription, pageUr
             "https://qiita.com/fukubaka0825"
           ],
           "knowsAbout": [
+            "LLM Platform",
+            "GenAI",
+            "Developer Enablement",
+            "Langfuse",
             "MLOps",
             "SRE",
-            "Cloud Infrastructure", 
+            "Cloud Infrastructure",
             "AWS",
-            "Terraform",
-            "Go",
-            "Docker",
-            "Kubernetes",
+            "Google Cloud",
+            "Python",
+            "TypeScript",
             "Machine Learning Operations"
           ],
           "description": seoDescription,

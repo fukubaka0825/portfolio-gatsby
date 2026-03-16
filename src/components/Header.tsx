@@ -68,10 +68,10 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
                 Takashi Narikawa
               </h1>
               <div className="text-sm text-gray-600">
-                Senior Software Engineer
+                Senior Software Engineer, LLM Platform &amp; Enablement
               </div>
               <div className="text-xs text-gray-500">
-                Machine Learning • MLOps • AIOps • SRE
+                GenAI Platform • Developer Enablement • AWS • Google Cloud
               </div>
             </div>
           </div>
