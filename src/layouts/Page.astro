@@ -1,0 +1,14 @@
+---
+import Footer from '~/components/Footer.astro'
+import Base from '~/layouts/Base.astro'
+
+type Props = { title: string; description?: string; type?: 'website' | 'article'; publishedAt?: Date }
+const props = Astro.props
+---
+
+<Base {...props}>
+  <div class="bg-paper pt-32 pb-24 sm:pt-40">
+    <slot />
+  </div>
+  <Footer />
+</Base>

@@ -1,0 +1,14 @@
+---
+import Page from '~/layouts/Page.astro'
+---
+
+<Page title="Not found">
+  <div class="wrap max-w-5xl">
+    <h1 class="display text-[clamp(5rem,20vw,16rem)] font-extrabold text-yolk [-webkit-text-stroke:3px_var(--color-ink)]">404</h1>
+    <p class="mt-6 max-w-[32rem] text-[1.1rem]">このページは見つかりませんでした。URLが変わったか、削除された可能性があります。</p>
+    <p class="mt-8 flex flex-wrap gap-3">
+      <a href="/" class="rounded-full bg-ink px-5 py-2 font-semibold text-yolk">トップへ戻る</a>
+      <a href="/blog/" class="rounded-full border-2 border-ink px-5 py-2 font-semibold">ブログを見る</a>
+    </p>
+  </div>
+</Page>

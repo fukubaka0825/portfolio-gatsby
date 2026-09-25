@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets'
+import avatar from '~/assets/profile/nari.jpg'
+
+const isHome = Astro.url.pathname === '/'
+const home = (hash: string) => (isHome ? hash : `/${hash}`)
+const items = [
+  { label: 'Career', href: home('#career') },
+  { label: 'Works', href: home('#works') },
+  { label: 'Writing', href: home('#writing') },
+  { label: 'Blog', href: '/blog/' },
+]
+---
+
+<header class="pointer-events-none fixed inset-x-0 top-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top))]">
+  <nav
+    aria-label="メイン"
+    class="wrap pointer-events-none flex items-center justify-between gap-3"
+  >
+    <a
+      href="/"
+      class="pointer-events-auto flex items-center gap-2 rounded-full bg-ink p-1 sm:pr-4 text-chalk shadow-[0_6px_24px_-12px_rgba(15,43,47,0.6)] transition-transform duration-300 hover:-rotate-2"
+      aria-label="Takashi Narikawa ホーム"
+    >
+      <Image src={avatar} alt="" width={64} height={64} class="size-8 rounded-full" loading="eager" />
+      <span class="hidden text-[0.95rem] font-semibold tracking-tight sm:inline">nari</span>
+    </a>
+    <ul
+      class="pointer-events-auto flex items-center gap-0.5 rounded-full bg-ink p-1 text-[0.9rem] text-chalk shadow-[0_6px_24px_-12px_rgba(15,43,47,0.6)]"
+      data-nav
+    >
+      {
+        items.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              data-nav-link={item.href.replace(/^\//, '')}
+              class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-ink-3 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

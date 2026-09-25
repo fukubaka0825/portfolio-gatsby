@@ -1,12 +1,12 @@
-# Project dependencies
-.cache
-node_modules
-yarn-error.log
-yarn.lock
-
-# Build directory
-/public
-.DS_Store
-
-# Environment variables
+node_modules/
+dist/
+.astro/
+.cache/
+.lighthouseci/
 .env
+.env.*
+.DS_Store
+npm-debug.log*
+test-results/
+playwright-report/
+.preview-dist/

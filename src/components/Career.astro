@@ -1,0 +1,263 @@
+---
+import { CAREER_START, type Role, roles } from '~/data/career'
+import { durationLabel, formatMonth, monthIndex, nowMonth } from '~/lib/format'
+
+const end = monthIndex(nowMonth()) + 1
+const start = monthIndex(CAREER_START)
+const pct = (m: number) => ((m - start) / (end - start)) * 100
+const span = (r: Role) => ({
+  s: monthIndex(r.start),
+  e: monthIndex(r.end ?? nowMonth()) + 1,
+})
+
+const mains = roles.filter((r) => r.lane === 'main')
+const sides = roles.filter((r) => r.lane === 'side').sort((a, b) => a.start.localeCompare(b.start))
+
+// Side roles go into as few rows as possible; overlapping ones stack like concurrent child spans.
+const sideRows: Role[][] = []
+for (const r of sides) {
+  const row = sideRows.find((rw) => rw.every((o) => span(o).e <= span(r).s || span(r).e <= span(o).s))
+  if (row) row.push(r)
+  else sideRows.push([r])
+}
+
+// Each side role sits next to the full-time role it ran alongside.
+const pairing = mains.map((m) => ({
+  main: m,
+  sides: sides.filter((s) => span(s).s >= span(m).s && span(s).s < span(m).e),
+}))
+
+const years: number[] = []
+for (let y = Number(CAREER_START.slice(0, 4)) + 1; y * 12 < end; y++) years.push(y)
+
+const period = (r: Role) => `${formatMonth(r.start)} – ${r.end ? formatMonth(r.end) : 'Present'}`
+const totalYears = Math.floor((end - start) / 12)
+const bar = (r: Role) => {
+  const { s, e } = span(r)
+  return `left:${pct(s)}%;width:${pct(e) - pct(s)}%`
+}
+---
+
+<section id="career" class="relative bg-ink py-24 text-chalk sm:py-32" data-career>
+  <div class="wrap">
+    <div class="grid gap-6 md:grid-cols-[1fr_minmax(0,28rem)] md:items-end">
+      <h2 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold text-yolk">Career</h2>
+      <p class="text-[1rem] leading-[1.9] text-chalk/80">
+        {totalYears}年分の仕事を、トレースのスパンのように並べました。上の段が本業、下の段が並行して手がけた副業です。バーを押すとその仕事の詳細へ移動します。
+      </p>
+    </div>
+
+    <!-- Trace waterfall -->
+    <div class="mt-14 rounded-[1.75rem] bg-ink-2 p-4 sm:p-6" data-trace data-start={start} data-end={end}>
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <p class="text-[0.95rem] font-semibold">
+          <span class="text-yolk">career</span><span class="text-chalk/50"> / {roles.length} spans</span>
+        </p>
+        <div class="flex gap-1 rounded-full bg-ink p-1 text-[0.85rem]" role="group" aria-label="表示範囲">
+          <button type="button" class="rounded-full px-3 py-1 aria-pressed:bg-chalk aria-pressed:text-ink" aria-pressed="true" data-zoom="all">全期間</button>
+          <button
+            type="button"
+            class="rounded-full px-3 py-1 aria-pressed:bg-chalk aria-pressed:text-ink"
+            aria-pressed="false"
+            data-zoom="2025"
+            data-zoom-start={monthIndex('2024-10')}
+            data-zoom-end={monthIndex('2025-11')}>2025年を拡大</button
+          >
+        </div>
+      </div>
+
+      <div class="-mx-4 mt-6 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0" data-lenis-prevent-wheel>
+        <div class="grid min-w-[44rem] grid-cols-[3.5rem_1fr] gap-x-3 sm:grid-cols-[4.5rem_1fr]">
+          <div class="sticky left-0 z-10 bg-ink-2"></div>
+          <div class="relative h-6 text-[0.75rem] text-chalk/50 tnum" aria-hidden="true">
+            {
+              years.map((y) => (
+                <span class="absolute top-0 -translate-x-1/2" style={`left:${pct(y * 12)}%`} data-at={y * 12}>
+                  {y}
+                </span>
+              ))
+            }
+          </div>
+
+          <p class="sticky left-0 z-10 self-stretch bg-ink-2 content-center text-[0.85rem] font-semibold text-yolk">本業</p>
+          <div class="relative h-11" data-track>
+            {years.map((y) => <span class="absolute inset-y-0 w-px bg-chalk/10" style={`left:${pct(y * 12)}%`} data-at={y * 12} aria-hidden="true" />)}
+            {
+              mains.map((r) => (
+                <a
+                  href={`#role-${r.id}`}
+                  class="group absolute inset-y-1 flex origin-left items-center overflow-hidden rounded-lg bg-yolk px-2 text-[0.78rem] font-semibold whitespace-nowrap text-ink transition-[filter] hover:brightness-110"
+                  style={bar(r)}
+                  data-bar
+                  data-s={span(r).s}
+                  data-e={span(r).e}
+                  data-role={r.id}
+                  title={`${r.title} / ${r.company}（${period(r)}）`}
+                >
+                  <span class="truncate" data-label>{r.short}</span>
+                  {r.end === null && <span class="ongoing absolute inset-y-0 right-0 w-6" aria-hidden="true" />}
+                </a>
+              ))
+            }
+          </div>
+
+          <p class="sticky left-0 z-10 mt-2 self-stretch bg-ink-2 pt-2.5 text-[0.85rem] font-semibold text-hoodie">副業</p>
+          <div class="mt-2 flex flex-col gap-1">
+            {
+              sideRows.map((row) => (
+                <div class="relative h-9" data-track>
+                  {years.map((y) => <span class="absolute inset-y-0 w-px bg-chalk/10" style={`left:${pct(y * 12)}%`} data-at={y * 12} aria-hidden="true" />)}
+                  {row.map((r) => (
+                    <a
+                      href={`#role-${r.id}`}
+                      class="absolute inset-y-1 flex origin-left items-center overflow-hidden rounded-md bg-hoodie px-2 text-[0.74rem] font-semibold whitespace-nowrap text-ink transition-[filter] hover:brightness-110"
+                      style={bar(r)}
+                      data-bar
+                      data-s={span(r).s}
+                      data-e={span(r).e}
+                      data-role={r.id}
+                      data-spill
+                      title={`${r.title} / ${r.company}（${period(r)}）`}
+                    >
+                      <span class="truncate" data-label>{r.short}</span>
+                    </a>
+                  ))}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dual lanes: side on the left, main on the right, joined by one spine. -->
+    <div class="relative mt-20" data-lanes>
+      <div class="mb-10 hidden grid-cols-[1fr_4rem_1fr] text-[0.95rem] font-semibold md:grid">
+        <p class="text-right text-hoodie">副業 / Side</p>
+        <span></span>
+        <p class="text-yolk">本業 / Main</p>
+      </div>
+
+      <div class="absolute top-0 bottom-0 left-[0.6rem] w-0.5 bg-chalk/12 md:left-1/2 md:-translate-x-1/2 md:top-16" aria-hidden="true">
+        <div class="size-full origin-top bg-gradient-to-b from-yolk via-yolk to-hoodie" data-spine></div>
+      </div>
+
+      <ol class="flex flex-col gap-16 md:gap-20">
+        {
+          pairing.map(({ main, sides }) => (
+            <li class="relative grid gap-6 pl-9 md:grid-cols-[1fr_4rem_1fr] md:gap-0 md:pl-0">
+              <span
+                class="absolute top-1.5 left-[0.6rem] size-4 -translate-x-1/2 rounded-full border-[3px] border-ink bg-yolk ring-2 ring-yolk md:left-1/2"
+                aria-hidden="true"
+              />
+
+              <div class="order-2 flex flex-col gap-4 md:order-1 md:items-end md:pr-2">
+                {sides.length > 0 && (
+                  <p class="text-[0.85rem] font-semibold text-hoodie md:hidden">並行していた副業</p>
+                )}
+                {sides.map((r) => (
+                  <article
+                    id={`role-${r.id}`}
+                    class="role relative w-full max-w-[26rem] scroll-mt-28 rounded-2xl border-l-4 border-hoodie bg-ink-2 px-5 py-4 md:after:absolute md:after:top-7 md:after:left-full md:after:h-0.5 md:after:w-[calc(2rem+0.5rem)] md:after:bg-hoodie/70"
+                    data-role-card={r.id}
+                  >
+                    <p class="text-[0.82rem] text-chalk/60 tnum">
+                      {period(r)}（{durationLabel(r.start, r.end)}）
+                    </p>
+                    <h3 class="mt-1 text-[1.15rem] leading-snug font-bold">{r.title}</h3>
+                    <p class="text-[0.98rem] text-hoodie">{r.company}</p>
+                    <ul class="mt-3 flex flex-wrap gap-1.5 text-[0.78rem]">
+                      <li class="rounded-full bg-ink px-2.5 py-0.5">{r.employment}</li>
+                      <li class="rounded-full bg-ink px-2.5 py-0.5">{r.location}</li>
+                    </ul>
+                  </article>
+                ))}
+              </div>
+
+              <span class="hidden md:order-2 md:block" />
+
+              <article
+                id={`role-${main.id}`}
+                class="role order-1 scroll-mt-28 md:order-3 md:pl-2"
+                data-role-card={main.id}
+              >
+                <p class="text-[0.88rem] text-chalk/60 tnum">
+                  {period(main)}（{durationLabel(main.start, main.end)}）
+                  {main.end === null && <span class="ml-2 rounded-full bg-yolk px-2 py-0.5 text-[0.75rem] font-semibold text-ink">Now</span>}
+                </p>
+                <h3 class="mt-2 text-[clamp(1.35rem,2.4vw,1.9rem)] leading-tight font-bold tracking-tight">{main.title}</h3>
+                <p class="mt-1 text-[1rem]">
+                  {main.url ? (
+                    <a href={main.url} target="_blank" rel="noopener" class="text-yolk underline decoration-yolk/40 hover:decoration-yolk">
+                      {main.company}
+                    </a>
+                  ) : (
+                    <span class="text-yolk">{main.company}</span>
+                  )}
+                  {main.team && <span class="text-chalk/60">／{main.team}</span>}
+                </p>
+                <ul class="mt-4 flex flex-col gap-2 text-[0.96rem] leading-[1.8] text-chalk/85">
+                  {main.highlights.map((h) => (
+                    <li class="relative pl-5 before:absolute before:top-[0.72em] before:left-0 before:size-2 before:rounded-[2px] before:bg-yolk/80">
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+                {main.stack.length > 0 && (
+                  <p class="mt-4 text-[0.85rem] text-chalk/55">{main.stack.join('　')}</p>
+                )}
+              </article>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ongoing {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 5px,
+      color-mix(in oklab, var(--color-ink) 22%, transparent) 5px 10px
+    );
+    background-size: 28px 28px;
+    animation: march 1.2s linear infinite;
+  }
+  @keyframes march {
+    to {
+      background-position: 28px 0;
+    }
+  }
+  .role {
+    transition:
+      box-shadow 0.4s var(--ease-out-expo),
+      transform 0.4s var(--ease-out-expo);
+  }
+  .role.is-lit {
+    box-shadow: 0 0 0 2px var(--color-yolk);
+    border-radius: 1rem;
+  }
+  /* Side spans are often a few months wide; their label moves beside the bar instead of becoming "R…". */
+  [data-bar].is-narrow {
+    overflow: visible;
+  }
+  [data-bar].is-narrow [data-label] {
+    position: absolute;
+    left: calc(100% + 0.45rem);
+    color: var(--color-hoodie);
+    overflow: visible;
+  }
+  [data-bar].is-dim {
+    opacity: 0.35;
+  }
+  [data-bar] {
+    transition: opacity 0.3s;
+  }
+</style>
+
+<script>
+  import { initCareer } from '~/scripts/career'
+  initCareer()
+</script>
