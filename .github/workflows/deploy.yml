@@ -26,6 +26,8 @@ jobs:
     if: ${{ !cancelled() && !failure() }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -54,7 +56,8 @@ jobs:
         if: github.event_name != 'schedule' || steps.diff.outputs.changed == 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.GH_TOKEN }}
+          # GITHUB_TOKEN instead of a PAT: nothing to expire (the old GH_TOKEN PAT silently died in 2026).
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
