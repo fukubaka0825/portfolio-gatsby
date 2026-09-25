@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content'
+import Page from '~/layouts/Page.astro'
+import { formatDate } from '~/lib/format'
+
+// Posts live at the site root (`/<slug>/`) because that is where Gatsby published them.
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+const description =
+  post.data.description ??
+  post.body
+    ?.replace(/<[^>]+>|[#*`>[\]()]/g, '')
+    .trim()
+    .slice(0, 120)
+---
+
+<Page title={post.data.title} description={description} type="article" publishedAt={post.data.date}>
+  <article class="wrap max-w-3xl">
+    <a href="/blog/" class="text-[0.95rem] font-semibold underline decoration-hoodie decoration-2">Blog</a>
+    <h1 class="mt-6 text-[clamp(2rem,5vw,3.4rem)] leading-[1.1] font-extrabold tracking-tight">{post.data.title}</h1>
+    <div class="mt-5 flex flex-wrap items-center gap-3 text-[0.9rem]">
+      <time datetime={post.data.date.toISOString()} class="text-mist tnum">{formatDate(post.data.date)}</time>
+      {
+        post.data.tags.map((t) => (
+          <a href={`/tags/${t}/`} class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.8rem] font-semibold">
+            {t}
+          </a>
+        ))
+      }
+    </div>
+    <div
+      class="prose prose-lg mt-12 max-w-none prose-headings:tracking-tight prose-a:decoration-hoodie prose-a:decoration-2 prose-pre:rounded-2xl prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl [&_iframe]:max-w-full"
+    >
+      <Content />
+    </div>
+  </article>
+</Page>

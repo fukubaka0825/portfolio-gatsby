@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content'
+import PostList from '~/components/PostList.astro'
+import Page from '~/layouts/Page.astro'
+
+const posts = await getCollection('blog')
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort()
+---
+
+<Page title="Blog" description="Takashi Narikawa のブログ。インフラ、Kubernetes、Go などの覚え書き。">
+  <div class="wrap max-w-5xl">
+    <h1 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold">Blog</h1>
+    <p class="mt-4 max-w-[36rem] text-ink/75">
+      このサイトに直接書いた覚え書きです。そのほかの記事はトップページの Writing にまとめています。
+    </p>
+    <ul class="mt-8 flex flex-wrap gap-2">
+      {
+        tags.map((t) => (
+          <li>
+            <a href={`/tags/${t}/`} class="rounded-full border-2 border-ink px-3 py-1 text-[0.85rem] font-semibold hover:bg-ink hover:text-yolk">
+              {t}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="mt-12">
+      <PostList posts={posts} />
+    </div>
+  </div>
+</Page>

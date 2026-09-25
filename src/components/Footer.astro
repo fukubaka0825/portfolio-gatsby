@@ -1,0 +1,50 @@
+---
+import { profile } from '~/data/profile'
+
+const links = [
+  { label: 'X', href: profile.links.x },
+  { label: 'LinkedIn', href: profile.links.linkedin },
+  { label: 'GitHub', href: profile.links.github },
+  { label: 'Speaker Deck', href: profile.links.speakerdeck },
+]
+---
+
+<footer id="contact" class="relative overflow-hidden bg-hoodie text-ink">
+  <div class="wrap py-20 sm:py-28">
+    <p class="max-w-[34rem] text-[1.05rem] leading-[1.9]">
+      登壇・寄稿・LLMプラットフォームやMLOpsの相談は、X か LinkedIn の DM でどうぞ。
+    </p>
+    <a
+      href={profile.links.x}
+      target="_blank"
+      rel="noopener me"
+      class="display group mt-6 block text-[clamp(2.6rem,10.5vw,10rem)] font-extrabold break-all"
+      data-handle
+    >
+      <span class="inline-block transition-transform duration-700 ease-out-expo group-hover:-translate-y-2">@{profile.handle}</span>
+    </a>
+    <ul class="mt-10 flex flex-wrap gap-2">
+      {
+        links.map((l) => (
+          <li>
+            <a
+              href={l.href}
+              target="_blank"
+              rel="noopener me"
+              class="inline-flex rounded-full border-2 border-ink px-4 py-1.5 text-[0.92rem] font-semibold transition-colors duration-300 hover:bg-ink hover:text-hoodie"
+              data-magnet
+            >
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="mt-16 flex flex-wrap justify-between gap-4 border-t-2 border-ink pt-6 text-[0.85rem]">
+      <p>© {new Date().getFullYear()} {profile.name}</p>
+      <p>
+        <a href="https://github.com/fukubaka0825/portfolio-gatsby" target="_blank" rel="noopener" class="underline">このサイトのソース</a>
+      </p>
+    </div>
+  </div>
+</footer>

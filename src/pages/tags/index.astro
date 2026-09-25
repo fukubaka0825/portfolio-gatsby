@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content'
+import Page from '~/layouts/Page.astro'
+
+const posts = await getCollection('blog')
+const counts = new Map<string, number>()
+for (const t of posts.flatMap((p) => p.data.tags)) counts.set(t, (counts.get(t) ?? 0) + 1)
+const tags = [...counts].sort(([a], [b]) => a.localeCompare(b))
+---
+
+<Page title="Tags">
+  <div class="wrap max-w-5xl">
+    <h1 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold">Tags</h1>
+    <ul class="mt-10 flex flex-wrap gap-3">
+      {
+        tags.map(([t, n]) => (
+          <li>
+            <a href={`/tags/${t}/`} class="inline-flex items-baseline gap-2 rounded-full border-2 border-ink px-4 py-1.5 font-semibold hover:bg-ink hover:text-yolk">
+              {t}
+              <span class="text-[0.8rem] opacity-60 tnum">{n}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Page>

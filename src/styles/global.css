@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque/standard.css";
+@import "@fontsource/zen-kaku-gothic-new/400.css";
+@import "@fontsource/zen-kaku-gothic-new/700.css";
+@plugin "@tailwindcss/typography";
+
+/*
+ * The palette is lifted from the avatar illustration (yellow wall, orange hoodie, teal-black hair, white brush
+ * streaks) so the site reads as the same person as the icon people already know from X/GitHub.
+ */
+@theme {
+  --color-yolk: #f5d33f;
+  --color-yolk-deep: #e9c21f;
+  --color-hoodie: #ee7d1c;
+  --color-hoodie-deep: #c95f05;
+  --color-ink: #0f2b2f;
+  --color-ink-2: #173a3f;
+  --color-ink-3: #24515a;
+  --color-chalk: #f3f6f1;
+  --color-paper: #ffffff;
+  --color-mist: #5f7b7e;
+  --color-mist-light: #9fb6b4;
+  --color-line: #dbe3e1;
+
+  --font-display: "Bricolage Grotesque Variable", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --font-sans: "Bricolage Grotesque Variable", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings:
+      "ss01",
+      "tnum" 0;
+    line-height: 1.7;
+  }
+  :lang(ja) body,
+  body:lang(ja) {
+    line-break: strict;
+  }
+  ::selection {
+    background: var(--color-hoodie);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-hoodie);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+}
+
+/* Lenis owns scrolling; these are its documented required styles. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 100;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+}
+
+/* Cross-document view transitions: blog <-> home feel like one app with zero client router JS. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: var(--ease-out-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+  /* biome-ignore-start lint/complexity/noImportantStyles: reduced motion must beat every component-level transition */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* biome-ignore-end lint/complexity/noImportantStyles: reduced motion must beat every component-level transition */
+}

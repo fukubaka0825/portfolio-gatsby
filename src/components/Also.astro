@@ -1,0 +1,59 @@
+---
+import { certifications, education, languages, oss } from '~/data/misc'
+---
+
+<section id="also" class="bg-paper pb-24 sm:pb-32">
+  <div class="wrap grid gap-12 border-t-2 border-ink pt-10 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <h2 class="text-[1.25rem] font-bold">OSS</h2>
+      <ul class="mt-4 flex flex-col gap-3">
+        {
+          oss.map((o) => (
+            <li>
+              <a href={o.url} target="_blank" rel="noopener" class="font-semibold underline decoration-line decoration-2 hover:decoration-hoodie">
+                {o.repo}
+              </a>
+              <p class="text-[0.9rem] text-ink/70">{o.note}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-[1.25rem] font-bold">資格</h2>
+      <ul class="mt-4 flex flex-col gap-2 text-[0.95rem]">
+        {
+          certifications.map((c) => (
+            <li class="grid grid-cols-[4.5rem_1fr] gap-2">
+              <span class="text-mist tnum">{c.date.replace('-', '.')}</span>
+              <span>{c.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-[1.25rem] font-bold">学歴</h2>
+      <p class="mt-4 text-[0.95rem]">
+        <a href={education.url} target="_blank" rel="noopener" class="font-semibold underline decoration-line decoration-2 hover:decoration-hoodie">
+          {education.school}
+        </a>
+      </p>
+      <p class="text-[0.95rem] text-ink/75">{education.faculty}　{education.degree}</p>
+      <p class="text-[0.9rem] text-mist tnum">{education.graduated.replace('-', '.')} 卒業</p>
+    </div>
+    <div>
+      <h2 class="text-[1.25rem] font-bold">言語</h2>
+      <ul class="mt-4 flex flex-col gap-2 text-[0.95rem]">
+        {
+          languages.map((l) => (
+            <li>
+              <span class="font-semibold">{l.name}</span>
+              <span class="text-ink/70">　{l.level}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

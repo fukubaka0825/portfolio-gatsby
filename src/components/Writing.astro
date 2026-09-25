@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content'
+import { feedHomes, getFeedItems } from '~/lib/feeds'
+import { formatDate } from '~/lib/format'
+
+const LIMIT = 12
+const posts = await getCollection('blog')
+type Entry = { title: string; url: string; date: string; source: string; local?: boolean }
+const local: Entry[] = posts.map((p) => ({
+  title: p.data.title,
+  url: `/${p.id}/`,
+  date: p.data.date.toISOString(),
+  source: 'Blog',
+  local: true,
+}))
+const external = await getFeedItems()
+const items: Entry[] = [...external, ...local]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, LIMIT * 2)
+const sources = [...new Set(items.map((i) => i.source))]
+---
+
+<section id="writing" class="bg-paper pb-24 sm:pb-32">
+  <div class="wrap">
+    <div class="grid gap-6 md:grid-cols-[1fr_minmax(0,28rem)] md:items-end">
+      <h2 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold">Writing</h2>
+      <p class="text-[1rem] leading-[1.9] text-ink/75">
+        各プラットフォームに書いたものを、ビルドのたびに集めて新しい順に並べています。
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-2" role="group" aria-label="媒体で絞り込む" data-filter>
+      <button type="button" aria-pressed="true" data-source="all" class="chip">すべて</button>
+      {
+        sources.map((s) => (
+          <button type="button" aria-pressed="false" data-source={s} class="chip">
+            {s}
+          </button>
+        ))
+      }
+    </div>
+
+    <ol class="mt-8 grid gap-x-10 md:grid-cols-2" data-feed>
+      {
+        items.map((item, i) => (
+          <li class="border-t border-line" data-item data-source={item.source} hidden={i >= LIMIT}>
+            <a
+              href={item.url}
+              {...(item.local ? {} : { target: '_blank', rel: 'noopener' })}
+              class="group flex flex-col gap-1 py-4"
+            >
+              <span class="flex gap-3 text-[0.82rem] text-mist tnum">
+                <time datetime={item.date}>{formatDate(item.date)}</time>
+                <span class="font-semibold text-hoodie-deep">{item.source}</span>
+              </span>
+              <span class="text-[1.05rem] leading-snug font-semibold decoration-hoodie decoration-2 underline-offset-4 group-hover:underline">
+                {item.title}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+
+    <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-[0.95rem]">
+      <li><a href="/blog/" class="font-semibold underline decoration-hoodie decoration-2">このサイトのブログ</a></li>
+      {
+        Object.entries(feedHomes).map(([name, href]) => (
+          <li>
+            <a href={href} target="_blank" rel="noopener" class="text-ink/75 underline decoration-line decoration-2 hover:decoration-hoodie">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .chip {
+    border-radius: 9999px;
+    border: 2px solid var(--color-ink);
+    padding: 0.3rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition:
+      background-color 0.25s,
+      color 0.25s;
+  }
+  .chip[aria-pressed='true'] {
+    background: var(--color-ink);
+    color: var(--color-yolk);
+  }
+</style>
+
+<script>
+  import { gsap, reducedMotion } from '~/scripts/motion'
+
+  const LIMIT = 12
+  const group = document.querySelector<HTMLElement>('[data-filter]')
+  const items = [...document.querySelectorAll<HTMLElement>('[data-item]')]
+  group?.addEventListener('click', (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>('button[data-source]')
+    if (!btn) return
+    for (const b of group.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b === btn))
+    const src = btn.dataset.source
+    let shown = 0
+    const visible: HTMLElement[] = []
+    for (const it of items) {
+      const match = src === 'all' || it.dataset.source === src
+      it.hidden = !(match && shown < LIMIT)
+      if (!it.hidden) {
+        shown++
+        visible.push(it)
+      }
+    }
+    if (!reducedMotion()) gsap.fromTo(visible, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power3' })
+  })
+</script>

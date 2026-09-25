@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { formatDate } from '~/lib/format'
+
+type Props = { posts: CollectionEntry<'blog'>[] }
+const posts = [...Astro.props.posts].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<ol class="border-t-2 border-ink">
+  {
+    posts.map((p) => (
+      <li class="border-b border-line">
+        <a href={`/${p.id}/`} class="group grid gap-1 py-6 sm:grid-cols-[8rem_1fr] sm:gap-6">
+          <time datetime={p.data.date.toISOString()} class="text-[0.9rem] text-mist tnum">
+            {formatDate(p.data.date)}
+          </time>
+          <span>
+            <span class="block text-[clamp(1.15rem,2vw,1.5rem)] leading-snug font-bold tracking-tight decoration-hoodie decoration-2 underline-offset-4 group-hover:underline">
+              {p.data.title}
+            </span>
+            <span class="mt-2 flex flex-wrap gap-1.5">
+              {p.data.tags.map((t) => (
+                <span class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.78rem] font-semibold">{t}</span>
+              ))}
+            </span>
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ol>
