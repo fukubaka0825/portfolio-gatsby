@@ -6,7 +6,7 @@ Takashi Narikawa (@fukubaka0825) のポートフォリオ https://www.fukubaka08
 ## 30秒で把握
 
 - Astro 7（静的出力）+ Tailwind CSS v4 + TypeScript。演出は GSAP + Lenis。React は使っていない
-- `master` へ push すると GitHub Actions がビルドして `gh-pages` ブランチへ publish（GitHub Pages / CNAME `www.fukubaka0825.dev`）
+- `master` へ merge すると GitHub Actions がビルドして `gh-pages` ブランチへ publish（GitHub Pages / CNAME `www.fukubaka0825.dev`）。手順は [docs/deploy.md](docs/deploy.md#本番へのリリース手順)
 - 本文データは `src/data/*.ts`、ブログ記事は `src/content/blog/*.md`
 
 ## よく使うコマンド
@@ -21,15 +21,16 @@ Takashi Narikawa (@fukubaka0825) のポートフォリオ https://www.fukubaka08
 | E2E | `npm run test:e2e`（事前に `npm run build`） |
 | OG画像の再生成 | `npm run og` |
 
-PR を出す前に `npm run ci && npm run test:e2e` が通ること。
+PR を出す前に `npm run ci && npm run test:e2e` が通ること。見た目を変えたら QA エージェントの検証 → 本人確認用のローカルプレビュー → merge の順（[docs/testing.md](docs/testing.md)）。
 
 ## docs/
 
+- [docs/development.md](docs/development.md) — セットアップ、lint / format / 型チェック、ローカルでの検証手順
 - [docs/architecture.md](docs/architecture.md) — ディレクトリ構成、ページとURL、外部フィードの取り込み
 - [docs/content.md](docs/content.md) — キャリア・Works・スキル・ブログの更新手順
 - [docs/design.md](docs/design.md) — パレット、タイポグラフィ、モーションとアクセシビリティの原則
-- [docs/deploy.md](docs/deploy.md) — CI/CD、Secrets、定期ビルド、障害時の切り分け
-- [docs/testing.md](docs/testing.md) — Playwright スモークテスト、Lighthouse、QA の進め方
+- [docs/deploy.md](docs/deploy.md) — **本番リリース手順とロールバック**、CI/CD、Secrets、定期ビルド、障害時の切り分け
+- [docs/testing.md](docs/testing.md) — Playwright スモークテスト、Lighthouse、QA エージェントによる検証の進め方
 
 ## 守ること
 

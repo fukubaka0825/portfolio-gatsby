@@ -1,5 +1,52 @@
 # Deploy / CI
 
+## 本番へのリリース手順
+
+`master` に入ったものがそのまま https://www.fukubaka0825.dev に出る。直接 push はせず、必ず PR を経由する。
+
+1. ブランチを切って実装する（`git switch -c feat/xxx`）
+2. `npm run ci && npm run test:e2e` を通す（[development.md](development.md)）
+3. 見た目を変えたら QA エージェントで検証し、P0/P1 を潰す（[testing.md](testing.md)）
+4. 空きポートでプレビューを立ち上げて本人に確認してもらう（`npx astro preview --port <空きポート>`）
+5. push して PR を作る
+
+   ```sh
+   git push -u origin feat/xxx
+   gh pr create --fill
+   ```
+
+6. PR の CI（`ci.yml`: lint / 型 / build / Playwright / Lighthouse）が緑になるのを待つ
+
+   ```sh
+   gh pr checks --watch
+   ```
+
+7. merge する（`gh pr merge --squash --delete-branch`）。これで `deploy.yml` が走る
+8. デプロイを見届ける
+
+   ```sh
+   gh run watch "$(gh run list --workflow=deploy.yml --limit 1 --json databaseId --jq '.[0].databaseId')"
+   ```
+
+   `deploy` ジョブが gh-pages に publish した後、GitHub Pages の反映に1〜2分かかる
+9. 本番を確認する
+   - https://www.fukubaka0825.dev/ をハードリロード（CDN キャッシュは最大10分程度残ることがある）
+   - `curl -sI https://www.fukubaka0825.dev/ | head -1` が 200
+   - 本番に対して E2E を流す: `PLAYWRIGHT_BASE_URL=https://www.fukubaka0825.dev npx playwright test`（ローカルサーバーは起動しない）
+   - `lighthouse-prod` ジョブの結果（Actions の artifact / 一時公開URL）を見る
+
+### ロールバック
+
+gh-pages は `force_orphan` で履歴を持たないので、**master 側を戻して再デプロイ**する。
+
+```sh
+git revert <問題のコミット>   # もしくは revert PR を作って merge
+git push origin master        # PR 経由が原則。緊急時のみ
+```
+
+緊急でコードを触らず直前の状態に戻したいときは、Actions → Deploy → Run workflow を、戻したいコミットのブランチ/タグを指定して実行する。
+
+
 ## 全体像
 
 ```
