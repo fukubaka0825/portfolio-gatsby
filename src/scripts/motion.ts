@@ -1,9 +1,11 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { finePointer, reducedMotion } from './env'
+import { lenis } from './smooth'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export const reducedMotion = (): boolean => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-export const finePointer = (): boolean => window.matchMedia('(hover: hover) and (pointer: fine)').matches
+// ScrollTrigger reads the native scroll position; Lenis animates it, so each Lenis frame must nudge ScrollTrigger.
+lenis?.on('scroll', ScrollTrigger.update)
 
-export { gsap, ScrollTrigger }
+export { finePointer, gsap, reducedMotion, ScrollTrigger }

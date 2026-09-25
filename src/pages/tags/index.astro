@@ -8,7 +8,7 @@ for (const t of posts.flatMap((p) => p.data.tags)) counts.set(t, (counts.get(t) 
 const tags = [...counts].sort(([a], [b]) => a.localeCompare(b))
 ---
 
-<Page title="Tags">
+<Page section="blog" title="Tags">
   <div class="wrap max-w-5xl">
     <h1 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold">Tags</h1>
     <ul class="mt-10 flex flex-wrap gap-3">

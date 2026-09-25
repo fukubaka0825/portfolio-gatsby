@@ -1,18 +1,22 @@
 ---
+import bricolageLatin from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-standard-normal.woff2?url'
 import '~/styles/global.css'
 import Nav from '~/components/Nav.astro'
 import { roles } from '~/data/career'
 import { education } from '~/data/misc'
 import { profile } from '~/data/profile'
+import jpFontCss from '~/styles/jp-font.css?url'
 
 type Props = {
   title?: string
   description?: string
   type?: 'website' | 'article'
   publishedAt?: Date
+  /** Nav item to light up on pages that aren't sections of the home page. */
+  section?: 'blog'
 }
 
-const { title, description = profile.description, type = 'website', publishedAt } = Astro.props
+const { title, description = profile.description, type = 'website', publishedAt, section } = Astro.props
 const fullTitle = title ? `${title} | ${profile.name}` : `${profile.name} (@${profile.handle})`
 const canonical = new URL(Astro.url.pathname, Astro.site)
 const ogImage = new URL('/og.png', Astro.site)
@@ -65,17 +69,23 @@ const personLd = {
     <meta name="twitter:creator" content={`@${profile.handle}`} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- The Latin display face drives the hero's first paint; fetch it before CSS discovers it. -->
+    <link rel="preload" href={bricolageLatin} as="font" type="font/woff2" crossorigin />
+    <!-- Japanese faces are huge; render with the system JP font first and swap in Zen Kaku when it arrives. -->
+    <link rel="stylesheet" href={jpFontCss} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={jpFontCss} /></noscript>
+
     <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
     <slot name="head" />
   </head>
-  <body>
+  <body data-section={section}>
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-chalk"
       >本文へスキップ</a
     >
     <Nav />
-    <main id="main">
+    <main id="main" tabindex="-1" class="outline-none">
       <slot />
     </main>
     <script>

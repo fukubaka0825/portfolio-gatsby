@@ -19,14 +19,14 @@ const items = [
   >
     <a
       href="/"
-      class="pointer-events-auto flex items-center gap-2 rounded-full bg-ink p-1 sm:pr-4 text-chalk shadow-[0_6px_24px_-12px_rgba(15,43,47,0.6)] transition-transform duration-300 hover:-rotate-2"
+      class="nav-pill pointer-events-auto flex items-center gap-2 rounded-full p-1 text-chalk hover:-rotate-2 sm:pr-4"
       aria-label="Takashi Narikawa ホーム"
     >
       <Image src={avatar} alt="" width={64} height={64} class="size-8 rounded-full" loading="eager" />
       <span class="hidden text-[0.95rem] font-semibold tracking-tight sm:inline">nari</span>
     </a>
     <ul
-      class="pointer-events-auto flex items-center gap-0.5 rounded-full bg-ink p-1 text-[0.9rem] text-chalk shadow-[0_6px_24px_-12px_rgba(15,43,47,0.6)]"
+      class="nav-pill pointer-events-auto flex items-center gap-0.5 rounded-full p-1 text-[0.9rem] text-chalk"
       data-nav
     >
       {
@@ -35,7 +35,7 @@ const items = [
             <a
               href={item.href}
               data-nav-link={item.href.replace(/^\//, '')}
-              class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-ink-3 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4"
+              class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-chalk/15 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4"
             >
               {item.label}
             </a>
@@ -45,3 +45,23 @@ const items = [
     </ul>
   </nav>
 </header>
+
+<style is:global>
+  .nav-pill {
+    background: var(--color-ink);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-chalk) 14%, transparent),
+      0 6px 24px -12px rgba(15, 43, 47, 0.6);
+    transition:
+      background-color 0.35s,
+      box-shadow 0.35s,
+      rotate 0.3s;
+  }
+  /* Over ink sections the pill is the page colour and reads as a hole cut into the content. */
+  [data-nav-on-dark] .nav-pill {
+    background: var(--color-ink-3);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--color-chalk) 30%, transparent),
+      0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  }
+</style>

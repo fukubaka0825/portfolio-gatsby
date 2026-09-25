@@ -1,26 +1,35 @@
 import { finePointer, gsap, reducedMotion } from './motion'
 
+const NAV_BOTTOM = 72
+const GAP = 16
+
 export const initWorks = () => {
   const list = document.querySelector<HTMLElement>('[data-work-list]')
   const preview = document.querySelector<HTMLElement>('[data-preview]')
   if (!list || !preview || !finePointer()) return
-  const imgs = [...preview.querySelectorAll<HTMLElement>('[data-preview-img]')]
+  const imgs = [...preview.querySelectorAll<HTMLImageElement>('[data-preview-img]')]
   const still = reducedMotion()
 
   const xTo = gsap.quickTo(preview, 'x', { duration: still ? 0 : 0.55, ease: 'power3' })
   const yTo = gsap.quickTo(preview, 'y', { duration: still ? 0 : 0.55, ease: 'power3' })
   const rTo = gsap.quickTo(preview, 'rotation', { duration: 0.8, ease: 'power3' })
   let lastX = 0
+  let row: HTMLElement | undefined
+  let size = { width: 416, height: 260 }
 
-  const onMove = (e: PointerEvent) => {
-    const w = preview.offsetWidth
-    const h = preview.offsetHeight
-    // Flip to the left half near the right edge so the frame never covers the row being read.
-    const x = e.clientX > window.innerWidth * 0.6 ? e.clientX - w - 32 : e.clientX + 32
-    xTo(x)
-    yTo(e.clientY - h / 2)
-    if (!still) rTo(gsap.utils.clamp(-8, 8, (e.clientX - lastX) * 0.6))
-    lastX = e.clientX
+  // Sit above the hovered row (or below it when there's no room) so the frame never covers the title being read.
+  const place = (clientX: number, immediate = false) => {
+    if (!row) return
+    const r = row.getBoundingClientRect()
+    const { width: w, height: h } = size
+    const above = r.top - h - GAP
+    const y = above >= NAV_BOTTOM ? above : Math.min(r.bottom + GAP, window.innerHeight - h - 8)
+    const x = gsap.utils.clamp(8, window.innerWidth - w - 8, clientX - w / 2)
+    if (immediate) gsap.set(preview, { x, y })
+    else {
+      xTo(x)
+      yTo(y)
+    }
   }
 
   // Keep the frame's area roughly constant while its shape morphs, so tall covers don't tower over wide slides.
@@ -38,14 +47,11 @@ export const initWorks = () => {
     const first = current === -1
     current = i
     const img = imgs[i]
-    const { width, height } = sizeFor(
-      Number(img?.dataset.ratio) || 1.6,
-      Number(img?.dataset.naturalWidth) || 9999,
-    )
-    if (first || still) gsap.set(preview, { width, height })
-    else gsap.to(preview, { width, height, duration: 0.55, ease: 'expo.out', overwrite: 'auto' })
-    imgs.forEach((img, k) => {
-      gsap.to(img, {
+    size = sizeFor(Number(img?.dataset.ratio) || 1.6, Number(img?.dataset.naturalWidth) || 9999)
+    if (first || still) gsap.set(preview, size)
+    else gsap.to(preview, { ...size, duration: 0.55, ease: 'expo.out', overwrite: 'auto' })
+    imgs.forEach((im, k) => {
+      gsap.to(im, {
         opacity: k === i ? 1 : 0,
         scale: k === i ? 1 : 1.12,
         duration: still ? 0 : 0.5,
@@ -54,20 +60,40 @@ export const initWorks = () => {
     })
   }
 
-  for (const row of list.querySelectorAll<HTMLElement>('[data-work]')) {
-    row.addEventListener('pointerenter', () => show(Number(row.dataset.work)))
+  // Lazy images would still be fetching on the first hover; start them the moment the pointer heads for the list.
+  const warm = () => {
+    for (const im of imgs) im.loading = 'eager'
   }
-  list.addEventListener('pointermove', onMove)
-  list.addEventListener('pointerenter', (e) => {
-    const w = preview.offsetWidth
-    gsap.set(preview, {
-      x: e.clientX + 32 > window.innerWidth - w ? e.clientX - w - 32 : e.clientX + 32,
-      y: e.clientY - preview.offsetHeight / 2,
+  list.addEventListener('pointerenter', warm, { once: true })
+  new IntersectionObserver(
+    (entries, io) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        warm()
+        io.disconnect()
+      }
+    },
+    { rootMargin: '400px 0px' },
+  ).observe(list)
+
+  for (const el of list.querySelectorAll<HTMLElement>('[data-work]')) {
+    el.addEventListener('pointerenter', (e) => {
+      const first = current === -1
+      row = el
+      show(Number(el.dataset.work))
+      place(e.clientX, first)
     })
+  }
+  list.addEventListener('pointermove', (e) => {
+    place(e.clientX)
+    if (!still) rTo(gsap.utils.clamp(-8, 8, (e.clientX - lastX) * 0.6))
+    lastX = e.clientX
+  })
+  list.addEventListener('pointerenter', () => {
     gsap.to(preview, { opacity: 1, scale: 1, duration: still ? 0 : 0.4, ease: 'back.out(1.6)' })
   })
   list.addEventListener('pointerleave', () => {
     current = -1
+    row = undefined
     gsap.to(preview, { opacity: 0, scale: 0.85, duration: still ? 0 : 0.3, ease: 'power2.in' })
   })
   gsap.set(preview, { scale: 0.85 })

@@ -2,7 +2,13 @@
 import Footer from '~/components/Footer.astro'
 import Base from '~/layouts/Base.astro'
 
-type Props = { title: string; description?: string; type?: 'website' | 'article'; publishedAt?: Date }
+type Props = {
+  title: string
+  description?: string
+  type?: 'website' | 'article'
+  publishedAt?: Date
+  section?: 'blog'
+}
 const props = Astro.props
 ---
 
