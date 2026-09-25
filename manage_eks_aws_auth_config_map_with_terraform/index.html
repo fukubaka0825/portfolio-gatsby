@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Manage EKS aws-auth configmap with terraform | Takashi Narikawa</title><meta name="description" content="Introduction
+
+Hi, everyone.
+I would like to leave a memorandum about how to manage Kubernetes's configmap AWS auto-gener"><meta name="keywords" content="LLM Platform, GenAI, AI Enablement, LLMOps, Langfuse, MLOps, SRE, AWS, Google Cloud, fukubaka0825"><meta name="author" content="Takashi Narikawa"><link rel="canonical" href="https://www.fukubaka0825.dev/manage_eks_aws_auth_config_map_with_terraform/"><link rel="icon" href="/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="Takashi Narikawa blog" href="/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="theme-color" content="#f5d33f"><meta property="og:type" content="article"><meta property="og:title" content="Manage EKS aws-auth configmap with terraform | Takashi Narikawa"><meta property="og:description" content="Introduction
+
+Hi, everyone.
+I would like to leave a memorandum about how to manage Kubernetes's configmap AWS auto-gener"><meta property="og:url" content="https://www.fukubaka0825.dev/manage_eks_aws_auth_config_map_with_terraform/"><meta property="og:site_name" content="Takashi Narikawa"><meta property="og:image" content="https://www.fukubaka0825.dev/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="ja_JP"><meta property="article:published_time" content="2021-10-12T00:00:00.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@fukubaka0825"><meta name="twitter:creator" content="@fukubaka0825"><meta name="twitter:image" content="https://www.fukubaka0825.dev/og.png"><!-- The Latin display face drives the hero's first paint; fetch it before CSS discovers it. --><link rel="preload" href="/_astro/bricolage-grotesque-latin-standard-normal.C5Lc8Qmc.woff2" as="font" type="font/woff2" crossorigin><!-- Japanese faces are huge; render with the system JP font first and swap in Zen Kaku when it arrives. --><link rel="stylesheet" href="/_astro/jp-font.DEcDszf4.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/_astro/jp-font.DEcDszf4.css"></noscript><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Takashi Narikawa","alternateName":"fukubaka0825","jobTitle":"Senior Software Engineer, LLM Platform & Enablement","worksFor":{"@type":"Organization","name":"Match Group (eureka, Inc.)"},"url":"https://www.fukubaka0825.dev/","image":"https://www.fukubaka0825.dev/avatar.jpg","sameAs":["https://github.com/fukubaka0825","https://x.com/fukubaka0825","https://www.linkedin.com/in/takashi-narikawa-889a51187","https://speakerdeck.com/fukubaka0825","https://qiita.com/fukubaka0825","https://medium.com/@fukubaka0825"],"knowsAbout":["LLM Platform","GenAI","AI Enablement","LLMOps","Langfuse","MLOps","SRE","AWS","Google Cloud","fukubaka0825"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Waseda University"}}</script><link rel="stylesheet" href="/_astro/Base.BDkSyo2a.css"><script type="module" src="/_astro/page.CMFgH77u.js"></script></head><body data-section="blog"><a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-chalk">本文へスキップ</a><header class="pointer-events-none fixed inset-x-0 top-0 z-50 pt-[max(0.75rem,env(safe-area-inset-top))]"><nav aria-label="メイン" class="wrap pointer-events-none flex items-center justify-between gap-3"><a href="/" class="nav-pill pointer-events-auto flex items-center gap-2 rounded-full p-1 text-chalk hover:-rotate-2 sm:pr-4" aria-label="Takashi Narikawa ホーム"><img src="/_astro/nari.CRIrD4Al_2qTlKO.webp" alt loading="eager" decoding="async" width="64" height="64" class="size-8 rounded-full"><span class="hidden text-[0.95rem] font-semibold tracking-tight sm:inline">nari</span></a><ul class="nav-pill pointer-events-auto flex items-center gap-0.5 rounded-full p-1 text-[0.9rem] text-chalk" data-nav><li><a href="/#career" data-nav-link="#career" class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-chalk/15 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4">Career</a></li><li><a href="/#works" data-nav-link="#works" class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-chalk/15 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4">Works</a></li><li><a href="/#writing" data-nav-link="#writing" class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-chalk/15 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4">Writing</a></li><li><a href="/blog/" data-nav-link="blog/" class="block rounded-full px-2.5 py-1.5 transition-colors duration-200 hover:bg-chalk/15 aria-[current=true]:bg-yolk aria-[current=true]:text-ink sm:px-4">Blog</a></li></ul></nav></header><main id="main" tabindex="-1" class="outline-none"><div class="bg-paper pt-32 pb-24 sm:pt-40"><article class="wrap max-w-3xl"><a href="/blog/" class="text-[0.95rem] font-semibold underline decoration-hoodie decoration-2">Blog</a><h1 class="mt-6 text-[clamp(2rem,5vw,3.4rem)] leading-[1.1] font-extrabold tracking-tight">Manage EKS aws-auth configmap with terraform</h1><div class="mt-5 flex flex-wrap items-center gap-3 text-[0.9rem]"><time datetime="2021-10-12T00:00:00.000Z" class="text-mist tnum">2021.10.12</time><a href="/tags/Kubernetes/" class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.8rem] font-semibold">#Kubernetes</a><a href="/tags/Terraform/" class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.8rem] font-semibold">#Terraform</a></div><div class="prose prose-lg mt-12 max-w-none prose-headings:tracking-tight prose-a:decoration-hoodie prose-a:decoration-2 prose-pre:rounded-2xl prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl [overflow-wrap:anywhere] [&amp;_iframe]:!h-auto [&amp;_iframe]:!w-full [&amp;_iframe]:!max-w-full"><h2 id="introduction">Introduction</h2>
+<p>Hi, everyone.
+I would like to leave a memorandum about how to manage Kubernetes’s configmap AWS auto-generated with terraform.</p>
+<h2 id="what-trouble">What Trouble</h2>
+<ul>
+<li>If we want to add iam user/role for eks cluster operation, we need to fix auto-generated aws-auth configmap(namespace:kube-system)</li>
+<li>If we follow the official manual: <a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a>), we should manage it with kubernetes manifest yml, but we want to manage it with terraform.
+<ul>
+<li>Because at first we can access our eks cluster only with IAM user/role used when creating cluster(with ~/.kube/config as below) and our cluster generated role is terraform user/role</li>
+<li>Therefore, We want to add user/role to aws-auth configmap with terraform user/role and manage aws-auth configmap with terraform.</li>
+</ul>
+</li>
+</ul>
+<pre class="astro-code github-dark-dimmed" style="background-color:#22272e;color:#adbac7; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#768390"># ~/.kube/config</span></span>
+<span class="line"><span style="color:#ADBAC7">- </span><span style="color:#8DDB8C">name</span><span style="color:#ADBAC7">: </span><span style="color:#96D0FF">arn:aws:eks:ap-northeast-1:9999999999:cluster/eks-example</span></span>
+<span class="line"><span style="color:#8DDB8C">  user</span><span style="color:#ADBAC7">:</span></span>
+<span class="line"><span style="color:#8DDB8C">    exec</span><span style="color:#ADBAC7">:</span></span>
+<span class="line"><span style="color:#8DDB8C">      apiVersion</span><span style="color:#ADBAC7">: </span><span style="color:#96D0FF">client.authentication.k8s.io/v1alpha1</span></span>
+<span class="line"><span style="color:#8DDB8C">      args</span><span style="color:#ADBAC7">:</span></span>
+<span class="line"><span style="color:#ADBAC7">      - </span><span style="color:#96D0FF">--region</span></span>
+<span class="line"><span style="color:#ADBAC7">      - </span><span style="color:#96D0FF">ap-northeast-1</span></span>
+<span class="line"><span style="color:#ADBAC7">      - </span><span style="color:#96D0FF">eks</span></span>
+<span class="line"><span style="color:#ADBAC7">      - </span><span style="color:#96D0FF">get-token</span></span>
+<span class="line"><span style="color:#ADBAC7">      - </span><span style="color:#96D0FF">--cluster-name</span></span>
+<span class="line"><span style="color:#ADBAC7">      - </span><span style="color:#96D0FF">eks-example</span></span>
+<span class="line"><span style="color:#8DDB8C">      command</span><span style="color:#ADBAC7">: </span><span style="color:#96D0FF">aws</span></span>
+<span class="line"><span style="color:#8DDB8C">      env</span><span style="color:#ADBAC7">: </span><span style="color:#6CB6FF">null</span></span>
+<span class="line"><span style="color:#8DDB8C">      provideClusterInfo</span><span style="color:#ADBAC7">: </span><span style="color:#6CB6FF">false</span></span></code></pre>
+<h2 id="how-to-resolve-the-trouble">How to resolve the trouble</h2>
+<h3 id="1-add-terraform-aws-auth-configmap-resouece-and-use-terraform-import-command">1. Add terraform aws-auth configmap resouece and Use <code>terraform import</code> command</h3>
+<h4 id="10-prepare-terraform-kubernetes-provider">1.0 Prepare terraform kubernetes provider</h4>
+<pre class="astro-code github-dark-dimmed" style="background-color:#22272e;color:#adbac7; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>provider "kubernetes" {</span></span>
+<span class="line"><span>  host                   = data.aws_eks_cluster.eks.endpoint</span></span>
+<span class="line"><span>  cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks.certificate_authority[0].data)</span></span>
+<span class="line"><span>  token                  = data.aws_eks_cluster_auth.eks.token</span></span>
+<span class="line"><span>} </span></span></code></pre>
+<ul>
+<li>Caution: we should set host/token/cluster_ca_certificate to operate kubernetes cluster with tf-provider.
+<ul>
+<li>REF: <a href="https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest">https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="11-prapare-aws-auth-configmap-tf-resource-for-importing">1.1 Prapare aws-auth configmap tf resource for importing</h4>
+<pre class="astro-code github-dark-dimmed" style="background-color:#22272e;color:#adbac7; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span># aws-auth.tf</span></span>
+<span class="line"><span>resource "kubernetes_config_map" "aws-auth" {</span></span>
+<span class="line"><span>  data = {</span></span>
+<span class="line"><span>    "mapRoles" = ""</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  metadata {</span></span>
+<span class="line"><span>    name      = ""</span></span>
+<span class="line"><span>    namespace = ""</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h4 id="12-execute-terraoform-import-cmd">1.2 Execute <code>terraoform import</code> cmd</h4>
+<pre class="astro-code github-dark-dimmed" style="background-color:#22272e;color:#adbac7; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#F69D50">terraform</span><span style="color:#96D0FF"> import</span><span style="color:#96D0FF"> kubernetes_config_map.aws-auth</span><span style="color:#96D0FF"> kube-system/aws-auth</span></span></code></pre>
+<h4 id="13-terraform-plan-and-remove-diff-from-real-resource-state-to-resource-config">1.3 terraform plan and remove diff from real resource state to resource config</h4>
+<pre class="astro-code github-dark-dimmed" style="background-color:#22272e;color:#adbac7; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>resource "kubernetes_config_map" "aws-auth" {</span></span>
+<span class="line"><span>  data = {</span></span>
+<span class="line"><span>    "mapRoles" = &lt;&lt;EOT</span></span>
+<span class="line"><span>- rolearn: arn:aws:iam::99999999999:role/hoge-role</span></span>
+<span class="line"><span>  username: system:node:{{EC2PrivateDNSName}}</span></span>
+<span class="line"><span>  groups:</span></span>
+<span class="line"><span>    - system:bootstrappers</span></span>
+<span class="line"><span>    - system:nodes</span></span>
+<span class="line"><span>      # Therefore, before you specify rolearn, remove the path. For example, change arn:aws:iam::&lt;123456789012&gt;:role/&lt;team&gt;/&lt;developers&gt;/&lt;eks-admin&gt; to arn:aws:iam::&lt;123456789012&gt;:role/&lt;eks-admin&gt;. FYI:https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html#security-iam-troubleshoot-ConfigMap</span></span>
+<span class="line"><span>EOT</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  metadata {</span></span>
+<span class="line"><span>    name      = "aws-auth"</span></span>
+<span class="line"><span>    namespace = "kube-system"</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h3 id="2-fix-aws-auth-configmap-resource-we-imported-and-add-iam-userrole">2. Fix aws-auth configmap resource we imported and add iam user/role</h3>
+<pre class="astro-code github-dark-dimmed" style="background-color:#22272e;color:#adbac7; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="plaintext"><code><span class="line"><span>resource "kubernetes_config_map" "aws-auth" {</span></span>
+<span class="line"><span>  data = {</span></span>
+<span class="line"><span>    "mapRoles" = &lt;&lt;EOT</span></span>
+<span class="line"><span>- rolearn: arn:aws:iam::99999999999:role/hoge-role</span></span>
+<span class="line"><span>  username: system:node:{{EC2PrivateDNSName}}</span></span>
+<span class="line"><span>  groups:</span></span>
+<span class="line"><span>    - system:bootstrappers</span></span>
+<span class="line"><span>    - system:nodes</span></span>
+<span class="line"><span>      # Therefore, before you specify rolearn, remove the path. For example, change arn:aws:iam::&lt;123456789012&gt;:role/&lt;team&gt;/&lt;developers&gt;/&lt;eks-admin&gt; to arn:aws:iam::&lt;123456789012&gt;:role/&lt;eks-admin&gt;. FYI:https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html#security-iam-troubleshoot-ConfigMap</span></span>
+<span class="line"><span># Add as below </span></span>
+<span class="line"><span>- rolearn: hoge</span></span>
+<span class="line"><span>  username: hoge</span></span>
+<span class="line"><span>  groups: # REF: https://kubernetes.io/ja/docs/reference/access-authn-authz/rbac/</span></span>
+<span class="line"><span>    - hoge</span></span>
+<span class="line"><span>EOT</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  metadata {</span></span>
+<span class="line"><span>    name      = "aws-auth"</span></span>
+<span class="line"><span>    namespace = "kube-system"</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a></li>
+<li><a href="https://kubernetes.io/ja/docs/reference/access-authn-authz/rbac/">https://kubernetes.io/ja/docs/reference/access-authn-authz/rbac/</a></li>
+<li><a href="https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest">https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest</a></li>
+</ul>
+</div></article></div><footer id="contact" class="relative overflow-hidden bg-hoodie text-ink"><div class="wrap py-20 sm:py-28"><p class="max-w-[40rem] text-[1.05rem] leading-[1.9]">登壇・寄稿・LLMプラットフォームやMLOpsの相談は、X か LinkedIn の DM でどうぞ。</p><a href="https://x.com/fukubaka0825" target="_blank" rel="noopener me" class="display group mt-6 block text-[clamp(2.6rem,10.5vw,10rem)] font-extrabold break-all" data-handle><span class="inline-block transition-transform duration-700 ease-out-expo group-hover:-translate-y-2">@fukubaka0825</span></a><ul class="mt-10 flex flex-wrap gap-2"><li><a href="https://x.com/fukubaka0825" target="_blank" rel="noopener me" class="inline-flex rounded-full border-2 border-ink px-4 py-1.5 text-[0.92rem] font-semibold transition-colors duration-300 hover:bg-ink hover:text-hoodie" data-magnet>X</a></li><li><a href="https://www.linkedin.com/in/takashi-narikawa-889a51187" target="_blank" rel="noopener me" class="inline-flex rounded-full border-2 border-ink px-4 py-1.5 text-[0.92rem] font-semibold transition-colors duration-300 hover:bg-ink hover:text-hoodie" data-magnet>LinkedIn</a></li><li><a href="https://github.com/fukubaka0825" target="_blank" rel="noopener me" class="inline-flex rounded-full border-2 border-ink px-4 py-1.5 text-[0.92rem] font-semibold transition-colors duration-300 hover:bg-ink hover:text-hoodie" data-magnet>GitHub</a></li><li><a href="https://speakerdeck.com/fukubaka0825" target="_blank" rel="noopener me" class="inline-flex rounded-full border-2 border-ink px-4 py-1.5 text-[0.92rem] font-semibold transition-colors duration-300 hover:bg-ink hover:text-hoodie" data-magnet>Speaker Deck</a></li></ul><div class="mt-16 flex flex-wrap justify-between gap-4 border-t-2 border-ink pt-6 text-[0.85rem]"><p>© 2026 Takashi Narikawa</p><p><a href="https://github.com/fukubaka0825/portfolio-gatsby" target="_blank" rel="noopener" class="underline">このサイトのソース</a></p></div></div></footer></main><script type="module" src="/_astro/Base.astro_astro_type_script_index_0_lang.CBe0XngN.js"></script></body></html>
