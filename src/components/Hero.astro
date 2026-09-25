@@ -12,23 +12,52 @@ const socials = [
 ]
 ---
 
+<!-- Runs during parsing, before the hero paints, so the intro's start state never flashes. -->
+<script is:inline>
+  document.documentElement.classList.add('js')
+</script>
+
 <section
   id="top"
-  class="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-yolk text-ink"
+  class="relative isolate flex min-h-[100svh] touch-pan-y flex-col overflow-hidden bg-yolk text-ink"
   data-hero
 >
-  <!-- White brush streaks, echoing the painted wall behind the avatar. Drawn by the cursor, fades on its own. -->
+  <!-- White dry-brush paint, the same material as the wall behind the avatar. Purely decorative. -->
   <canvas class="pointer-events-none absolute inset-0 -z-10 size-full" data-paint aria-hidden="true"></canvas>
+  <div
+    class="pointer-events-none absolute top-0 left-0 z-30 size-10 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-ink/70 opacity-0 transition-opacity duration-200"
+    data-brush-ring
+    aria-hidden="true"
+  >
+  </div>
 
   <div class="wrap flex flex-1 flex-col justify-end pt-28 pb-10 sm:pb-14">
-    <div class="grid items-end gap-6 lg:grid-cols-[1fr_auto] lg:gap-10">
-      <h1 class="display select-none text-[clamp(4.2rem,15.5vw,15.5rem)] font-extrabold" aria-label={profile.name}>
+    <div class="relative">
+      <div class="mb-6 flex justify-end lg:absolute lg:right-0 lg:bottom-[0.4em] lg:mb-0 lg:text-[clamp(4.2rem,15.5vw,15.5rem)]" data-avatar>
+        <div data-avatar-float>
+          <div
+            class="size-[clamp(7.5rem,19vw,19rem)] rotate-3 overflow-hidden rounded-[42%_58%_55%_45%/50%_45%_55%_50%] border-[6px] border-ink shadow-[10px_10px_0_0_var(--color-hoodie)] lg:shadow-[14px_14px_0_0_var(--color-hoodie)]"
+          >
+            <Image
+              src={avatar}
+              alt="成川 貴史のアバター（オレンジのパーカーを着たイラスト）"
+              width={400}
+              height={400}
+              loading="eager"
+              fetchpriority="high"
+              class="size-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <h1 class="display text-[clamp(4.2rem,15.5vw,15.5rem)] font-extrabold select-none" aria-label={profile.name}>
         {
           lines.map((line) => (
-            <span class="block overflow-hidden pb-[0.06em]" aria-hidden="true">
+            <span class="block overflow-hidden pb-[0.06em] whitespace-nowrap" aria-hidden="true">
               <span class="inline-block" data-line>
                 {[...line].map((ch) => (
-                  <span class="inline-block will-change-transform" data-char>
+                  <span class="inline-block text-center will-change-transform" data-char>
                     {ch}
                   </span>
                 ))}
@@ -37,27 +66,21 @@ const socials = [
           ))
         }
       </h1>
-
-      <div class="relative -order-1 justify-self-end lg:order-none" data-avatar>
-        <div
-          class="size-[clamp(7.5rem,19vw,19rem)] rotate-3 overflow-hidden rounded-[42%_58%_55%_45%/50%_45%_55%_50%] border-[6px] border-ink shadow-[10px_10px_0_0_var(--color-hoodie)] lg:shadow-[14px_14px_0_0_var(--color-hoodie)]"
-        >
-          <Image src={avatar} alt="成川 貴史のアバター（オレンジのパーカーを着たイラスト）" width={400} height={400} loading="eager" fetchpriority="high" class="size-full object-cover" />
-        </div>
-      </div>
     </div>
 
     <div class="mt-8 grid gap-6 border-t-2 border-ink pt-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-12">
       <div>
-        <p class="text-[clamp(1.15rem,2vw,1.6rem)] leading-snug font-semibold tracking-tight">
-          <span data-stream data-text={profile.role}>{profile.role}</span><span
-            class="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[0.15em] bg-ink motion-safe:animate-[blink_1s_steps(2)_infinite]"
-            aria-hidden="true"
-            data-caret></span>
+        <p class="relative text-[clamp(1.15rem,2vw,1.6rem)] leading-snug font-semibold tracking-tight">
+          <!-- Invisible full text reserves the final height, so streaming never shifts the grid below (CLS). -->
+          <span class="invisible" aria-hidden="true">{profile.role}<span class="ml-0.5 inline-block w-[0.5em]"></span></span>
+          <span class="absolute inset-0">
+            <span data-stream data-text={profile.role}>{profile.role}</span><span
+              class="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[0.15em] bg-ink motion-safe:animate-[blink_1s_steps(2)_infinite]"
+              aria-hidden="true"
+              data-caret></span>
+          </span>
         </p>
-        <p class="mt-1 text-[1rem] text-ink/75">
-          {profile.org}／{profile.location}
-        </p>
+        <p class="mt-1 text-[1rem] text-ink/75">{profile.org}／{profile.location}</p>
       </div>
       <div class="flex flex-col gap-5">
         <p class="max-w-[38rem] text-[1rem] leading-[1.9] text-ink/85">{profile.tagline}</p>
@@ -90,8 +113,52 @@ const socials = [
     }
   }
   [data-char] {
-    font-variation-settings: 'wght' var(--w, 800), 'wdth' var(--s, 100);
+    font-variation-settings:
+      'wght' var(--w, 800),
+      'wdth' var(--s, 100);
     font-weight: 800;
+  }
+
+  /* Intro start state, applied before JS so there is no flash. If the module never runs, it reveals itself. */
+  :global(html.js) [data-hero]:not(.is-ready) [data-char] {
+    transform: translateY(115%) rotate(8deg);
+    animation: hero-fallback 0.01s 2.5s forwards;
+  }
+  :global(html.js) [data-hero]:not(.is-ready) [data-avatar] {
+    opacity: 0;
+    animation: hero-fallback 0.01s 2.5s forwards;
+  }
+  :global(html.js) [data-stream] {
+    visibility: hidden;
+  }
+  :global(html.js) [data-hero]:not(.is-ready) [data-stream] {
+    animation: hero-fallback 0.01s 2.5s forwards;
+  }
+  @keyframes hero-fallback {
+    to {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html.js) [data-hero] [data-char],
+    :global(html.js) [data-hero] [data-avatar] {
+      transform: none;
+      opacity: 1;
+    }
+    :global(html.js) [data-stream] {
+      visibility: visible;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    [data-hero] {
+      cursor: none;
+    }
+    [data-hero] :is(a, button) {
+      cursor: pointer;
+    }
   }
 </style>
 

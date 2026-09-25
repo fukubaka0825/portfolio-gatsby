@@ -62,6 +62,15 @@ const sources = [...new Set(items.map((i) => i.source))]
       }
     </ol>
 
+    <button
+      type="button"
+      class="mt-6 rounded-full border-2 border-ink px-5 py-2 text-[0.92rem] font-semibold transition-colors duration-300 hover:bg-ink hover:text-yolk"
+      hidden={items.length <= LIMIT}
+      data-more
+    >
+      もっと見る
+    </button>
+
     <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-[0.95rem]">
       <li><a href="/blog/" class="font-semibold underline decoration-hoodie decoration-2">このサイトのブログ</a></li>
       {
@@ -99,22 +108,37 @@ const sources = [...new Set(items.map((i) => i.source))]
 
   const LIMIT = 12
   const group = document.querySelector<HTMLElement>('[data-filter]')
+  const more = document.querySelector<HTMLButtonElement>('[data-more]')
   const items = [...document.querySelectorAll<HTMLElement>('[data-item]')]
+  let source = 'all'
+  let expanded = false
+
+  const render = (animateFrom = 0) => {
+    const matches = items.filter((it) => source === 'all' || it.dataset.source === source)
+    const cap = expanded ? matches.length : LIMIT
+    for (const it of items) it.hidden = true
+    const visible = matches.slice(0, cap)
+    for (const it of visible) it.hidden = false
+    if (more) more.hidden = matches.length <= cap
+    const entering = visible.slice(animateFrom)
+    if (!reducedMotion() && entering.length)
+      gsap.fromTo(entering, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power3' })
+  }
+
   group?.addEventListener('click', (e) => {
     const btn = (e.target as Element).closest<HTMLButtonElement>('button[data-source]')
     if (!btn) return
     for (const b of group.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b === btn))
-    const src = btn.dataset.source
-    let shown = 0
-    const visible: HTMLElement[] = []
-    for (const it of items) {
-      const match = src === 'all' || it.dataset.source === src
-      it.hidden = !(match && shown < LIMIT)
-      if (!it.hidden) {
-        shown++
-        visible.push(it)
-      }
-    }
-    if (!reducedMotion()) gsap.fromTo(visible, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power3' })
+    source = btn.dataset.source ?? 'all'
+    expanded = false
+    render()
+  })
+
+  more?.addEventListener('click', () => {
+    const before = items.filter((it) => !it.hidden).length
+    expanded = true
+    render(before)
+    // Keep keyboard users in place: focus the first newly revealed item instead of leaving it on a vanished button.
+    items.filter((it) => !it.hidden)[before]?.querySelector('a')?.focus()
   })
 </script>

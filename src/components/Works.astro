@@ -18,12 +18,13 @@ const shape = (img: { width: number; height: number }) => {
     <div class="grid gap-6 md:grid-cols-[1fr_minmax(0,28rem)] md:items-end">
       <h2 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold">Works</h2>
       <p class="text-[1rem] leading-[1.9] text-ink/75">
-        登壇、寄稿、カンファレンス運営、それから趣味のVTuberまで。スライドは
+        登壇、寄稿、カンファレンス運営など。スライドは
         <a href={profile.links.speakerdeck} target="_blank" rel="noopener" class="font-semibold underline decoration-hoodie decoration-2">Speaker Deck</a>
         にまとめています。
       </p>
     </div>
 
+    <!-- Inline thumbnails serve touch screens at any width (tablets included); hover devices get the floating preview. -->
     <ul class="mt-14 border-t-2 border-ink" data-work-list>
       {
         works.map((w, i) => (
@@ -45,7 +46,7 @@ const shape = (img: { width: number; height: number }) => {
                 src={w.image}
                 alt=""
                 width={640}
-                class="col-start-2 mt-3 max-h-48 w-auto max-w-full rounded-xl bg-yolk sm:hidden"
+                class="col-start-2 mt-3 max-h-48 w-auto max-w-full rounded-xl bg-yolk sm:col-end-4 [@media(hover:hover)_and_(pointer:fine)]:hidden"
                 style={`aspect-ratio:${shape(w.image).ratio};object-fit:${shape(w.image).fit}`}
                 loading="lazy"
               />
@@ -58,7 +59,7 @@ const shape = (img: { width: number; height: number }) => {
 
   <!-- One floating frame reused for every row; it chases the cursor with lag so the image feels carried. -->
   <div
-    class="pointer-events-none fixed top-0 left-0 z-40 hidden h-64 w-[26rem] overflow-hidden rounded-2xl border-4 border-ink bg-yolk opacity-0 shadow-[10px_10px_0_0_var(--color-hoodie)] sm:block"
+    class="pointer-events-none fixed top-0 left-0 z-40 hidden h-64 w-[26rem] overflow-hidden rounded-2xl border-4 border-ink bg-yolk opacity-0 shadow-[10px_10px_0_0_var(--color-hoodie)] [@media(hover:hover)_and_(pointer:fine)]:block"
     data-preview
     aria-hidden="true"
   >

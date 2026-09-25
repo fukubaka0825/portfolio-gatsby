@@ -8,6 +8,21 @@
 - キャリア: LLM / Observability の仕事をしている人なので、経歴をトレースビュー（スパンのウォーターフォール）として見せる。本業と副業を並行スパンとして並べ、詳細は「副業=左 / 本業=右」の2レーン
 - 肩書きの一行は、LLM のストリーミング出力のようにトークン単位で出てくる
 
+## ヒーローの筆（`src/scripts/brush.ts`）
+
+アバター背景の「黄色い壁に白いドライブラシ」という素材を再現する小さなペイントエンジン。
+
+- 1ストロークは22本の毛先（bristle）の束。毛先ごとに絵の具の量と減り方が違い、端の毛ほど早く乾く → かすれ
+- 速度で筆圧が変わる（ゆっくり=太く濃い、速い=細い）。ポインタの座標は Catmull-Rom で補間し 2.5px 間隔で再サンプル
+- ゆっくり動かすと絵の具が溜まって垂れる（drip）、速く払うと飛沫（spot）
+- 描いてから 0.9 秒は濡れたまま、その後 5.2 秒かけて乾いて消える
+- 状態はすべてベクターで持ち、毎フレーム描き直す。ビットマップに重ねて `destination-out` で消す方式は 8bit アルファの丸めでゴーストが残るため不採用
+- ヒーローが画面外なら描画ループは止まる。何も残っていなければ rAF も止まる
+- 読み込み時は `paintIntro` が自動で縦の筆跡を塗る（ストロークはハンドルで個別に管理。1本の active を共有すると線が繋がってしまう）
+- タッチは `touch-action: pan-y` で、横になぞると描ける・縦はスクロール
+
+名前の文字は inline-block なので、そのままだと文字間で改行される。`pinLetterWidths` で既定の太さの幅に固定し（`offsetWidth` で測る。回転中の bounding rect は大きく出る）、行は `nowrap`。可変フォントの変化はグリフだけに閉じる。
+
 ## パレット（`src/styles/global.css` の `@theme`）
 
 | トークン | 値 | 用途 |
@@ -28,16 +43,28 @@
 - Bricolage Grotesque Variable（欧文・見出し・UI）。`display` ユーティリティで見出し用の字間・行送り
 - Zen Kaku Gothic New（和文本文。欧文フォントのフォールバックとして自動で当たる）
 - 見出しは `clamp()` で画面幅に追従。本文は 1rem / 行送り 1.9 前後
+- 和文の改行は `text-wrap: pretty` + `word-break: auto-phrase`（`global.css` の base）で、1〜2文字だけの行や助詞始まりの行を避ける
+
+### フォントの読み込み（パフォーマンス上の決まり）
+
+- Bricolage の latin サブセット（`bricolage-grotesque-latin-standard-normal.woff2`）は `Base.astro` で `preload` する。ヒーローの初回描画がこのフォントで決まるため
+- フォールバックは `global.css` の `Bricolage Fallback`（Arial に `size-adjust` / `ascent-override` などを当てたもの）。数値は Chromium で Bricolage と Arial の字幅・メトリクスを実測して決めた。フォントを差し替えたら測り直す
+- Zen Kaku Gothic は `src/styles/jp-font.css` に分け、`media="print" onload` で**非ブロッキング**に読む（unicode-range のブロックが約240個あり、`global.css` に入れると CSS が 331KB になって初回描画を止めていた）。読み込み中はシステムの和文フォント（Hiragino / Noto Sans JP / Yu Gothic）で表示される
+- `global.css` に和文フォントの `@import` を戻さないこと
 
 ## モーションの原則
 
 - 自動で動くのはページ読み込み時の1回（名前の立ち上がり → 肩書きのストリーミング）と、ヒーローの筆跡のヒントだけ
 - それ以外はユーザーの操作（カーソル、スクロール、ボタン）への応答として動く
 - `prefers-reduced-motion: reduce` では Lenis・GSAP の演出・view transition をすべて止める。JS が無くても全テキストがHTMLにある
+- GSAP はトップページだけで読む。`src/scripts/env.ts`（reducedMotion など）と `smooth.ts`（Lenis・ナビ）は GSAP に依存させない。ブログ・タグ・記事ページで GSAP を import しないこと（E2E が検査している）
 - アニメーションは transform / opacity / font-variation のみ。レイアウトを揺らさない
 
 ## アクセシビリティ
 
-- スキップリンク、`:focus-visible` のリング（hoodie）
-- 装飾の canvas / プレビュー画像は `aria-hidden`
-- トレースのバーはリンク（キーボードで辿れ、フォーカスでカードがハイライトされる）
+- スキップリンク、`:focus-visible` のリング（hoodie。オレンジのフッター内だけ ink）
+- ページ内リンク（スキップリンク・ナビ）はスクロール後に移動先へフォーカスも移す（`smooth.ts`）。次の Tab が移動先から続く
+- 装飾の canvas / プレビュー画像 / トレースのツールチップは `aria-hidden`。バーは同じ内容を `aria-label` に持つ
+- トレースのバーはリンク。キーボードフォーカス（`:focus-visible`）のときだけカードをハイライトする（タップでは点灯させない。スマホで暗転が残るため）
+- ナビのピルは ink 色なので、ink のセクション（`data-surface="dark"`）の上では明るい面（ink-3 + 枠線）に切り替わる
+- 小さい文字の hoodie は、ダーク面では `hoodie-lit`、白地では `hoodie-deep` を使う（素の hoodie はどちらでも AA 未満）

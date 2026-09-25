@@ -31,27 +31,29 @@ const years: number[] = []
 for (let y = Number(CAREER_START.slice(0, 4)) + 1; y * 12 < end; y++) years.push(y)
 
 const period = (r: Role) => `${formatMonth(r.start)} – ${r.end ? formatMonth(r.end) : 'Present'}`
-const totalYears = Math.floor((end - start) / 12)
+// Month ticks exist for the zoomed view only; at 8-year scale they would be 100 hairlines of noise.
+const months: { at: number; label: string }[] = []
+for (let m = start; m < end; m++) if (m % 12 !== 0) months.push({ at: m, label: `${(m % 12) + 1}月` })
+const tip = (r: Role) => ({
+  // Several roles share the title "Senior Software Engineer"; the team is what tells them apart.
+  'data-tip-title': r.team ? `${r.title}／${r.team}` : r.title,
+  'data-tip-sub': `${r.company}　${period(r)}（${durationLabel(r.start, r.end)}）`,
+})
 const bar = (r: Role) => {
   const { s, e } = span(r)
   return `left:${pct(s)}%;width:${pct(e) - pct(s)}%`
 }
 ---
 
-<section id="career" class="relative bg-ink py-24 text-chalk sm:py-32" data-career>
+<section id="career" class="relative bg-ink py-24 text-chalk sm:py-32" data-career data-surface="dark">
   <div class="wrap">
-    <div class="grid gap-6 md:grid-cols-[1fr_minmax(0,28rem)] md:items-end">
-      <h2 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold text-yolk">Career</h2>
-      <p class="text-[1rem] leading-[1.9] text-chalk/80">
-        {totalYears}年分の仕事を、トレースのスパンのように並べました。上の段が本業、下の段が並行して手がけた副業です。バーを押すとその仕事の詳細へ移動します。
-      </p>
-    </div>
+    <h2 class="display text-[clamp(3.2rem,9vw,8rem)] font-extrabold text-yolk">Career</h2>
 
     <!-- Trace waterfall -->
-    <div class="mt-14 rounded-[1.75rem] bg-ink-2 p-4 sm:p-6" data-trace data-start={start} data-end={end}>
+    <div class="relative mt-10 rounded-[1.75rem] bg-ink-2 p-4 sm:mt-14 sm:p-6" data-trace data-start={start} data-end={end}>
       <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="text-[0.95rem] font-semibold">
-          <span class="text-yolk">career</span><span class="text-chalk/50"> / {roles.length} spans</span>
+          <span class="text-yolk">career</span><span class="text-chalk/70"> / {roles.length} spans</span>
         </p>
         <div class="flex gap-1 rounded-full bg-ink p-1 text-[0.85rem]" role="group" aria-label="表示範囲">
           <button type="button" class="rounded-full px-3 py-1 aria-pressed:bg-chalk aria-pressed:text-ink" aria-pressed="true" data-zoom="all">全期間</button>
@@ -66,22 +68,30 @@ const bar = (r: Role) => {
         </div>
       </div>
 
-      <div class="-mx-4 mt-6 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0" data-lenis-prevent-wheel>
-        <div class="grid min-w-[44rem] grid-cols-[3.5rem_1fr] gap-x-3 sm:grid-cols-[4.5rem_1fr]">
+      <div class="mt-6 overflow-x-auto pb-2" data-trace-scroller>
+        <div class="grid min-w-[44rem] grid-cols-[3.5rem_1fr] gap-x-3 sm:grid-cols-[4.5rem_1fr]" data-trace-grid>
           <div class="sticky left-0 z-10 bg-ink-2"></div>
-          <div class="relative h-6 text-[0.75rem] text-chalk/50 tnum" aria-hidden="true">
+          <div class="relative h-6 overflow-hidden text-[0.75rem] text-chalk/70 tnum" aria-hidden="true">
             {
               years.map((y) => (
-                <span class="absolute top-0 -translate-x-1/2" style={`left:${pct(y * 12)}%`} data-at={y * 12}>
+                <span class="absolute top-0 -translate-x-1/2 font-semibold" style={`left:${pct(y * 12)}%`} data-at={y * 12}>
                   {y}
+                </span>
+              ))
+            }
+            {
+              months.map((m) => (
+                <span class="month-tick absolute top-0 -translate-x-1/2" style={`left:${pct(m.at)}%`} data-at={m.at}>
+                  {m.label}
                 </span>
               ))
             }
           </div>
 
-          <p class="sticky left-0 z-10 self-stretch bg-ink-2 content-center text-[0.85rem] font-semibold text-yolk">本業</p>
-          <div class="relative h-11" data-track>
+          <p class="sticky left-0 z-10 self-stretch bg-ink-2 content-center text-[0.85rem] font-semibold text-yolk" data-lane-label>本業</p>
+          <div class="relative h-11 overflow-hidden" data-track>
             {years.map((y) => <span class="absolute inset-y-0 w-px bg-chalk/10" style={`left:${pct(y * 12)}%`} data-at={y * 12} aria-hidden="true" />)}
+            {months.map((m) => <span class="month-tick absolute inset-y-0 w-px bg-chalk/5" style={`left:${pct(m.at)}%`} data-at={m.at} aria-hidden="true" />)}
             {
               mains.map((r) => (
                 <a
@@ -92,7 +102,8 @@ const bar = (r: Role) => {
                   data-s={span(r).s}
                   data-e={span(r).e}
                   data-role={r.id}
-                  title={`${r.title} / ${r.company}（${period(r)}）`}
+                  aria-label={`${r.title}、${r.company}、${period(r)}`}
+                  {...tip(r)}
                 >
                   <span class="truncate" data-label>{r.short}</span>
                   {r.end === null && <span class="ongoing absolute inset-y-0 right-0 w-6" aria-hidden="true" />}
@@ -101,12 +112,13 @@ const bar = (r: Role) => {
             }
           </div>
 
-          <p class="sticky left-0 z-10 mt-2 self-stretch bg-ink-2 pt-2.5 text-[0.85rem] font-semibold text-hoodie">副業</p>
+          <p class="sticky left-0 z-10 mt-2 self-stretch bg-ink-2 pt-2.5 text-[0.85rem] font-semibold text-hoodie-lit">副業</p>
           <div class="mt-2 flex flex-col gap-1">
             {
               sideRows.map((row) => (
-                <div class="relative h-9" data-track>
+                <div class="relative h-9 overflow-hidden" data-track>
                   {years.map((y) => <span class="absolute inset-y-0 w-px bg-chalk/10" style={`left:${pct(y * 12)}%`} data-at={y * 12} aria-hidden="true" />)}
+                  {months.map((m) => <span class="month-tick absolute inset-y-0 w-px bg-chalk/5" style={`left:${pct(m.at)}%`} data-at={m.at} aria-hidden="true" />)}
                   {row.map((r) => (
                     <a
                       href={`#role-${r.id}`}
@@ -117,7 +129,8 @@ const bar = (r: Role) => {
                       data-e={span(r).e}
                       data-role={r.id}
                       data-spill
-                      title={`${r.title} / ${r.company}（${period(r)}）`}
+                      aria-label={`${r.title}、${r.company}、${period(r)}`}
+                      {...tip(r)}
                     >
                       <span class="truncate" data-label>{r.short}</span>
                     </a>
@@ -128,12 +141,25 @@ const bar = (r: Role) => {
           </div>
         </div>
       </div>
+
+      <!--
+        One tooltip for every bar: short spans can't fit their own label, so the full title lives here.
+        Visual only; each bar already carries the same text as its aria-label.
+      -->
+      <div
+        class="pointer-events-none absolute top-0 left-0 z-20 max-w-[18rem] rounded-xl bg-chalk px-3 py-2 text-ink opacity-0 shadow-[0_12px_30px_-12px_rgba(0,0,0,0.6)] transition-opacity duration-200"
+        aria-hidden="true"
+        data-tip
+      >
+        <p class="text-[0.85rem] leading-snug font-bold" data-tip-title-slot></p>
+        <p class="text-[0.78rem] leading-snug text-ink/75" data-tip-sub-slot></p>
+      </div>
     </div>
 
     <!-- Dual lanes: side on the left, main on the right, joined by one spine. -->
     <div class="relative mt-20" data-lanes>
       <div class="mb-10 hidden grid-cols-[1fr_4rem_1fr] text-[0.95rem] font-semibold md:grid">
-        <p class="text-right text-hoodie">副業 / Side</p>
+        <p class="text-right text-hoodie-lit">副業 / Side</p>
         <span></span>
         <p class="text-yolk">本業 / Main</p>
       </div>
@@ -153,7 +179,7 @@ const bar = (r: Role) => {
 
               <div class="order-2 flex flex-col gap-4 md:order-1 md:items-end md:pr-2">
                 {sides.length > 0 && (
-                  <p class="text-[0.85rem] font-semibold text-hoodie md:hidden">並行していた副業</p>
+                  <p class="text-[0.85rem] font-semibold text-hoodie-lit md:hidden">並行していた副業</p>
                 )}
                 {sides.map((r) => (
                   <article
@@ -165,7 +191,7 @@ const bar = (r: Role) => {
                       {period(r)}（{durationLabel(r.start, r.end)}）
                     </p>
                     <h3 class="mt-1 text-[1.15rem] leading-snug font-bold">{r.title}</h3>
-                    <p class="text-[0.98rem] text-hoodie">{r.company}</p>
+                    <p class="text-[0.98rem] text-hoodie-lit">{r.company}</p>
                     <ul class="mt-3 flex flex-wrap gap-1.5 text-[0.78rem]">
                       <li class="rounded-full bg-ink px-2.5 py-0.5">{r.employment}</li>
                       <li class="rounded-full bg-ink px-2.5 py-0.5">{r.location}</li>
@@ -246,8 +272,26 @@ const bar = (r: Role) => {
   [data-bar].is-narrow [data-label] {
     position: absolute;
     left: calc(100% + 0.45rem);
-    color: var(--color-hoodie);
+    color: var(--color-hoodie-lit);
     overflow: visible;
+  }
+  /* A main bar thinner than its first letters shows nothing rather than "S…"; the tooltip carries the name. */
+  [data-bar].is-tiny [data-label] {
+    visibility: hidden;
+  }
+  .month-tick {
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  [data-trace][data-zoomed] .month-tick {
+    opacity: 1;
+  }
+  /* Thirteen zoomed months fit a phone screen, so the zoomed chart drops the sideways-scroll minimum width. */
+  [data-trace][data-zoomed] [data-trace-grid] {
+    min-width: 0;
+  }
+  [data-tip].is-on {
+    opacity: 1;
   }
   [data-bar].is-dim {
     opacity: 0.35;
