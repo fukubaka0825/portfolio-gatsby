@@ -11,7 +11,6 @@ import sreLounge from '~/assets/works/sre-lounge.png'
 import sreNextChair from '~/assets/works/sre-next-chair.jpg'
 import sreNext from '~/assets/works/sre-next-session.png'
 import vroid from '~/assets/works/vroid.png'
-import youtube from '~/assets/works/youtube.png'
 
 export type WorkKind = 'Talk' | 'Article' | 'Organizer' | 'Book' | 'Podcast' | 'Video' | '3D'
 
@@ -104,14 +103,6 @@ export const works: Work[] = [
     kind: '3D',
     url: 'https://hub.vroid.com/characters/3188723872963240740/models/2207386033305627317',
     image: vroid,
-  },
-  {
-    title: 'YouTube チャンネル wapper/nari 🍔',
-    venue: 'YouTube',
-    year: 2021,
-    kind: 'Video',
-    url: 'https://www.youtube.com/channel/UC81PeviLpHz0oH6GhaqxIpQ',
-    image: youtube,
   },
   {
     title: 'How a band member became a fun SRE',
