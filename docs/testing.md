@@ -18,11 +18,30 @@ npx playwright test --ui     # デバッグ
 - Gatsby 時代のURL（記事・タグ・`/blog/`）が 200 を返す
 - `rss.xml` / `sitemap-index.xml` / `robots.txt` / `og.png` / `CNAME` が配信される
 
+`tests/interactions.spec.ts` が見ているもの:
+
+- スキップリンク・ナビのリンクでフォーカスが移動先に移る
+- トレースを拡大してもバーがトラックからはみ出さず、横スクロール幅が増えない。拡大中も長いスパンのラベルが見える
+- スマホのトレースは直近（右端）から表示される
+- Writing の「もっと見る」で全件出る
+- 記事ページでナビの Blog が点灯し、GSAP を読み込まない
+
 新しいセクションや URL を足したら、ここにもテストを足す。
 
 ## Lighthouse
 
 PR では `dist/` に対して `lighthouserc.json` の予算で実行（performance は warn、それ以外は error）。
+
+ローカルで測るときは**gzip する静的サーバー**を使う（本番の GitHub Pages は gzip する）。`python3 -m http.server` や `astro preview` は圧縮しないので、HTML や CSS が生のサイズで計測され、FCP/LCP が実際より数秒悪く出る。
+
+```sh
+npx astro build --outDir .qa-dist
+npx -y serve@14 .qa-dist -l <空きポート>
+CHROME_PATH="$(node -e "console.log(require('@playwright/test').chromium.executablePath())")" \
+  npx -y lighthouse@12 http://localhost:<ポート>/ --chrome-flags="--headless=new" --view
+```
+
+E2E をローカルの任意のサーバーに向けるときは `PLAYWRIGHT_BASE_URL=http://127.0.0.1:<ポート> npx playwright test`（`astro preview` のデーモンが別の成果物を配信していても影響を受けない）。
 
 ## QA の進め方
 
