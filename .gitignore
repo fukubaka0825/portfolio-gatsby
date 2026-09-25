@@ -9,3 +9,4 @@ dist/
 npm-debug.log*
 test-results/
 playwright-report/
+.preview-dist/

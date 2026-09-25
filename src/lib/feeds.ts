@@ -1,6 +1,6 @@
 import { XMLParser } from 'fast-xml-parser'
 
-export type FeedSource = 'Hatena' | 'Medium' | 'dev.to' | 'note' | 'Qiita' | 'Speaker Deck'
+export type FeedSource = 'Hatena' | 'Medium' | 'dev.to' | 'Qiita' | 'Speaker Deck'
 
 export type FeedItem = { title: string; url: string; date: string; source: FeedSource }
 
@@ -16,7 +16,6 @@ const FEEDS: { source: FeedSource; url: string; home: string }[] = [
     home: 'https://medium.com/@fukubaka0825',
   },
   { source: 'dev.to', url: 'https://dev.to/feed/fukubaka0825', home: 'https://dev.to/fukubaka0825' },
-  { source: 'note', url: 'https://note.com/fukubaka/rss', home: 'https://note.com/fukubaka' },
   { source: 'Qiita', url: 'https://qiita.com/fukubaka0825/feed', home: 'https://qiita.com/fukubaka0825' },
   {
     source: 'Speaker Deck',

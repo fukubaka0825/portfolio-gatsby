@@ -35,6 +35,15 @@ Biome の設定は `biome.json`。`.astro` はテンプレート内で使う変�
    ```
 
    macOS は 7000 / 5000 を AirPlay Receiver が使うことがあるので、必ず空きを確認する。
+
+   Astro 7 の `astro preview` は常駐デーモンで、すでに1つ動いていると別ポートを指定しても「already running」で何もせず終わる（`astro preview status` / `astro preview stop`）。QA と本人確認を並行するなど複数立てたいときは、別ディレクトリにビルドして静的サーバーで配信する:
+
+   ```sh
+   npx astro build --outDir .preview-dist
+   (cd .preview-dist && python3 -m http.server 7000 --bind 127.0.0.1)
+   ```
+
+   この方法では独自の 404 ページは出ない（本番の GitHub Pages では `404.html` が使われる）。
 3. 最低限見るところ
    - ヒーロー: 読み込み時の名前の立ち上がり、肩書きのストリーミング、マウスで筆跡が描けるか
    - キャリア: 「2025年を拡大」、バーのホバーでカードが光るか、スクロールで背骨が伸びるか

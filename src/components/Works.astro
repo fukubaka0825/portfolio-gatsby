@@ -2,6 +2,15 @@
 import { Image } from 'astro:assets'
 import { profile } from '~/data/profile'
 import { works } from '~/data/works'
+
+// Frames follow each image's own shape, clamped so a 3.6:1 logo or a tall book cover still reads as a card.
+const MIN_RATIO = 0.75
+const MAX_RATIO = 2.6
+const shape = (img: { width: number; height: number }) => {
+  const natural = img.width / img.height
+  const ratio = Math.min(MAX_RATIO, Math.max(MIN_RATIO, natural))
+  return { ratio, fit: Math.abs(ratio - natural) > 0.01 ? 'contain' : 'cover' }
+}
 ---
 
 <section id="works" class="bg-paper py-24 sm:py-32" data-works>
@@ -36,7 +45,8 @@ import { works } from '~/data/works'
                 src={w.image}
                 alt=""
                 width={640}
-                class="col-span-full mt-3 aspect-[16/9] w-full max-w-md rounded-xl bg-yolk object-cover sm:hidden"
+                class="col-start-2 mt-3 max-h-48 w-auto max-w-full rounded-xl bg-yolk sm:hidden"
+                style={`aspect-ratio:${shape(w.image).ratio};object-fit:${shape(w.image).fit}`}
                 loading="lazy"
               />
             </a>
@@ -48,13 +58,23 @@ import { works } from '~/data/works'
 
   <!-- One floating frame reused for every row; it chases the cursor with lag so the image feels carried. -->
   <div
-    class="pointer-events-none fixed top-0 left-0 z-40 hidden aspect-[16/10] w-[min(26rem,34vw)] overflow-hidden rounded-2xl border-4 border-ink bg-yolk opacity-0 shadow-[10px_10px_0_0_var(--color-hoodie)] sm:block"
+    class="pointer-events-none fixed top-0 left-0 z-40 hidden h-64 w-[26rem] overflow-hidden rounded-2xl border-4 border-ink bg-yolk opacity-0 shadow-[10px_10px_0_0_var(--color-hoodie)] sm:block"
     data-preview
     aria-hidden="true"
   >
     {
       works.map((w, i) => (
-        <Image src={w.image} alt="" width={720} class="absolute inset-0 size-full object-cover opacity-0" loading="lazy" data-preview-img={i} />
+        <Image
+          src={w.image}
+          alt=""
+          width={720}
+          class="absolute inset-0 size-full opacity-0"
+          style={`object-fit:${shape(w.image).fit}`}
+          loading="lazy"
+          data-preview-img={i}
+          data-ratio={shape(w.image).ratio}
+          data-natural-width={w.image.width}
+        />
       ))
     }
   </div>

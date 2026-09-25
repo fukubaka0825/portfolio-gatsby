@@ -46,11 +46,11 @@ tools/           og.html / og.mjs（OG画像の生成）
 
 ## 外部フィード（Writing セクション）
 
-`src/lib/feeds.ts` がビルド時に はてな / Medium / dev.to / note / Qiita / Speaker Deck の RSS・Atom を取得して新しい順に並べる。
+`src/lib/feeds.ts` がビルド時に はてな / Medium / dev.to / Qiita / Speaker Deck の RSS・Atom を取得して新しい順に並べる。
 
 - 1フィード10秒でタイムアウト。失敗したフィードは warn を出してスキップ（ビルドは落とさない）
 - 同一ビルド内ではメモ化され、ネットワークは1回だけ
 - `SKIP_FEEDS=1` で取得しない（PR の CI はこれ）
-- 新しい媒体を足すときは `FEEDS` 配列に1行追加するだけ
+- 新しい媒体を足すときは `FEEDS` 配列に1行追加するだけ（note は本人の希望で対象外）
 
 新着記事は毎日の定期ビルド（[deploy.md](deploy.md)）で反映される。

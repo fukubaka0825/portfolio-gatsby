@@ -23,10 +23,27 @@ export const initWorks = () => {
     lastX = e.clientX
   }
 
+  // Keep the frame's area roughly constant while its shape morphs, so tall covers don't tower over wide slides.
+  // Small sources (e.g. a 292px podcast banner) are capped near their native width instead of being blown up blurry.
+  const sizeFor = (ratio: number, naturalWidth: number) => {
+    const base = Math.min(416, window.innerWidth * 0.34)
+    const area = base * (base / 1.6)
+    const w = Math.min(base * 1.15, Math.sqrt(area * ratio), naturalWidth * 1.3)
+    return { width: w, height: w / ratio }
+  }
+
   let current = -1
   const show = (i: number) => {
     if (i === current) return
+    const first = current === -1
     current = i
+    const img = imgs[i]
+    const { width, height } = sizeFor(
+      Number(img?.dataset.ratio) || 1.6,
+      Number(img?.dataset.naturalWidth) || 9999,
+    )
+    if (first || still) gsap.set(preview, { width, height })
+    else gsap.to(preview, { width, height, duration: 0.55, ease: 'expo.out', overwrite: 'auto' })
     imgs.forEach((img, k) => {
       gsap.to(img, {
         opacity: k === i ? 1 : 0,
