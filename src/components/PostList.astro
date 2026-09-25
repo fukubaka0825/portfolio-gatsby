@@ -20,7 +20,7 @@ const posts = [...Astro.props.posts].sort((a, b) => b.data.date.valueOf() - a.da
             </span>
             <span class="mt-2 flex flex-wrap gap-1.5">
               {p.data.tags.map((t) => (
-                <span class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.78rem] font-semibold">{t}</span>
+                <span class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.78rem] font-semibold">#{t}</span>
               ))}
             </span>
           </span>

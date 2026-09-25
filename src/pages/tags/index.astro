@@ -16,7 +16,7 @@ const tags = [...counts].sort(([a], [b]) => a.localeCompare(b))
         tags.map(([t, n]) => (
           <li>
             <a href={`/tags/${t}/`} class="inline-flex items-baseline gap-2 rounded-full border-2 border-ink px-4 py-1.5 font-semibold hover:bg-ink hover:text-yolk">
-              {t}
+              #{t}
               <span class="text-[0.8rem] opacity-60 tnum">{n}</span>
             </a>
           </li>

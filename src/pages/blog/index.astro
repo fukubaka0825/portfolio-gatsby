@@ -18,7 +18,7 @@ const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort()
         tags.map((t) => (
           <li>
             <a href={`/tags/${t}/`} class="rounded-full border-2 border-ink px-3 py-1 text-[0.85rem] font-semibold hover:bg-ink hover:text-yolk">
-              {t}
+              #{t}
             </a>
           </li>
         ))

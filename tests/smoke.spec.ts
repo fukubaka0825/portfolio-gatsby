@@ -38,12 +38,6 @@ test.describe('home', () => {
     await expect(page.locator('#works')).toBeInViewport()
   })
 
-  test('page never scrolls horizontally', async ({ page }) => {
-    await page.goto('/')
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
-    expect(overflow).toBeLessThanOrEqual(0)
-  })
-
   test('content is complete with reduced motion', async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: 'reduce' })
     const page = await ctx.newPage()
@@ -71,6 +65,22 @@ test.describe('legacy URLs from the Gatsby site', () => {
     })
   }
 })
+
+// Compare against visualViewport: on mobile an oversized child widens the layout viewport, so innerWidth grows too.
+for (const path of [
+  '/',
+  '/blog/',
+  '/how_to_resolve_the_trouble_occurred_when_i_install_go_into_the_alpine_image/',
+  '/manage_eks_aws_auth_config_map_with_terraform/',
+]) {
+  test(`${path} never scrolls horizontally`, async ({ page }) => {
+    await page.goto(path)
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - (window.visualViewport?.width ?? window.innerWidth),
+    )
+    expect(overflow).toBeLessThanOrEqual(1)
+  })
+}
 
 test('feeds and seo endpoints exist', async ({ request }) => {
   for (const path of ['/rss.xml', '/sitemap-index.xml', '/robots.txt', '/og.png', '/CNAME']) {

@@ -28,13 +28,13 @@ const description =
       {
         post.data.tags.map((t) => (
           <a href={`/tags/${t}/`} class="rounded-full bg-yolk px-2.5 py-0.5 text-[0.8rem] font-semibold">
-            {t}
+            #{t}
           </a>
         ))
       }
     </div>
     <div
-      class="prose prose-lg mt-12 max-w-none prose-headings:tracking-tight prose-a:decoration-hoodie prose-a:decoration-2 prose-pre:rounded-2xl prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl [&_iframe]:max-w-full"
+      class="prose prose-lg mt-12 max-w-none prose-headings:tracking-tight prose-a:decoration-hoodie prose-a:decoration-2 prose-pre:rounded-2xl prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl [overflow-wrap:anywhere] [&_iframe]:!h-auto [&_iframe]:!w-full [&_iframe]:!max-w-full"
     >
       <Content />
     </div>
