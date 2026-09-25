@@ -16,7 +16,7 @@ type Props = { tag: string; posts: CollectionEntry<'blog'>[] }
 const { tag, posts } = Astro.props
 ---
 
-<Page title={`#${tag}`}>
+<Page section="blog" title={`#${tag}`}>
   <div class="wrap max-w-5xl">
     <a href="/tags/" class="text-[0.95rem] font-semibold underline decoration-hoodie decoration-2">Tags</a>
     <h1 class="display mt-4 text-[clamp(3rem,8vw,7rem)] font-extrabold">#{tag}</h1>

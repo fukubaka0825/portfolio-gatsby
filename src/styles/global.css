@@ -1,18 +1,31 @@
 @import "tailwindcss";
 @import "@fontsource-variable/bricolage-grotesque/standard.css";
-@import "@fontsource/zen-kaku-gothic-new/400.css";
-@import "@fontsource/zen-kaku-gothic-new/700.css";
 @plugin "@tailwindcss/typography";
 
 /*
  * The palette is lifted from the avatar illustration (yellow wall, orange hoodie, teal-black hair, white brush
  * streaks) so the site reads as the same person as the icon people already know from X/GitHub.
  */
+/*
+ * Arial tuned to Bricolage's advance widths and vertical metrics (measured in Chromium), so the swap when the
+ * webfont lands doesn't shove the hero around (that swap was most of the 0.26 mobile CLS).
+ */
+@font-face {
+  font-family: "Bricolage Fallback";
+  src: local("Arial");
+  size-adjust: 92.5%;
+  ascent-override: 100.5%;
+  descent-override: 29.2%;
+  line-gap-override: 0%;
+}
+
 @theme {
   --color-yolk: #f5d33f;
   --color-yolk-deep: #e9c21f;
   --color-hoodie: #ee7d1c;
-  --color-hoodie-deep: #c95f05;
+  /* hoodie itself is 4.4:1 on ink-2 and 3.2:1 on white; these two variants pass AA for small text. */
+  --color-hoodie-lit: #f39440;
+  --color-hoodie-deep: #b35300;
   --color-ink: #0f2b2f;
   --color-ink-2: #173a3f;
   --color-ink-3: #24515a;
@@ -22,8 +35,12 @@
   --color-mist-light: #9fb6b4;
   --color-line: #dbe3e1;
 
-  --font-display: "Bricolage Grotesque Variable", "Zen Kaku Gothic New", system-ui, sans-serif;
-  --font-sans: "Bricolage Grotesque Variable", "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+  --font-display:
+    "Bricolage Grotesque Variable", "Bricolage Fallback", "Zen Kaku Gothic New", "Hiragino Sans",
+    "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  --font-sans:
+    "Bricolage Grotesque Variable", "Bricolage Fallback", "Zen Kaku Gothic New", "Hiragino Sans",
+    "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -55,9 +72,35 @@
     outline-offset: 3px;
     border-radius: 4px;
   }
+  /* The ring is hoodie orange everywhere except on the hoodie-orange footer, where it would disappear. */
+  footer :focus-visible {
+    outline-color: var(--color-ink);
+  }
   a {
     text-underline-offset: 0.2em;
   }
+  /*
+   * Stops one or two characters (or a particle like "と、") being orphaned on the last line of Japanese copy.
+   * auto-phrase lets Chromium break at bunsetsu boundaries instead of between any two kana.
+   */
+  p,
+  li,
+  dd,
+  h1,
+  h2,
+  h3 {
+    text-wrap: pretty;
+    word-break: auto-phrase;
+  }
+}
+
+/* Unlayered so it wins over the utility transition lists on the pill buttons it applies to. */
+[data-magnet] {
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    translate 0.3s var(--ease-out-expo),
+    background-color 0.3s,
+    color 0.3s;
 }
 
 /* Lenis owns scrolling; these are its documented required styles. */

@@ -19,7 +19,7 @@ const description =
     .slice(0, 120)
 ---
 
-<Page title={post.data.title} description={description} type="article" publishedAt={post.data.date}>
+<Page section="blog" title={post.data.title} description={description} type="article" publishedAt={post.data.date}>
   <article class="wrap max-w-3xl">
     <a href="/blog/" class="text-[0.95rem] font-semibold underline decoration-hoodie decoration-2">Blog</a>
     <h1 class="mt-6 text-[clamp(2rem,5vw,3.4rem)] leading-[1.1] font-extrabold tracking-tight">{post.data.title}</h1>

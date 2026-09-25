@@ -1,0 +1,3 @@
+/* Japanese faces load off the critical path: ~240 unicode-range blocks would otherwise block first paint. */
+@import "@fontsource/zen-kaku-gothic-new/400.css";
+@import "@fontsource/zen-kaku-gothic-new/700.css";
