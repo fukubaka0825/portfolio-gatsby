@@ -70,11 +70,15 @@ const socials = [
 
     <div class="mt-8 grid gap-6 border-t-2 border-ink pt-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:gap-12">
       <div>
-        <p class="text-[clamp(1.15rem,2vw,1.6rem)] leading-snug font-semibold tracking-tight">
-          <span data-stream data-text={profile.role}>{profile.role}</span><span
-            class="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[0.15em] bg-ink motion-safe:animate-[blink_1s_steps(2)_infinite]"
-            aria-hidden="true"
-            data-caret></span>
+        <p class="relative text-[clamp(1.15rem,2vw,1.6rem)] leading-snug font-semibold tracking-tight">
+          <!-- Invisible full text reserves the final height, so streaming never shifts the grid below (CLS). -->
+          <span class="invisible" aria-hidden="true">{profile.role}<span class="ml-0.5 inline-block w-[0.5em]"></span></span>
+          <span class="absolute inset-0">
+            <span data-stream data-text={profile.role}>{profile.role}</span><span
+              class="ml-0.5 inline-block h-[1em] w-[0.5em] translate-y-[0.15em] bg-ink motion-safe:animate-[blink_1s_steps(2)_infinite]"
+              aria-hidden="true"
+              data-caret></span>
+          </span>
         </p>
         <p class="mt-1 text-[1rem] text-ink/75">{profile.org}／{profile.location}</p>
       </div>

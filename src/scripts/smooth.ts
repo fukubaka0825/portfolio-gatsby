@@ -42,20 +42,23 @@ const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'
 const sections = links
   .map((l) => document.getElementById((l.dataset.navLink ?? '').replace('#', '')))
   .filter((s): s is HTMLElement => Boolean(s))
+// Sections without their own nav item light the item of the group they belong to (Skills reads as part of
+// Works, Also as part of Writing); the hero and footer clear it. Otherwise a fast jump leaves a stale item lit.
+const owner: Record<string, string | null> = { top: null, skills: 'works', also: 'writing', contact: null }
 if (sections.length) {
   const io = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue
+        const id = entry.target.id in owner ? owner[entry.target.id] : entry.target.id
         for (const l of links)
-          l.setAttribute('aria-current', String(l.dataset.navLink === `#${entry.target.id}`))
+          l.setAttribute('aria-current', String(id !== null && l.dataset.navLink === `#${id}`))
       }
     },
     { rootMargin: '-45% 0px -50% 0px' },
   )
   for (const s of sections) io.observe(s)
-  // Sections without a nav item (hero, footer) clear the highlight instead of leaving a stale one lit.
-  for (const id of ['top', 'contact']) {
+  for (const id of Object.keys(owner)) {
     const el = document.getElementById(id)
     if (el) io.observe(el)
   }
