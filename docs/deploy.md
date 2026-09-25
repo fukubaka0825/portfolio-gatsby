@@ -61,11 +61,9 @@ master push ──> deploy.yml: ci.yml を再利用 → build(フィード取得
 
 ## Secrets
 
-| 名前 | 用途 |
-| --- | --- |
-| `GH_TOKEN` | gh-pages への push に使う PAT（`repo` スコープ）。Gatsby 時代からの構成を踏襲 |
+不要。gh-pages への push は Actions が自動発行する `GITHUB_TOKEN`（deploy ジョブに `contents: write`）で行う。
 
-Gatsby 時代の `GITHUB_API_TOKEN` / `QIITA_API_TOKEN` は不要になった（消してよい）。
+以前は PAT の `GH_TOKEN` を使っていたが、2026-09 に失効していて publish が認証エラー（`Invalid username or token`）になったため切り替えた。`GH_TOKEN` / `GITHUB_API_TOKEN` / `QIITA_API_TOKEN` / `RSS2JSON_API_TOKEN` はもう使っていない（消してよい）。
 
 ## 定期ビルド
 
@@ -78,6 +76,7 @@ Actions → Deploy → Run workflow（`workflow_dispatch`）。CI はスキッ�
 
 ## 切り分け
 
+- **publish が `Authentication failed` で落ちる**: deploy ジョブの `permissions: contents: write` が消えていないか、リポジトリの Settings → Actions → Workflow permissions で書き込みが禁止されていないか
 - **デプロイ後にカスタムドメインが外れた**: gh-pages に `CNAME` があるか確認。`public/CNAME` を消していないか
 - **Writing が空になった**: Actions のログで `[feeds] skip <媒体>` を探す。レート制限などで一時的に取れないだけならビルドは成功している
 - **Lighthouse が落ちた**: PR 側は `lighthouserc.json`（a11y / best-practices / SEO は error）。本番側 `lighthouserc.prod.json` は warn のみ
